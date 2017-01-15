@@ -34,7 +34,7 @@ class Combinations extends Combinatorics implements \Iterator {
    *   The length.
    */
   public function __construct(array $dataset = array(), $length = NULL) {
-    parent::__construct($dataset, $length);
+    parent::__construct(array_values($dataset), $length);
     $this->rewind();
   }
 
