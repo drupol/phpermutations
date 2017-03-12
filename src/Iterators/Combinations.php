@@ -125,7 +125,7 @@ class Combinations extends Combinatorics implements \Iterator {
    * {@inheritdoc}
    */
   public function count() {
-    return $this->fact(count($this->getDataset())) / $this->fact($this->getLength());
+    return $this->fact(count($this->getDataset())) / ($this->fact($this->getLength()) * $this->fact(count($this->getDataset()) - $this->getLength()));
   }
 
 }

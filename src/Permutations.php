@@ -109,9 +109,7 @@ class Permutations extends Combinatorics {
    *   The second variable.
    */
   protected function swap(&$x, &$y) {
-    $tmp = $x;
-    $x = $y;
-    $y = $tmp;
+    $x ^= $y ^= $x ^= $y;
   }
 
   /**
