@@ -123,7 +123,7 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
   private function computeGroup() {
     $this->group = array();
 
-    foreach (range(1, $this->getSize() - 1) as $key => $number) {
+    foreach (range(1, $this->getSize() - 1) as $number) {
       if ($this->gcd($number, $this->getSize() - 1) == 1) {
         $this->group[] = $number;
       }
@@ -145,10 +145,20 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
     return $b ? $this->gcd($b, $a % $b) : $a;
   }
 
+  /**
+   * @param $generator
+   *
+   * @return int
+   */
   public function order($generator) {
+    $result = array();
 
-    //foreach($this->)
+    foreach(range(1, $this->getSize() - 1) as $number) {
+      $value = pow($generator, $number) % $this->getSize();
+      $result[$value] = $value;
+    }
 
+    return count($result);
   }
 
 }
