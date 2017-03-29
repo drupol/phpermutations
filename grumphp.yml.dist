@@ -1,0 +1,17 @@
+parameters:
+  git_dir: .
+  bin_dir: vendor/bin
+  tasks:
+    phpcs:
+      standard: vendor/drupal/coder/coder_sniffer/Drupal/
+      ignore_patterns:
+        - vendor/
+      triggered_by:
+        - php
+        - module
+        - inc
+    git_commit_message:
+      matchers:
+        - '/^#\d+: [A-Z].+\./'
+      case_insensitive: false
+      multiline: false

@@ -19,4 +19,5 @@ script:
   - composer phpunit
 
 after_success:
+  - composer grumphp
   - composer scrutinizer
