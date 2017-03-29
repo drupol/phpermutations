@@ -2,12 +2,15 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\Iterators\RangeIterator;
 use drupol\phpermutations\Permutations as PermutationsClass;
 
 /**
  * Class Permutations.
  *
  * @package drupol\phpermutations\Generators
+ *
+ * @author  Mark Wilson <mark@89allport.co.uk>
  */
 class Permutations extends PermutationsClass {
 
@@ -32,14 +35,16 @@ class Permutations extends PermutationsClass {
    * @codingStandardsIgnoreEnd
    */
   protected function get(array $dataset) {
-    if (count($dataset) <= 1) {
-      yield $dataset;
-    }
-    else {
-      foreach (range(0, count($dataset) - 1) as $i) {
-        foreach ($this->get(array_slice($dataset, 1)) as $item) {
-          yield array_merge(array_slice($item, 0, $i), array_slice($dataset, 0, 1), array_slice($item, $i));
-        }
+    foreach ($dataset as $key => $firstItem) {
+      $remaining = $dataset;
+      array_splice($remaining, $key, 1);
+      if (count($remaining) === 0) {
+        yield [$firstItem];
+        continue;
+      }
+      foreach ($this->get($remaining) as $permutation) {
+        array_unshift($permutation, $firstItem);
+        yield $permutation;
       }
     }
   }
