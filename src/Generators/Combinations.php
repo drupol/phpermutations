@@ -2,7 +2,7 @@
 
 namespace drupol\phpermutations\Generators;
 
-use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
 
 /**
  * Class Combinations.
@@ -11,7 +11,7 @@ use drupol\phpermutations\Combinatorics;
  *
  * @author  Mark Wilson <mark@89allport.co.uk>
  */
-class Combinations extends Combinatorics {
+class Combinations extends CombinationsIterator {
 
   /**
    * Alias of the get() method.
@@ -51,14 +51,7 @@ class Combinations extends Combinatorics {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function count() {
-    return $this->fact(count($this->getDataset())) / ($this->fact($this->getLength()) * $this->fact(count($this->getDataset()) - $this->getLength()));
-  }
-
-  /**
-   * Convert the iterator into an array.
+   * Convert the generator into an array.
    *
    * @return array
    *   The elements.
