@@ -12,18 +12,6 @@ use drupol\phpermutations\Iterators\Combinations;
 class Permutations extends Combinatorics {
 
   /**
-   * Permutations constructor.
-   *
-   * @param array $dataset
-   *   The dataset.
-   * @param int $length
-   *   The length of the requested permutations.
-   */
-  public function __construct(array $dataset = array(), $length = NULL) {
-    parent::__construct($dataset, $length);
-  }
-
-  /**
    * Count the number of permutations.
    *
    * @return int

@@ -146,14 +146,18 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
   }
 
   /**
-   * @param $generator
+   * Get the order.
+   *
+   * @param int $generator
+   *   The generator.
    *
    * @return int
+   *   The order.
    */
   public function order($generator) {
     $result = array();
 
-    foreach(range(1, $this->getSize() - 1) as $number) {
+    foreach (range(1, $this->getSize() - 1) as $number) {
       $value = pow($generator, $number) % $this->getSize();
       $result[$value] = $value;
     }

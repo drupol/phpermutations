@@ -3,7 +3,6 @@
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Generators\Combinations;
-use drupol\phpermutations\Permutations;
 use PHPUnit\Framework\TestCase;
 
 /**

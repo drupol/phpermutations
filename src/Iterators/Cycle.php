@@ -19,16 +19,6 @@ class Cycle extends Combinatorics implements \Iterator, \Countable {
   protected $key = 0;
 
   /**
-   * Cycle constructor.
-   *
-   * @param array $dataset
-   *   The dataset.
-   */
-  public function __construct(array $dataset = array()) {
-    parent::__construct($dataset);
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function key() {

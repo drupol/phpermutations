@@ -9,7 +9,7 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
  *
  * @package drupol\phpermutations\Generators
  *
- * @author  Mark Wilson <mark@89allport.co.uk>
+ * @author Mark Wilson <mark@89allport.co.uk>
  */
 class Combinations extends CombinationsIterator {
 
@@ -28,19 +28,22 @@ class Combinations extends CombinationsIterator {
    *
    * @param array $dataset
    *   The dataset.
+   * @param int $length
+   *   The length.
    *
    * @codingStandardsIgnoreStart
    * @return \Generator
    * @codingStandardsIgnoreEnd
    */
   protected function get(array $dataset, $length) {
-    $originalLength  = count($dataset);
+    $originalLength = count($dataset);
     $remainingLength = $originalLength - $length + 1;
     for ($i = 0; $i < $remainingLength; $i++) {
       $current = $dataset[$i];
       if ($length === 1) {
         yield [$current];
-      } else {
+      }
+      else {
         $remaining = array_slice($dataset, $i + 1);
         foreach ($this->get($remaining, $length - 1) as $permutation) {
           array_unshift($permutation, $current);

@@ -2,7 +2,6 @@
 
 namespace drupol\phpermutations\Generators;
 
-use drupol\phpermutations\Iterators\RangeIterator;
 use drupol\phpermutations\Permutations as PermutationsClass;
 
 /**
@@ -10,7 +9,7 @@ use drupol\phpermutations\Permutations as PermutationsClass;
  *
  * @package drupol\phpermutations\Generators
  *
- * @author  Mark Wilson <mark@89allport.co.uk>
+ * @author Mark Wilson <mark@89allport.co.uk>
  */
 class Permutations extends PermutationsClass {
 
