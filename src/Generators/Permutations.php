@@ -18,7 +18,7 @@ class Permutations extends Combinatorics {
    *
    * @var \drupol\phpermutations\Generators\Combinations
    */
-  public $combinations;
+  protected $combinations;
 
   /**
    * Combinatorics constructor.
@@ -36,28 +36,13 @@ class Permutations extends Combinatorics {
   /**
    * Alias of the get() method.
    *
-   * @return \Generator
-   *   The prime generator.
-   */
-  public function generator() {
-    return $this->get($this->getDataset(), $this->getLength());
-  }
-
-  /**
-   * The combination generator.
-   *
-   * @param array $dataset
-   *   The dataset.
-   * @param int $length
-   *   The length.
-   *
    * @codingStandardsIgnoreStart
    * @return \Generator
    * @codingStandardsIgnoreEnd
    */
-  protected function get(array $dataset, $length) {
+  public function generator() {
     foreach ($this->combinations->generator() as $combination) {
-      foreach ($this->getPermutations($combination) as $current) {
+      foreach ($this->get($combination) as $current) {
         yield $current;
       }
     }
@@ -73,7 +58,7 @@ class Permutations extends Combinatorics {
    * @return \Generator
    * @codingStandardsIgnoreEnd
    */
-  protected function getPermutations(array $dataset) {
+  protected function get(array $dataset) {
     foreach ($dataset as $key => $firstItem) {
       $remaining = $dataset;
       array_splice($remaining, $key, 1);
@@ -81,7 +66,7 @@ class Permutations extends Combinatorics {
         yield [$firstItem];
         continue;
       }
-      foreach ($this->getPermutations($remaining) as $permutation) {
+      foreach ($this->get($remaining) as $permutation) {
         array_unshift($permutation, $firstItem);
         yield $permutation;
       }
