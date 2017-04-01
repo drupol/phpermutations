@@ -28,6 +28,7 @@ class RotationTest extends TestCase {
 
     $rotation->rewind();
     $this->assertSame($input['dataset'], $rotation->current());
+    $this->assertEquals(count($input['dataset']), $rotation->count());
   }
 
   /**
