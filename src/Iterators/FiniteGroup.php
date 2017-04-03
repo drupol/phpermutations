@@ -35,6 +35,13 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
   protected $key;
 
   /**
+   * Combinatorics constructor.
+   */
+  public function __construct() {
+    parent::__construct(array(), NULL);
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function current() {

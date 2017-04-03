@@ -1,0 +1,29 @@
+-
+    input:
+      dataset: [1, 2, 3, 4, 5]
+    output:
+      dataset: [2, 3, 4, 5, 1]
+-
+    input:
+      dataset: [1, 2, 3, 4, 5]
+      turn: 0
+    output:
+      dataset: [1, 2, 3, 4, 5]
+-
+    input:
+      dataset: [1, 2, 3, 4, 5]
+      turn: 1
+    output:
+      dataset: [2, 3, 4, 5, 1]
+-
+    input:
+      dataset: [1, 2, 3, 4, 5]
+      turn: 6
+    output:
+      dataset: [2, 3, 4, 5, 1]
+-
+    input:
+      dataset: [1, 2, 3, 4, 5]
+      turn: 5
+    output:
+      dataset: [1, 2, 3, 4, 5]

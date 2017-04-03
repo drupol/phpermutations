@@ -1,0 +1,18 @@
+-
+    input:
+      min: 0
+      max: 1000
+    output:
+      dataset:
+        - 6
+        - 28
+        - 496
+      count: 3
+-
+    input:
+      min: 500
+      max: 10000
+    output:
+      dataset:
+        - 8128
+      count: 1

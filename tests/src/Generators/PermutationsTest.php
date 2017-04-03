@@ -3,167 +3,33 @@
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Generators\Permutations;
-use PHPUnit\Framework\TestCase;
+use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class PermutationsTest.
  *
  * @package drupol\phpermutations\Tests\Generators
  */
-class PermutationsTest extends TestCase {
+class PermutationsTest extends AbstractTest {
+
+  /**
+   * The type.
+   */
+  const TYPE = 'permutations';
 
   /**
    * Test.
    *
-   * @dataProvider simpleValueProvider
+   * @dataProvider dataProvider
    *   The data provider
    */
   public function testPermutations($input, $expected) {
-    $generator = new Permutations($input['dataset']);
+    $generator = new Permutations($input['dataset'], $input['length']);
 
     $this->assertEquals($input['dataset'], $generator->getDataset());
     $this->assertEquals($input['length'], $generator->getLength());
     $this->assertEquals($expected['count'], $generator->count());
     $this->assertEquals($expected['dataset'], $generator->toArray(), "\$canonicalize = true", $delta = 0.0, $maxDepth = 10, $canonicalize = TRUE);
-  }
-
-  /**
-   * Test data provider.
-   */
-  public function simpleValueProvider() {
-    return [
-      [
-        'input' => [
-          'dataset' => [1, 2, 3, 4, 5],
-          'length' => 5,
-        ],
-        'output' => [
-          'dataset' => [
-            [1, 2, 3, 4, 5],
-            [2, 1, 3, 4, 5],
-            [1, 3, 2, 4, 5],
-            [3, 1, 2, 4, 5],
-            [2, 3, 1, 4, 5],
-            [3, 2, 1, 4, 5],
-            [1, 2, 4, 3, 5],
-            [2, 1, 4, 3, 5],
-            [1, 4, 2, 3, 5],
-            [4, 1, 2, 3, 5],
-            [2, 4, 1, 3, 5],
-            [4, 2, 1, 3, 5],
-            [1, 3, 4, 2, 5],
-            [3, 1, 4, 2, 5],
-            [1, 4, 3, 2, 5],
-            [4, 1, 3, 2, 5],
-            [3, 4, 1, 2, 5],
-            [4, 3, 1, 2, 5],
-            [2, 3, 4, 1, 5],
-            [3, 2, 4, 1, 5],
-            [2, 4, 3, 1, 5],
-            [4, 2, 3, 1, 5],
-            [3, 4, 2, 1, 5],
-            [4, 3, 2, 1, 5],
-            [1, 2, 3, 5, 4],
-            [2, 1, 3, 5, 4],
-            [1, 3, 2, 5, 4],
-            [3, 1, 2, 5, 4],
-            [2, 3, 1, 5, 4],
-            [3, 2, 1, 5, 4],
-            [1, 2, 5, 3, 4],
-            [2, 1, 5, 3, 4],
-            [1, 5, 2, 3, 4],
-            [5, 1, 2, 3, 4],
-            [2, 5, 1, 3, 4],
-            [5, 2, 1, 3, 4],
-            [1, 3, 5, 2, 4],
-            [3, 1, 5, 2, 4],
-            [1, 5, 3, 2, 4],
-            [5, 1, 3, 2, 4],
-            [3, 5, 1, 2, 4],
-            [5, 3, 1, 2, 4],
-            [2, 3, 5, 1, 4],
-            [3, 2, 5, 1, 4],
-            [2, 5, 3, 1, 4],
-            [5, 2, 3, 1, 4],
-            [3, 5, 2, 1, 4],
-            [5, 3, 2, 1, 4],
-            [1, 2, 4, 5, 3],
-            [2, 1, 4, 5, 3],
-            [1, 4, 2, 5, 3],
-            [4, 1, 2, 5, 3],
-            [2, 4, 1, 5, 3],
-            [4, 2, 1, 5, 3],
-            [1, 2, 5, 4, 3],
-            [2, 1, 5, 4, 3],
-            [1, 5, 2, 4, 3],
-            [5, 1, 2, 4, 3],
-            [2, 5, 1, 4, 3],
-            [5, 2, 1, 4, 3],
-            [1, 4, 5, 2, 3],
-            [4, 1, 5, 2, 3],
-            [1, 5, 4, 2, 3],
-            [5, 1, 4, 2, 3],
-            [4, 5, 1, 2, 3],
-            [5, 4, 1, 2, 3],
-            [2, 4, 5, 1, 3],
-            [4, 2, 5, 1, 3],
-            [2, 5, 4, 1, 3],
-            [5, 2, 4, 1, 3],
-            [4, 5, 2, 1, 3],
-            [5, 4, 2, 1, 3],
-            [1, 3, 4, 5, 2],
-            [3, 1, 4, 5, 2],
-            [1, 4, 3, 5, 2],
-            [4, 1, 3, 5, 2],
-            [3, 4, 1, 5, 2],
-            [4, 3, 1, 5, 2],
-            [1, 3, 5, 4, 2],
-            [3, 1, 5, 4, 2],
-            [1, 5, 3, 4, 2],
-            [5, 1, 3, 4, 2],
-            [3, 5, 1, 4, 2],
-            [5, 3, 1, 4, 2],
-            [1, 4, 5, 3, 2],
-            [4, 1, 5, 3, 2],
-            [1, 5, 4, 3, 2],
-            [5, 1, 4, 3, 2],
-            [4, 5, 1, 3, 2],
-            [5, 4, 1, 3, 2],
-            [3, 4, 5, 1, 2],
-            [4, 3, 5, 1, 2],
-            [3, 5, 4, 1, 2],
-            [5, 3, 4, 1, 2],
-            [4, 5, 3, 1, 2],
-            [5, 4, 3, 1, 2],
-            [2, 3, 4, 5, 1],
-            [3, 2, 4, 5, 1],
-            [2, 4, 3, 5, 1],
-            [4, 2, 3, 5, 1],
-            [3, 4, 2, 5, 1],
-            [4, 3, 2, 5, 1],
-            [2, 3, 5, 4, 1],
-            [3, 2, 5, 4, 1],
-            [2, 5, 3, 4, 1],
-            [5, 2, 3, 4, 1],
-            [3, 5, 2, 4, 1],
-            [5, 3, 2, 4, 1],
-            [2, 4, 5, 3, 1],
-            [4, 2, 5, 3, 1],
-            [2, 5, 4, 3, 1],
-            [5, 2, 4, 3, 1],
-            [4, 5, 2, 3, 1],
-            [5, 4, 2, 3, 1],
-            [3, 4, 5, 2, 1],
-            [4, 3, 5, 2, 1],
-            [3, 5, 4, 2, 1],
-            [5, 3, 4, 2, 1],
-            [4, 5, 3, 2, 1],
-            [5, 4, 3, 2, 1],
-          ],
-          'count' => 120,
-        ],
-      ],
-    ];
   }
 
 }

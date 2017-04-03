@@ -1,0 +1,23 @@
+-
+    input:
+      dataset: [1, 2, 3, 4, 5]
+      turn: 1
+    output:
+      current: 2
+      count: 5
+
+-
+    input:
+      dataset: [1, 2, 3, 4, 5]
+      turn: 6
+    output:
+      current: 2
+      count: 5
+
+-
+    input:
+      dataset: [1, 2, 3, 4, 5, 6]
+      turn: 8
+    output:
+      current: 3
+      count: 6

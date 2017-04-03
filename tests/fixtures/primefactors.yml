@@ -1,0 +1,18 @@
+-
+    input:
+      number: 643455
+    output:
+      dataset: [3, 3, 5, 79, 181]
+      count: 5
+-
+    input:
+      number: 29
+    output:
+      dataset: [29]
+      count: 1
+-
+    input:
+      number: 100
+    output:
+      dataset: [2, 2, 5, 5]
+      count: 4
