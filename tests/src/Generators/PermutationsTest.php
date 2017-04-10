@@ -10,12 +10,13 @@ use drupol\phpermutations\Tests\AbstractTest;
  *
  * @package drupol\phpermutations\Tests\Generators
  */
-class PermutationsTest extends AbstractTest {
+class PermutationsTest extends AbstractTest
+{
 
   /**
    * The type.
    */
-  const TYPE = 'permutations';
+    const TYPE = 'permutations';
 
   /**
    * Test.
@@ -23,13 +24,20 @@ class PermutationsTest extends AbstractTest {
    * @dataProvider dataProvider
    *   The data provider
    */
-  public function testPermutations($input, $expected) {
-    $generator = new Permutations($input['dataset'], $input['length']);
+    public function testPermutations($input, $expected)
+    {
+        $generator = new Permutations($input['dataset'], $input['length']);
 
-    $this->assertEquals($input['dataset'], $generator->getDataset());
-    $this->assertEquals($input['length'], $generator->getLength());
-    $this->assertEquals($expected['count'], $generator->count());
-    $this->assertEquals($expected['dataset'], $generator->toArray(), "\$canonicalize = true", $delta = 0.0, $maxDepth = 10, $canonicalize = TRUE);
-  }
-
+        $this->assertEquals($input['dataset'], $generator->getDataset());
+        $this->assertEquals($input['length'], $generator->getLength());
+        $this->assertEquals($expected['count'], $generator->count());
+        $this->assertEquals(
+            $expected['dataset'],
+            $generator->toArray(),
+            "\$canonicalize = true",
+            $delta = 0.0,
+            $maxDepth = 10,
+            $canonicalize = true
+        );
+    }
 }

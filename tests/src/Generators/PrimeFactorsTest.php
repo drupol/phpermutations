@@ -10,24 +10,32 @@ use drupol\phpermutations\Tests\AbstractTest;
  *
  * @package drupol\phpermutations\Tests\Generators
  */
-class PrimeFactorsTest extends AbstractTest {
+class PrimeFactorsTest extends AbstractTest
+{
 
   /**
    * The type.
    */
-  const TYPE = 'primefactors';
+    const TYPE = 'primefactors';
 
   /**
    * The tests.
    *
    * @dataProvider dataProvider
    */
-  public function testPrimeFactors($input, $expected) {
-    $prime = new PrimeFactors();
-    $prime->setNumber($input['number']);
+    public function testPrimeFactors($input, $expected)
+    {
+        $prime = new PrimeFactors();
+        $prime->setNumber($input['number']);
 
-    $this->assertEquals($expected['count'], $prime->count());
-    $this->assertEquals($expected['dataset'], $prime->toArray(), "\$canonicalize = true", $delta = 0.0, $maxDepth = 10, $canonicalize = TRUE);
-  }
-
+        $this->assertEquals($expected['count'], $prime->count());
+        $this->assertEquals(
+            $expected['dataset'],
+            $prime->toArray(),
+            "\$canonicalize = true",
+            $delta = 0.0,
+            $maxDepth = 10,
+            $canonicalize = true
+        );
+    }
 }

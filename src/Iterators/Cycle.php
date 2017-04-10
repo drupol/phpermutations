@@ -9,55 +9,61 @@ use drupol\phpermutations\Combinatorics;
  *
  * @package drupol\phpermutations\Iterators
  */
-class Cycle extends Combinatorics implements \Iterator, \Countable {
+class Cycle extends Combinatorics implements \Iterator, \Countable
+{
 
   /**
    * The key.
    *
    * @var int
    */
-  protected $key = 0;
+    protected $key = 0;
 
   /**
    * {@inheritdoc}
    */
-  public function key() {
-    return $this->key;
-  }
+    public function key()
+    {
+        return $this->key;
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function current() {
-    return $this->dataset[$this->key];
-  }
+    public function current()
+    {
+        return $this->dataset[$this->key];
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function next() {
-    $this->key = ($this->key + 1) % $this->datasetCount;
-  }
+    public function next()
+    {
+        $this->key = ($this->key + 1) % $this->datasetCount;
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function rewind() {
-    $this->key = 0;
-  }
+    public function rewind()
+    {
+        $this->key = 0;
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function valid() {
-    return TRUE;
-  }
+    public function valid()
+    {
+        return true;
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function count() {
-    return count($this->getDataset());
-  }
-
+    public function count()
+    {
+        return count($this->getDataset());
+    }
 }

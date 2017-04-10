@@ -9,7 +9,8 @@ use drupol\phpermutations\Iterators\Product as ProductIterator;
  *
  * @package drupol\phpermutations\Generators
  */
-class Product extends ProductIterator {
+class Product extends ProductIterator
+{
 
   /**
    * Get the generator.
@@ -17,9 +18,10 @@ class Product extends ProductIterator {
    * @return \Generator
    *   The generator.
    */
-  public function generator() {
-    return $this->get($this->getDataset());
-  }
+    public function generator()
+    {
+        return $this->get($this->getDataset());
+    }
 
   /**
    * Get the generator.
@@ -31,19 +33,18 @@ class Product extends ProductIterator {
    *   The generator.
    * @codingStandardsIgnoreEnd
    */
-  protected function get(array $data) {
-    if (!empty($data)) {
-      if ($u = array_pop($data)) {
-        foreach ($this->get($data) as $p) {
-          foreach ($u as $v) {
-            yield $p + [count($p) => $v];
-          }
+    protected function get(array $data)
+    {
+        if (!empty($data)) {
+            if ($u = array_pop($data)) {
+                foreach ($this->get($data) as $p) {
+                    foreach ($u as $v) {
+                        yield $p + [count($p) => $v];
+                    }
+                }
+            }
+        } else {
+            yield [];
         }
-      }
     }
-    else {
-      yield [];
-    }
-  }
-
 }

@@ -11,71 +11,78 @@ use drupol\phpermutations\Combinatorics;
  *
  * @package drupol\phpermutations\Iterators
  */
-class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
+class FiniteGroup extends Combinatorics implements \Iterator, \Countable
+{
 
   /**
    * The group size.
    *
    * @var int
    */
-  protected $size;
+    protected $size;
 
   /**
    * The group.
    *
    * @var int[]
    */
-  protected $group;
+    protected $group;
 
   /**
    * The key.
    *
    * @var int
    */
-  protected $key;
+    protected $key;
 
   /**
    * Combinatorics constructor.
    */
-  public function __construct() {
-    parent::__construct(array(), NULL);
-  }
+    public function __construct()
+    {
+        parent::__construct(array(), null);
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function current() {
-    return current($this->group);
-  }
+    public function current()
+    {
+        return current($this->group);
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function next() {
-    $this->key++;
-    next($this->group);
-  }
+    public function next()
+    {
+        $this->key++;
+        next($this->group);
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function key() {
-    return $this->key;
-  }
+    public function key()
+    {
+        return $this->key;
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function valid() {
-    return isset($this->group[$this->key()]);
-  }
+    public function valid()
+    {
+        return isset($this->group[$this->key()]);
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function rewind() {
-    $this->key = 0;
-  }
+    public function rewind()
+    {
+        $this->key = 0;
+    }
 
   /**
    * Count elements of an object.
@@ -83,9 +90,10 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
    * @return int
    *   The number of element.
    */
-  public function count() {
-    return count($this->group);
-  }
+    public function count()
+    {
+        return count($this->group);
+    }
 
   /**
    * Convert the iterator into an array.
@@ -93,15 +101,16 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
    * @return array
    *   The elements.
    */
-  public function toArray() {
-    $data = array();
+    public function toArray()
+    {
+        $data = array();
 
-    for ($this->rewind(); $this->valid(); $this->next()) {
-      $data[] = $this->current();
+        for ($this->rewind(); $this->valid(); $this->next()) {
+            $data[] = $this->current();
+        }
+
+        return $data;
     }
-
-    return $data;
-  }
 
   /**
    * Set the group size.
@@ -109,10 +118,11 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
    * @param int $size
    *   The size.
    */
-  public function setSize($size) {
-    $this->size = $size;
-    $this->computeGroup();
-  }
+    public function setSize($size)
+    {
+        $this->size = $size;
+        $this->computeGroup();
+    }
 
   /**
    * Get the group size.
@@ -120,22 +130,24 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
    * @return int
    *   The size.
    */
-  public function getSize() {
-    return intval($this->size);
-  }
+    public function getSize()
+    {
+        return intval($this->size);
+    }
 
   /**
    * Clean out the group from unwanted values.
    */
-  private function computeGroup() {
-    $this->group = array();
+    private function computeGroup()
+    {
+        $this->group = array();
 
-    foreach (range(1, $this->getSize() - 1) as $number) {
-      if ($this->gcd($number, $this->getSize() - 1) == 1) {
-        $this->group[] = $number;
-      }
+        foreach (range(1, $this->getSize() - 1) as $number) {
+            if ($this->gcd($number, $this->getSize() - 1) == 1) {
+                $this->group[] = $number;
+            }
+        }
     }
-  }
 
   /**
    * Get the greater common divisor between two numbers.
@@ -148,9 +160,10 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
    * @return int
    *   The greater common divisor between $a and $b.
    */
-  private function gcd($a, $b) {
-    return $b ? $this->gcd($b, $a % $b) : $a;
-  }
+    private function gcd($a, $b)
+    {
+        return $b ? $this->gcd($b, $a % $b) : $a;
+    }
 
   /**
    * Get the order.
@@ -161,15 +174,15 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable {
    * @return int
    *   The order.
    */
-  public function order($generator) {
-    $result = array();
+    public function order($generator)
+    {
+        $result = array();
 
-    foreach (range(1, $this->getSize() - 1) as $number) {
-      $value = pow($generator, $number) % $this->getSize();
-      $result[$value] = $value;
+        foreach (range(1, $this->getSize() - 1) as $number) {
+            $value = pow($generator, $number) % $this->getSize();
+            $result[$value] = $value;
+        }
+
+        return count($result);
     }
-
-    return count($result);
-  }
-
 }

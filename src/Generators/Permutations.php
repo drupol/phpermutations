@@ -11,14 +11,15 @@ use drupol\phpermutations\Combinatorics;
  *
  * Inspired by the work of Mark Wilson <mark@89allport.co.uk>
  */
-class Permutations extends Combinatorics {
+class Permutations extends Combinatorics
+{
 
   /**
    * The combinations generator.
    *
    * @var \drupol\phpermutations\Generators\Combinations
    */
-  protected $combinations;
+    protected $combinations;
 
   /**
    * Combinatorics constructor.
@@ -28,10 +29,11 @@ class Permutations extends Combinatorics {
    * @param int|null $length
    *   The length.
    */
-  public function __construct(array $dataset = array(), $length = NULL) {
-    parent::__construct($dataset, $length);
-    $this->combinations = new Combinations($dataset, $this->getLength());
-  }
+    public function __construct(array $dataset = array(), $length = null)
+    {
+        parent::__construct($dataset, $length);
+        $this->combinations = new Combinations($dataset, $this->getLength());
+    }
 
   /**
    * Alias of the get() method.
@@ -40,13 +42,14 @@ class Permutations extends Combinatorics {
    * @return \Generator
    * @codingStandardsIgnoreEnd
    */
-  public function generator() {
-    foreach ($this->combinations->generator() as $combination) {
-      foreach ($this->get($combination) as $current) {
-        yield $current;
-      }
+    public function generator()
+    {
+        foreach ($this->combinations->generator() as $combination) {
+            foreach ($this->get($combination) as $current) {
+                yield $current;
+            }
+        }
     }
-  }
 
   /**
    * The permutations generator.
@@ -58,20 +61,21 @@ class Permutations extends Combinatorics {
    * @return \Generator
    * @codingStandardsIgnoreEnd
    */
-  protected function get(array $dataset) {
-    foreach ($dataset as $key => $firstItem) {
-      $remaining = $dataset;
-      array_splice($remaining, $key, 1);
-      if (count($remaining) === 0) {
-        yield [$firstItem];
-        continue;
-      }
-      foreach ($this->get($remaining) as $permutation) {
-        array_unshift($permutation, $firstItem);
-        yield $permutation;
-      }
+    protected function get(array $dataset)
+    {
+        foreach ($dataset as $key => $firstItem) {
+            $remaining = $dataset;
+            array_splice($remaining, $key, 1);
+            if (count($remaining) === 0) {
+                yield [$firstItem];
+                continue;
+            }
+            foreach ($this->get($remaining) as $permutation) {
+                array_unshift($permutation, $firstItem);
+                yield $permutation;
+            }
+        }
     }
-  }
 
   /**
    * Convert the generator into an array.
@@ -79,21 +83,22 @@ class Permutations extends Combinatorics {
    * @return array
    *   The elements.
    */
-  public function toArray() {
-    $data = array();
+    public function toArray()
+    {
+        $data = array();
 
-    foreach ($this->generator() as $value) {
-      $data[] = $value;
+        foreach ($this->generator() as $value) {
+            $data[] = $value;
+        }
+
+        return $data;
     }
-
-    return $data;
-  }
 
   /**
    * {@inheritdoc}
    */
-  public function count() {
-    return $this->combinations->count() * $this->fact($this->getLength());
-  }
-
+    public function count()
+    {
+        return $this->combinations->count() * $this->fact($this->getLength());
+    }
 }

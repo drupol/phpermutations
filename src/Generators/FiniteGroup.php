@@ -11,7 +11,8 @@ use drupol\phpermutations\Iterators\FiniteGroup as FiniteGroupIterator;
  *
  * @package drupol\phpermutations\Generators
  */
-class FiniteGroup extends FiniteGroupIterator {
+class FiniteGroup extends FiniteGroupIterator
+{
 
   /**
    * Alias of the get() method.
@@ -19,9 +20,10 @@ class FiniteGroup extends FiniteGroupIterator {
    * @return \Generator
    *   The finite group generator.
    */
-  public function generator() {
-    return $this->get();
-  }
+    public function generator()
+    {
+        return $this->get();
+    }
 
   /**
    * The generator.
@@ -31,10 +33,10 @@ class FiniteGroup extends FiniteGroupIterator {
    *   The finite group generator.
    * @codingStandardsIgnoreEnd
    */
-  protected function get() {
-    foreach ($this->group as $number) {
-      yield $number;
+    protected function get()
+    {
+        foreach ($this->group as $number) {
+            yield $number;
+        }
     }
-  }
-
 }

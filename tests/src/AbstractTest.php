@@ -11,12 +11,13 @@ use Symfony\Component\Yaml\Yaml;
  *
  * @package drupol\phpermutations\Tests
  */
-abstract class AbstractTest extends TestCase {
+abstract class AbstractTest extends TestCase
+{
 
   /**
    * The type.
    */
-  const TYPE = NULL;
+    const TYPE = null;
 
   /**
    * The data provider.
@@ -24,13 +25,14 @@ abstract class AbstractTest extends TestCase {
    * @return array
    *   The test input values and their expected output.
    */
-  public function dataProvider() {
-    $fixtures = $this->fixtureProvider();
-    if ($this::TYPE !== NULL && $fixtures[$this::TYPE]['content']) {
-      return $fixtures[$this::TYPE]['content'];
+    public function dataProvider()
+    {
+        $fixtures = $this->fixtureProvider();
+        if ($this::TYPE !== null && $fixtures[$this::TYPE]['content']) {
+            return $fixtures[$this::TYPE]['content'];
+        }
+        return array();
     }
-    return array();
-  }
 
   /**
    * Return component fixtures.
@@ -38,20 +40,20 @@ abstract class AbstractTest extends TestCase {
    * @return array
    *   List of component fixtures.
    */
-  public function fixtureProvider() {
-    $data = [];
+    public function fixtureProvider()
+    {
+        $data = [];
 
-    $finder = new Finder();
-    $finder->files()->in(realpath(__DIR__ . '/../fixtures'));
-    foreach ($finder as $file) {
-      $type = basename($file->getRelativePathname(), '.yml');
-      $data[$type] = [
-        'file' => $file->getRelativePathname(),
-        'type' => basename($file->getRelativePathname(), '.yml'),
-        'content' => Yaml::parse($file->getContents()),
-      ];
+        $finder = new Finder();
+        $finder->files()->in(realpath(__DIR__ . '/../fixtures'));
+        foreach ($finder as $file) {
+            $type = basename($file->getRelativePathname(), '.yml');
+            $data[$type] = [
+            'file' => $file->getRelativePathname(),
+            'type' => basename($file->getRelativePathname(), '.yml'),
+            'content' => Yaml::parse($file->getContents()),
+            ];
+        }
+        return $data;
     }
-    return $data;
-  }
-
 }

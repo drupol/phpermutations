@@ -9,78 +9,85 @@ use drupol\phpermutations\Combinatorics;
  *
  * @package drupol\phpermutations\Iterators
  */
-class Perfect extends Combinatorics implements \Iterator, \Countable {
+class Perfect extends Combinatorics implements \Iterator, \Countable
+{
 
   /**
    * The minimum limit.
    *
    * @var int
    */
-  protected $min;
+    protected $min;
 
   /**
    * The maximum limit.
    *
    * @var int
    */
-  protected $max;
+    protected $max;
 
   /**
    * The key.
    *
    * @var int
    */
-  protected $key;
+    protected $key;
 
   /**
    * Perfect constructor.
    */
-  public function __construct() {
-    $this->setMaxLimit(PHP_INT_MAX);
-    $this->setMinLimit(2);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function current() {
-    for ($i = $this->key(); $i < $this->getMaxLimit(); $i++) {
-      if ($this->isPerfectNumber($i)) {
-        $this->key = $i;
-        return $i;
-      }
+    public function __construct()
+    {
+        $this->setMaxLimit(PHP_INT_MAX);
+        $this->setMinLimit(2);
     }
 
-    return $this->getMaxLimit();
-  }
+  /**
+   * {@inheritdoc}
+   */
+    public function current()
+    {
+        for ($i = $this->key(); $i < $this->getMaxLimit(); $i++) {
+            if ($this->isPerfectNumber($i)) {
+                $this->key = $i;
+                return $i;
+            }
+        }
+
+        return $this->getMaxLimit();
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function next() {
-    $this->key++;
-  }
+    public function next()
+    {
+        $this->key++;
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function key() {
-    return $this->key;
-  }
+    public function key()
+    {
+        return $this->key;
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function valid() {
-    return $this->current() < $this->getMaxLimit();
-  }
+    public function valid()
+    {
+        return $this->current() < $this->getMaxLimit();
+    }
 
   /**
    * {@inheritdoc}
    */
-  public function rewind() {
-    $this->key = $this->getMinLimit();
-  }
+    public function rewind()
+    {
+        $this->key = $this->getMinLimit();
+    }
 
   /**
    * Count elements of an object.
@@ -88,9 +95,10 @@ class Perfect extends Combinatorics implements \Iterator, \Countable {
    * @return int
    *   The number of element.
    */
-  public function count() {
-    return count($this->toArray());
-  }
+    public function count()
+    {
+        return count($this->toArray());
+    }
 
   /**
    * Convert the iterator into an array.
@@ -98,15 +106,16 @@ class Perfect extends Combinatorics implements \Iterator, \Countable {
    * @return array
    *   The elements.
    */
-  public function toArray() {
-    $data = array();
+    public function toArray()
+    {
+        $data = array();
 
-    for ($this->rewind(); $this->valid(); $this->next()) {
-      $data[] = $this->current();
+        for ($this->rewind(); $this->valid(); $this->next()) {
+            $data[] = $this->current();
+        }
+
+        return $data;
     }
-
-    return $data;
-  }
 
   /**
    * Test if a number is perfect or not.
@@ -119,20 +128,21 @@ class Perfect extends Combinatorics implements \Iterator, \Countable {
    * @return bool
    *   The true if the number is perfect, false otherwise.
    */
-  protected function isPerfectNumber($number) {
-    $d = 0;
-    $max = sqrt($number);
-    for ($n = 2; $n <= $max; $n++) {
-      if (!($number % $n)) {
-        $d += $n;
-        if ($n <> $number / $n) {
-          $d += $number / $n;
+    protected function isPerfectNumber($number)
+    {
+        $d = 0;
+        $max = sqrt($number);
+        for ($n = 2; $n <= $max; $n++) {
+            if (!($number % $n)) {
+                $d += $n;
+                if ($n <> $number / $n) {
+                    $d += $number / $n;
+                }
+            }
         }
-      }
-    }
 
-    return ++$d == $number;
-  }
+        return ++$d == $number;
+    }
 
   /**
    * Set the maximum limit.
@@ -140,9 +150,10 @@ class Perfect extends Combinatorics implements \Iterator, \Countable {
    * @param int $max
    *   The limit.
    */
-  public function setMaxLimit($max) {
-    $this->max = $max;
-  }
+    public function setMaxLimit($max)
+    {
+        $this->max = $max;
+    }
 
   /**
    * Get the maximum limit.
@@ -150,9 +161,10 @@ class Perfect extends Combinatorics implements \Iterator, \Countable {
    * @return int
    *   The limit.
    */
-  public function getMaxLimit() {
-    return intval($this->max);
-  }
+    public function getMaxLimit()
+    {
+        return intval($this->max);
+    }
 
   /**
    * Set the minimum limit.
@@ -160,9 +172,10 @@ class Perfect extends Combinatorics implements \Iterator, \Countable {
    * @param int $min
    *   The limit.
    */
-  public function setMinLimit($min) {
-    $this->min = $min;
-  }
+    public function setMinLimit($min)
+    {
+        $this->min = $min;
+    }
 
   /**
    * Get the minimum limit.
@@ -170,8 +183,8 @@ class Perfect extends Combinatorics implements \Iterator, \Countable {
    * @return int
    *   The limit.
    */
-  public function getMinLimit() {
-    return $this->min < 2 ? 2 : $this->min;
-  }
-
+    public function getMinLimit()
+    {
+        return $this->min < 2 ? 2 : $this->min;
+    }
 }

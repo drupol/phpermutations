@@ -9,7 +9,8 @@ use drupol\phpermutations\Iterators\Prime as PrimeIterator;
  *
  * @package drupol\phpermutations\Generators
  */
-class Prime extends PrimeIterator {
+class Prime extends PrimeIterator
+{
 
   /**
    * Alias of the get() method.
@@ -17,9 +18,10 @@ class Prime extends PrimeIterator {
    * @return \Generator
    *   The prime generator.
    */
-  public function generator() {
-    return $this->get();
-  }
+    public function generator()
+    {
+        return $this->get();
+    }
 
   /**
    * The generator.
@@ -29,12 +31,12 @@ class Prime extends PrimeIterator {
    *   The prime generator.
    * @codingStandardsIgnoreEnd
    */
-  protected function get() {
-    for ($j = 2; $j <= $this->getMaxLimit(); $j++) {
-      if ($this->isPrimeNumber($j)) {
-        yield $j;
-      }
+    protected function get()
+    {
+        for ($j = 2; $j <= $this->getMaxLimit(); $j++) {
+            if ($this->isPrimeNumber($j)) {
+                yield $j;
+            }
+        }
     }
-  }
-
 }

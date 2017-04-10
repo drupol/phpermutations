@@ -9,14 +9,15 @@ use drupol\phpermutations\Iterators\Perfect as PerfectIterator;
  *
  * @package drupol\phpermutations\Generators
  */
-class Perfect extends PerfectIterator {
+class Perfect extends PerfectIterator
+{
 
   /**
    * The maximum value.
    *
    * @var int
    */
-  protected $max;
+    protected $max;
 
   /**
    * Alias of the get() method.
@@ -24,9 +25,10 @@ class Perfect extends PerfectIterator {
    * @return \Generator
    *   The prime generator.
    */
-  public function generator() {
-    return $this->get();
-  }
+    public function generator()
+    {
+        return $this->get();
+    }
 
   /**
    * The generator.
@@ -35,12 +37,12 @@ class Perfect extends PerfectIterator {
    * @return \Generator
    * @codingStandardsIgnoreEnd
    */
-  protected function get() {
-    for ($j = 2; $j <= $this->getMaxLimit(); $j++) {
-      if ($this->isPerfectNumber($j)) {
-        yield $j;
-      }
+    protected function get()
+    {
+        for ($j = 2; $j <= $this->getMaxLimit(); $j++) {
+            if ($this->isPerfectNumber($j)) {
+                yield $j;
+            }
+        }
     }
-  }
-
 }

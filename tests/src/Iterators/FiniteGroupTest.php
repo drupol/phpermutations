@@ -10,24 +10,32 @@ use drupol\phpermutations\Tests\AbstractTest;
  *
  * @package drupol\phpermutations\Tests\Iterators
  */
-class FiniteGroupTest extends AbstractTest {
+class FiniteGroupTest extends AbstractTest
+{
 
   /**
    * The type.
    */
-  const TYPE = 'finitegroup';
+    const TYPE = 'finitegroup';
 
   /**
    * The tests.
    *
    * @dataProvider dataProvider
    */
-  public function testFiniteGroup($input, $expected) {
-    $prime = new FiniteGroup();
-    $prime->setSize($input['size']);
+    public function testFiniteGroup($input, $expected)
+    {
+        $prime = new FiniteGroup();
+        $prime->setSize($input['size']);
 
-    $this->assertEquals($expected['count'], $prime->count());
-    $this->assertEquals($expected['dataset'], $prime->toArray(), "\$canonicalize = true", $delta = 0.0, $maxDepth = 10, $canonicalize = TRUE);
-  }
-
+        $this->assertEquals($expected['count'], $prime->count());
+        $this->assertEquals(
+            $expected['dataset'],
+            $prime->toArray(),
+            "\$canonicalize = true",
+            $delta = 0.0,
+            $maxDepth = 10,
+            $canonicalize = true
+        );
+    }
 }

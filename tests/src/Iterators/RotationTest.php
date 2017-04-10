@@ -10,30 +10,31 @@ use drupol\phpermutations\Tests\AbstractTest;
  *
  * @package drupol\phpermutations\Tests\Iterators
  */
-class RotationTest extends AbstractTest {
+class RotationTest extends AbstractTest
+{
 
   /**
    * The type.
    */
-  const TYPE = 'rotation';
+    const TYPE = 'rotation';
 
   /**
    * The tests.
    *
    * @dataProvider dataProvider
    */
-  public function testRotation($input, $expected) {
-    $rotation = new Rotation($input['dataset']);
+    public function testRotation($input, $expected)
+    {
+        $rotation = new Rotation($input['dataset']);
 
-    $input += array(
-      'turn' => NULL,
-    );
-    $rotation->next($input['turn']);
-    $this->assertSame($expected['dataset'], $rotation->current());
+        $input += array(
+        'turn' => null,
+        );
+        $rotation->next($input['turn']);
+        $this->assertSame($expected['dataset'], $rotation->current());
 
-    $rotation->rewind();
-    $this->assertSame($input['dataset'], $rotation->current());
-    $this->assertEquals(count($input['dataset']), $rotation->count());
-  }
-
+        $rotation->rewind();
+        $this->assertSame($input['dataset'], $rotation->current());
+        $this->assertEquals(count($input['dataset']), $rotation->count());
+    }
 }

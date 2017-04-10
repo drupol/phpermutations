@@ -11,7 +11,8 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
  *
  * @author Mark Wilson <mark@89allport.co.uk>
  */
-class Combinations extends CombinationsIterator {
+class Combinations extends CombinationsIterator
+{
 
   /**
    * Alias of the get() method.
@@ -19,9 +20,10 @@ class Combinations extends CombinationsIterator {
    * @return \Generator
    *   The prime generator.
    */
-  public function generator() {
-    return $this->get($this->getDataset(), $this->getLength());
-  }
+    public function generator()
+    {
+        return $this->get($this->getDataset(), $this->getLength());
+    }
 
   /**
    * The generator.
@@ -35,23 +37,23 @@ class Combinations extends CombinationsIterator {
    * @return \Generator
    * @codingStandardsIgnoreEnd
    */
-  protected function get(array $dataset, $length) {
-    $originalLength = count($dataset);
-    $remainingLength = $originalLength - $length + 1;
-    for ($i = 0; $i < $remainingLength; $i++) {
-      $current = $dataset[$i];
-      if ($length === 1) {
-        yield [$current];
-      }
-      else {
-        $remaining = array_slice($dataset, $i + 1);
-        foreach ($this->get($remaining, $length - 1) as $permutation) {
-          array_unshift($permutation, $current);
-          yield $permutation;
+    protected function get(array $dataset, $length)
+    {
+        $originalLength = count($dataset);
+        $remainingLength = $originalLength - $length + 1;
+        for ($i = 0; $i < $remainingLength; $i++) {
+            $current = $dataset[$i];
+            if ($length === 1) {
+                yield [$current];
+            } else {
+                $remaining = array_slice($dataset, $i + 1);
+                foreach ($this->get($remaining, $length - 1) as $permutation) {
+                    array_unshift($permutation, $current);
+                    yield $permutation;
+                }
+            }
         }
-      }
     }
-  }
 
   /**
    * Convert the generator into an array.
@@ -59,14 +61,14 @@ class Combinations extends CombinationsIterator {
    * @return array
    *   The elements.
    */
-  public function toArray() {
-    $data = array();
+    public function toArray()
+    {
+        $data = array();
 
-    foreach ($this->generator() as $value) {
-      $data[] = $value;
+        foreach ($this->generator() as $value) {
+            $data[] = $value;
+        }
+
+        return $data;
     }
-
-    return $data;
-  }
-
 }

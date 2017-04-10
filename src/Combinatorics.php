@@ -7,28 +7,29 @@ namespace drupol\phpermutations;
  *
  * @package drupol\phpermutations
  */
-abstract class Combinatorics implements \Countable {
+abstract class Combinatorics implements \Countable
+{
 
   /**
    * The dataset.
    *
    * @var array
    */
-  protected $dataset;
+    protected $dataset;
 
   /**
    * The number of values in the dataset.
    *
    * @var int
    */
-  protected $datasetCount;
+    protected $datasetCount;
 
   /**
    * The length.
    *
    * @var int
    */
-  protected $length;
+    protected $length;
 
   /**
    * Combinatorics constructor.
@@ -38,11 +39,12 @@ abstract class Combinatorics implements \Countable {
    * @param int|null $length
    *   The length.
    */
-  public function __construct(array $dataset = array(), $length = NULL) {
-    $this->setDataset($dataset);
-    $this->datasetCount = count($this->dataset);
-    $this->setLength($length);
-  }
+    public function __construct(array $dataset = array(), $length = null)
+    {
+        $this->setDataset($dataset);
+        $this->datasetCount = count($this->dataset);
+        $this->setLength($length);
+    }
 
   /**
    * Set the length.
@@ -52,12 +54,13 @@ abstract class Combinatorics implements \Countable {
    *
    * @return $this
    */
-  public function setLength($length = NULL) {
-    $length = is_null($length) ? $this->datasetCount : $length;
-    $this->length = ($length > $this->datasetCount) ? $this->datasetCount : $length;
+    public function setLength($length = null)
+    {
+        $length = is_null($length) ? $this->datasetCount : $length;
+        $this->length = ($length > $this->datasetCount) ? $this->datasetCount : $length;
 
-    return $this;
-  }
+        return $this;
+    }
 
   /**
    * Get the length.
@@ -65,9 +68,10 @@ abstract class Combinatorics implements \Countable {
    * @return int
    *   The length.
    */
-  public function getLength() {
-    return (int) $this->length;
-  }
+    public function getLength()
+    {
+        return (int) $this->length;
+    }
 
   /**
    * Set the dataset.
@@ -77,11 +81,12 @@ abstract class Combinatorics implements \Countable {
    *
    * @return $this
    */
-  public function setDataset(array $dataset = array()) {
-    $this->dataset = $dataset;
+    public function setDataset(array $dataset = array())
+    {
+        $this->dataset = $dataset;
 
-    return $this;
-  }
+        return $this;
+    }
 
   /**
    * Get the dataset.
@@ -89,9 +94,10 @@ abstract class Combinatorics implements \Countable {
    * @return mixed[]
    *   The dataset.
    */
-  public function getDataset() {
-    return $this->dataset;
-  }
+    public function getDataset()
+    {
+        return $this->dataset;
+    }
 
   /**
    * Compute the factorial of an integer.
@@ -104,8 +110,8 @@ abstract class Combinatorics implements \Countable {
    * @return int
    *   The factorial of $n.
    */
-  protected function fact($n, $total = 1) {
-    return ($n < 2) ? $total : $this->fact($n - 1, $total * $n);
-  }
-
+    protected function fact($n, $total = 1)
+    {
+        return ($n < 2) ? $total : $this->fact($n - 1, $total * $n);
+    }
 }

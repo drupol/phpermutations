@@ -23,12 +23,11 @@
         "satooshi/php-coveralls": "^1.0",
         "phpunit/php-code-coverage": "^4.0",
         "scrutinizer/ocular": "^1.3",
-        "drupal/coder": "^8.2",
         "phpro/grumphp": "^0.11"
     },
     "scripts": {
-        "phpcs": "./vendor/bin/phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal --ignore=vendor .",
-        "phpcbf": "./vendor/bin/phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal --ignore=vendor .",
+        "phpcs": "./vendor/bin/phpcs --standard=PSR2 --ignore=vendor .",
+        "phpcbf": "./vendor/bin/phpcbf --standard=PSR2 --ignore=vendor .",
         "phpunit": "./vendor/bin/phpunit --coverage-clover build/logs/clover.xml -c tests/phpunit.xml tests",
         "grumphp": "./vendor/bin/grumphp run",
         "coveralls": "./vendor/bin/coveralls",

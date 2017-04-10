@@ -10,33 +10,40 @@ use drupol\phpermutations\Tests\AbstractTest;
  *
  * @package drupol\phpermutations\Tests\Generators
  */
-class PrimeTest extends AbstractTest {
+class PrimeTest extends AbstractTest
+{
 
   /**
    * The type.
    */
-  const TYPE = 'prime';
+    const TYPE = 'prime';
 
   /**
    * The tests.
    *
    * @dataProvider dataProvider
    */
-  public function testPrime($input, $expected) {
-    $prime = new Prime();
-    $prime->setMinLimit($input['min']);
-    $prime->setMaxLimit($input['max']);
+    public function testPrime($input, $expected)
+    {
+        $prime = new Prime();
+        $prime->setMinLimit($input['min']);
+        $prime->setMaxLimit($input['max']);
 
-    if ($input['min'] < 2) {
-      $this->assertEquals(2, $prime->getMinLimit());
+        if ($input['min'] < 2) {
+            $this->assertEquals(2, $prime->getMinLimit());
+        } else {
+            $this->assertEquals($input['min'], $prime->getMinLimit());
+        }
+        $this->assertEquals($input['max'], $prime->getMaxLimit());
+
+        $this->assertEquals($expected['count'], $prime->count());
+        $this->assertEquals(
+            $expected['dataset'],
+            $prime->toArray(),
+            "\$canonicalize = true",
+            $delta = 0.0,
+            $maxDepth = 10,
+            $canonicalize = true
+        );
     }
-    else {
-      $this->assertEquals($input['min'], $prime->getMinLimit());
-    }
-    $this->assertEquals($input['max'], $prime->getMaxLimit());
-
-    $this->assertEquals($expected['count'], $prime->count());
-    $this->assertEquals($expected['dataset'], $prime->toArray(), "\$canonicalize = true", $delta = 0.0, $maxDepth = 10, $canonicalize = TRUE);
-  }
-
 }
