@@ -13,33 +13,33 @@ use Symfony\Component\Yaml\Yaml;
  */
 abstract class AbstractTest extends TestCase
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = null;
 
-  /**
-   * The data provider.
-   *
-   * @return array
-   *   The test input values and their expected output.
-   */
+    /**
+     * The data provider.
+     *
+     * @return array
+     *   The test input values and their expected output.
+     */
     public function dataProvider()
     {
         $fixtures = $this->fixtureProvider();
         if ($this::TYPE !== null && $fixtures[$this::TYPE]['content']) {
             return $fixtures[$this::TYPE]['content'];
         }
-        return array();
+
+        return [];
     }
 
-  /**
-   * Return component fixtures.
-   *
-   * @return array
-   *   List of component fixtures.
-   */
+    /**
+     * Return component fixtures.
+     *
+     * @return array
+     *   List of component fixtures.
+     */
     public function fixtureProvider()
     {
         $data = [];
@@ -54,6 +54,7 @@ abstract class AbstractTest extends TestCase
             'content' => Yaml::parse($file->getContents()),
             ];
         }
+
         return $data;
     }
 }

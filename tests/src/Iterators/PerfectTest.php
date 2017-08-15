@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PerfectTest.
  *
  * @package drupol\phpermutations\Tests\Iterators
+ *
  */
 class PerfectTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'perfect';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testPerfect($input, $expected)
     {
         $perfect = new Perfect();

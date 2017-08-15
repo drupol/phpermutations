@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PrimeTest.
  *
  * @package drupol\phpermutations\Tests\Generators
+ *
  */
 class PrimeTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'prime';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testPrime($input, $expected)
     {
         $prime = new Prime();

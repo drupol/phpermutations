@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class CycleTest.
  *
  * @package drupol\phpermutations\Tests\Iterators
+ *
  */
 class CycleTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'cycle';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testCycle($input, $expected)
     {
         $cycle = new Cycle($input['dataset']);

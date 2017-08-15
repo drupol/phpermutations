@@ -9,21 +9,23 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PermutationsTest.
  *
  * @package drupol\phpermutations\Tests\Generators
+ *
  */
 class PermutationsTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'permutations';
 
-  /**
-   * Test.
-   *
-   * @dataProvider dataProvider
-   *   The data provider
-   */
+    /**
+     * Test.
+     *
+     * @dataProvider dataProvider
+     *   The data provider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testPermutations($input, $expected)
     {
         $generator = new Permutations($input['dataset'], $input['length']);

@@ -11,27 +11,26 @@ use drupol\phpermutations\Combinatorics;
  */
 class Product extends Combinatorics implements \Iterator, \Countable
 {
-
-  /**
-   * The key.
-   *
-   * @var int
-   */
+    /**
+     * The key.
+     *
+     * @var int
+     */
     protected $key;
 
-  /**
-   * The iterators.
-   *
-   * @var \Iterator[]
-   */
-    protected $iterators = array();
+    /**
+     * The iterators.
+     *
+     * @var \Iterator[]
+     */
+    protected $iterators = [];
 
-  /**
-   * Product constructor.
-   *
-   * @param array $datasetArray
-   *   The array of dataset.
-   */
+    /**
+     * Product constructor.
+     *
+     * @param array $datasetArray
+     *   The array of dataset.
+     */
     public function __construct(array $datasetArray)
     {
         parent::__construct($datasetArray);
@@ -43,12 +42,12 @@ class Product extends Combinatorics implements \Iterator, \Countable
         $this->key = 0;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function current()
     {
-        $tuple = array();
+        $tuple = [];
 
         foreach ($this->iterators as $iterator) {
             $tuple[] = $iterator->current();
@@ -57,9 +56,9 @@ class Product extends Combinatorics implements \Iterator, \Countable
         return $tuple;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function next()
     {
         foreach (array_reverse($this->iterators) as $key => $iterator) {
@@ -71,6 +70,7 @@ class Product extends Combinatorics implements \Iterator, \Countable
                         $iterator2->rewind();
                     }
                 }
+
                 break;
             }
         }
@@ -78,17 +78,17 @@ class Product extends Combinatorics implements \Iterator, \Countable
         $this->key++;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function key()
     {
         return $this->key;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function valid()
     {
         $isUnlessOneValid = false;
@@ -102,9 +102,9 @@ class Product extends Combinatorics implements \Iterator, \Countable
         return $isUnlessOneValid;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function rewind()
     {
         foreach ($this->iterators as $iterator) {
@@ -114,9 +114,9 @@ class Product extends Combinatorics implements \Iterator, \Countable
         $this->key = 0;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function count()
     {
         $product = 1;
@@ -128,15 +128,15 @@ class Product extends Combinatorics implements \Iterator, \Countable
         return $product;
     }
 
-  /**
-   * Convert the iterator into an array.
-   *
-   * @return array
-   *   The elements.
-   */
+    /**
+     * Convert the iterator into an array.
+     *
+     * @return array
+     *   The elements.
+     */
     public function toArray()
     {
-        $data = array();
+        $data = [];
 
         for ($this->rewind(); $this->valid(); $this->next()) {
             $data[] = $this->current();

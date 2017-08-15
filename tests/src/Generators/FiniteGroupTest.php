@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class FiniteGroupTest.
  *
  * @package drupol\phpermutations\Tests\Generators
+ *
  */
 class FiniteGroupTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'finitegroup';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testFiniteGroup($input, $expected)
     {
         $prime = new FiniteGroup();

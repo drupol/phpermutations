@@ -11,57 +11,56 @@ use drupol\phpermutations\Combinatorics;
  */
 class Cycle extends Combinatorics implements \Iterator, \Countable
 {
-
-  /**
-   * The key.
-   *
-   * @var int
-   */
+    /**
+     * The key.
+     *
+     * @var int
+     */
     protected $key = 0;
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function key()
     {
         return $this->key;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function current()
     {
         return $this->dataset[$this->key];
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function next()
     {
         $this->key = ($this->key + 1) % $this->datasetCount;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function rewind()
     {
         $this->key = 0;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function valid()
     {
         return true;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function count()
     {
         return count($this->getDataset());

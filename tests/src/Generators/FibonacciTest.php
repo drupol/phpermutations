@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class FibonacciTest.
  *
  * @package drupol\phpermutations\Tests\Generators
+ *
  */
 class FibonacciTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'fibonacci';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testFibonacci($input, $expected)
     {
         $prime = new Fibonacci();

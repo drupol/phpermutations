@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class CombinationsTest.
  *
  * @package drupol\phpermutations\Tests\Iterators
+ *
  */
 class CombinationsTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'combinations';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testCombinations($input, $expected)
     {
         $combinations = new Combinations($input['dataset'], $input['length']);

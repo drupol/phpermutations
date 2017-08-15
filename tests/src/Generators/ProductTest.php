@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class ProductTest.
  *
  * @package drupol\phpermutations\Tests\Generators
+ *
  */
 class ProductTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'product';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testProduct($input, $expected)
     {
         $product = new Product($input['dataset']);

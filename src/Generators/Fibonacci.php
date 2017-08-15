@@ -11,32 +11,31 @@ use drupol\phpermutations\Iterators\Fibonacci as FibonacciIterator;
  */
 class Fibonacci extends FibonacciIterator
 {
-
-  /**
-   * The maximum value.
-   *
-   * @var int
-   */
+    /**
+     * The maximum value.
+     *
+     * @var int
+     */
     protected $max;
 
-  /**
-   * Alias of the get() method.
-   *
-   * @return \Generator
-   *   The prime generator.
-   */
+    /**
+     * Alias of the get() method.
+     *
+     * @return \Generator
+     *   The prime generator.
+     */
     public function generator()
     {
         return $this->get();
     }
 
-  /**
-   * The generator.
-   *
-   * @codingStandardsIgnoreStart
-   * @return \Generator
-   * @codingStandardsIgnoreEnd
-   */
+    /**
+     * The generator.
+     *
+     * @codingStandardsIgnoreStart
+     * @return \Generator
+     * @codingStandardsIgnoreEnd
+     */
     protected function get()
     {
         $a = 0;
@@ -45,7 +44,7 @@ class Fibonacci extends FibonacciIterator
         while ($to > 0) {
             yield $a;
 
-            list($a, $b) = array($b, $a + $b);
+            list($a, $b) = [$b, $a + $b];
             $to--;
         }
     }

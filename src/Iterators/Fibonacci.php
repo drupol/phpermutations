@@ -11,71 +11,70 @@ use drupol\phpermutations\Combinatorics;
  */
 class Fibonacci extends Combinatorics implements \Iterator, \Countable
 {
-
-  /**
-   * The maximum limit.
-   *
-   * @var int
-   */
+    /**
+     * The maximum limit.
+     *
+     * @var int
+     */
     protected $max;
 
-  /**
-   * The previous element.
-   *
-   * @var int
-   */
+    /**
+     * The previous element.
+     *
+     * @var int
+     */
     private $previous = 1;
 
-  /**
-   * The current element.
-   *
-   * @var int
-   */
+    /**
+     * The current element.
+     *
+     * @var int
+     */
     private $current = 0;
 
-  /**
-   * The current key.
-   *
-   * @var int
-   */
+    /**
+     * The current key.
+     *
+     * @var int
+     */
     private $key = 0;
 
-  /**
-   * Fibonacci constructor.
-   */
+    /**
+     * Fibonacci constructor.
+     */
     public function __construct()
     {
         $this->setMaxLimit(PHP_INT_MAX);
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function current()
     {
         return $this->current;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function key()
     {
         return $this->key;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function next()
     {
-        list($this->current, $this->previous) = array($this->current + $this->previous, $this->current);
+        list($this->current, $this->previous) = [$this->current + $this->previous, $this->current];
         $this->key++;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function rewind()
     {
         $this->previous = 1;
@@ -83,31 +82,31 @@ class Fibonacci extends Combinatorics implements \Iterator, \Countable
         $this->key = 0;
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function valid()
     {
         return ($this->current < $this->getMaxLimit());
     }
 
-  /**
-   * {@inheritdoc}
-   */
+    /**
+     * {@inheritdoc}
+     */
     public function count()
     {
         return count($this->toArray());
     }
 
-  /**
-   * Convert the iterator into an array.
-   *
-   * @return array
-   *   The elements.
-   */
+    /**
+     * Convert the iterator into an array.
+     *
+     * @return array
+     *   The elements.
+     */
     public function toArray()
     {
-        $data = array();
+        $data = [];
 
         for ($this->rewind(); $this->valid(); $this->next()) {
             $data[] = $this->current();
@@ -116,23 +115,23 @@ class Fibonacci extends Combinatorics implements \Iterator, \Countable
         return $data;
     }
 
-  /**
-   * Set the maximum limit.
-   *
-   * @param int $max
-   *   The limit.
-   */
+    /**
+     * Set the maximum limit.
+     *
+     * @param int $max
+     *   The limit.
+     */
     public function setMaxLimit($max)
     {
         $this->max = $max;
     }
 
-  /**
-   * Get the maximum limit.
-   *
-   * @return int
-   *   The limit.
-   */
+    /**
+     * Get the maximum limit.
+     *
+     * @return int
+     *   The limit.
+     */
     public function getMaxLimit()
     {
         return intval($this->max);

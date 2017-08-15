@@ -13,30 +13,46 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
  */
 class Combinations extends CombinationsIterator
 {
-
-  /**
-   * Alias of the get() method.
-   *
-   * @return \Generator
-   *   The prime generator.
-   */
+    /**
+     * Alias of the get() method.
+     *
+     * @return \Generator
+     *   The prime generator.
+     */
     public function generator()
     {
         return $this->get($this->getDataset(), $this->getLength());
     }
 
-  /**
-   * The generator.
-   *
-   * @param array $dataset
-   *   The dataset.
-   * @param int $length
-   *   The length.
-   *
-   * @codingStandardsIgnoreStart
-   * @return \Generator
-   * @codingStandardsIgnoreEnd
-   */
+    /**
+     * Convert the generator into an array.
+     *
+     * @return array
+     *   The elements.
+     */
+    public function toArray()
+    {
+        $data = [];
+
+        foreach ($this->generator() as $value) {
+            $data[] = $value;
+        }
+
+        return $data;
+    }
+
+    /**
+     * The generator.
+     *
+     * @param array $dataset
+     *   The dataset.
+     * @param int $length
+     *   The length.
+     *
+     * @codingStandardsIgnoreStart
+     * @return \Generator
+     * @codingStandardsIgnoreEnd
+     */
     protected function get(array $dataset, $length)
     {
         $originalLength = count($dataset);
@@ -53,22 +69,5 @@ class Combinations extends CombinationsIterator
                 }
             }
         }
-    }
-
-  /**
-   * Convert the generator into an array.
-   *
-   * @return array
-   *   The elements.
-   */
-    public function toArray()
-    {
-        $data = array();
-
-        foreach ($this->generator() as $value) {
-            $data[] = $value;
-        }
-
-        return $data;
     }
 }

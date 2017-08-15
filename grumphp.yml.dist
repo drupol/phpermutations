@@ -2,6 +2,10 @@ parameters:
   git_dir: .
   bin_dir: vendor/bin
   tasks:
+    phplint: ~
+    phpunit:
+      config_file: ./tests/phpunit.xml
+      always_execute: true
     phpcs:
       standard: PSR2
       ignore_patterns:
@@ -10,8 +14,42 @@ parameters:
         - php
         - module
         - inc
+    phpcsfixer2:
+      rules:
+        '@PSR2': true
     git_commit_message:
       matchers:
         - '/^#\d+: [A-Z].+\./'
       case_insensitive: false
       multiline: false
+    composer:
+      file: ./composer.json
+      no_check_all: false
+      no_check_lock: false
+      no_check_publish: false
+      with_dependencies: false
+      strict: true
+    securitychecker:
+      lockfile: ./composer.lock
+      format: ~
+      end_point: http://security.sensiolabs.org/check_lock
+      timeout: ~
+      run_always: true
+    git_blacklist:
+      keywords:
+        - "die("
+        - "var_dump("
+        - "dump("
+        - "exit;"
+      triggered_by: [php]
+    yamllint:
+      ignore_patterns: []
+      object_support: false
+      exception_on_invalid_type: false
+    phpparser:
+      visitors:
+        no_exit_statements: ~
+        forbidden_function_calls:
+          blacklist: [var_dump]
+      metadata:
+        priority: 100000

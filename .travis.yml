@@ -16,8 +16,8 @@ install:
   - composer install
 
 script:
-  - composer grumphp
   - composer phpunit
+  - composer grumphp
 
 after_success:
   - composer scrutinizer

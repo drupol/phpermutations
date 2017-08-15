@@ -9,20 +9,22 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PrimeFactorsTest.
  *
  * @package drupol\phpermutations\Tests\Generators
+ *
  */
 class PrimeFactorsTest extends AbstractTest
 {
-
-  /**
-   * The type.
-   */
+    /**
+     * The type.
+     */
     const TYPE = 'primefactors';
 
-  /**
-   * The tests.
-   *
-   * @dataProvider dataProvider
-   */
+    /**
+     * The tests.
+     *
+     * @dataProvider dataProvider
+     * @param mixed $input
+     * @param mixed $expected
+     */
     public function testPrimeFactors($input, $expected)
     {
         $prime = new PrimeFactors();

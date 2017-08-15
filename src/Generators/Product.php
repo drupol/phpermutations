@@ -11,28 +11,27 @@ use drupol\phpermutations\Iterators\Product as ProductIterator;
  */
 class Product extends ProductIterator
 {
-
-  /**
-   * Get the generator.
-   *
-   * @return \Generator
-   *   The generator.
-   */
+    /**
+     * Get the generator.
+     *
+     * @return \Generator
+     *   The generator.
+     */
     public function generator()
     {
         return $this->get($this->getDataset());
     }
 
-  /**
-   * Get the generator.
-   *
-   * @param array $data
-   *   The dataset.
-   * @codingStandardsIgnoreStart
-   * @return \Generator
-   *   The generator.
-   * @codingStandardsIgnoreEnd
-   */
+    /**
+     * Get the generator.
+     *
+     * @param array $data
+     *   The dataset.
+     * @codingStandardsIgnoreStart
+     * @return \Generator
+     *   The generator.
+     * @codingStandardsIgnoreEnd
+     */
     protected function get(array $data)
     {
         if (!empty($data)) {
