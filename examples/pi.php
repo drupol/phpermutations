@@ -28,26 +28,26 @@
  *   3: Create this file at the root of the project,
  *   4: Run php pi.php.
  */
-include "./vendor/autoload.php";
+include './vendor/autoload.php';
 
 $Fibonacci = new \drupol\phpermutations\Generators\Fibonacci();
 
-for ($i = 2; $i <= 50; $i = $i+2) {
+for ($i = 2; $i <= 50; $i = $i + 2) {
     $gen = $Fibonacci->generator();
 
     $input = [];
-    for ($s = 0; $s <= $i; $s++) {
+    for ($s = 0; $s <= $i; ++$s) {
         $input[] = $gen->current();
         $gen->next();
     }
 
     $input = array_sum(array_filter(array_map(function ($item) {
-        return 4 * atan(1/$item);
+        return 4 * atan(1 / $item);
     }, array_slice($input, 3)), function ($key) {
-        return !($key%2);
+        return !($key % 2);
     }, ARRAY_FILTER_USE_KEY));
 
-    echo "**********************************************************" . "\n";
-    echo "Size: " . $i . "\n";
-    echo "Pi estimation: " . $input . "\n";
+    echo '**********************************************************' . "\n";
+    echo 'Size: ' . $i . "\n";
+    echo 'Pi estimation: ' . $input . "\n";
 }

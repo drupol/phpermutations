@@ -1,0 +1,20 @@
+suites:
+  tagattributes:
+    namespace: drupol\DynamicObjects
+    psr4_prefix: drupol\DynamicObjects
+
+formatter.name: pretty
+
+extensions:
+  LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension:
+    blacklist:
+      - src/test
+    format:
+      - html
+      - clover
+      - php
+      - text
+    output:
+      html: build/coverage
+      clover: build/coverage.xml
+      php: build/coverage.php

@@ -7,9 +7,6 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class PermutationsTest.
- *
- * @package drupol\phpermutations\Tests\Generators
- *
  */
 class PermutationsTest extends AbstractTest
 {
@@ -23,6 +20,7 @@ class PermutationsTest extends AbstractTest
      *
      * @dataProvider dataProvider
      *   The data provider
+     *
      * @param mixed $input
      * @param mixed $expected
      */
@@ -36,7 +34,7 @@ class PermutationsTest extends AbstractTest
         $this->assertEquals(
             $expected['dataset'],
             $generator->toArray(),
-            "\$canonicalize = true",
+            '$canonicalize = true',
             $delta = 0.0,
             $maxDepth = 10,
             $canonicalize = true

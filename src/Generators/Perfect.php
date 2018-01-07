@@ -6,8 +6,6 @@ use drupol\phpermutations\Iterators\Perfect as PerfectIterator;
 
 /**
  * Class Perfect.
- *
- * @package drupol\phpermutations\Generators
  */
 class Perfect extends PerfectIterator
 {
@@ -22,7 +20,7 @@ class Perfect extends PerfectIterator
      * Alias of the get() method.
      *
      * @return \Generator
-     *   The prime generator.
+     *                    The prime generator
      */
     public function generator()
     {
@@ -33,12 +31,13 @@ class Perfect extends PerfectIterator
      * The generator.
      *
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
      * @codingStandardsIgnoreEnd
      */
     protected function get()
     {
-        for ($j = 2; $j <= $this->getMaxLimit(); $j++) {
+        for ($j = 2; $j <= $this->getMaxLimit(); ++$j) {
             if ($this->isPerfectNumber($j)) {
                 yield $j;
             }

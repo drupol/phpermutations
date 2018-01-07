@@ -8,8 +8,6 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class AbstractTest.
- *
- * @package drupol\phpermutations\Tests
  */
 abstract class AbstractTest extends TestCase
 {
@@ -22,12 +20,12 @@ abstract class AbstractTest extends TestCase
      * The data provider.
      *
      * @return array
-     *   The test input values and their expected output.
+     *               The test input values and their expected output
      */
     public function dataProvider()
     {
         $fixtures = $this->fixtureProvider();
-        if ($this::TYPE !== null && $fixtures[$this::TYPE]['content']) {
+        if (null !== $this::TYPE && $fixtures[$this::TYPE]['content']) {
             return $fixtures[$this::TYPE]['content'];
         }
 
@@ -38,7 +36,7 @@ abstract class AbstractTest extends TestCase
      * Return component fixtures.
      *
      * @return array
-     *   List of component fixtures.
+     *               List of component fixtures
      */
     public function fixtureProvider()
     {

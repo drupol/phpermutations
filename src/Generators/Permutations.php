@@ -6,10 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Permutations.
- *
- * @package drupol\phpermutations\Generators
- *
- * Inspired by the work of Mark Wilson <mark@89allport.co.uk>
  */
 class Permutations extends Combinatorics
 {
@@ -23,10 +19,10 @@ class Permutations extends Combinatorics
     /**
      * Combinatorics constructor.
      *
-     * @param array $dataset
-     *   The dataset.
+     * @param array    $dataset
+     *                          The dataset
      * @param int|null $length
-     *   The length.
+     *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
@@ -38,6 +34,7 @@ class Permutations extends Combinatorics
      * Alias of the get() method.
      *
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
      * @codingStandardsIgnoreEnd
      */
@@ -54,7 +51,7 @@ class Permutations extends Combinatorics
      * Convert the generator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {
@@ -79,9 +76,10 @@ class Permutations extends Combinatorics
      * The permutations generator.
      *
      * @param array $dataset
-     *   The dataset.
+     *                       The dataset
      *
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
      * @codingStandardsIgnoreEnd
      */
@@ -90,7 +88,7 @@ class Permutations extends Combinatorics
         foreach ($dataset as $key => $firstItem) {
             $remaining = $dataset;
             array_splice($remaining, $key, 1);
-            if (count($remaining) === 0) {
+            if (0 === count($remaining)) {
                 yield [$firstItem];
 
                 continue;

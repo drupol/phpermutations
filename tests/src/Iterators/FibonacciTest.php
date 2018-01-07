@@ -7,9 +7,6 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class FibonacciTest.
- *
- * @package drupol\phpermutations\Tests\Iterators
- *
  */
 class FibonacciTest extends AbstractTest
 {
@@ -22,6 +19,7 @@ class FibonacciTest extends AbstractTest
      * The tests.
      *
      * @dataProvider dataProvider
+     *
      * @param mixed $input
      * @param mixed $expected
      */
@@ -34,7 +32,7 @@ class FibonacciTest extends AbstractTest
         $this->assertEquals(
             $expected['dataset'],
             $prime->toArray(),
-            "\$canonicalize = true",
+            '$canonicalize = true',
             $delta = 0.0,
             $maxDepth = 10,
             $canonicalize = true

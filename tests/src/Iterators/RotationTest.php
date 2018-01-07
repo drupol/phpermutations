@@ -7,9 +7,6 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class RotationTest.
- *
- * @package drupol\phpermutations\Tests\Iterators
- *
  */
 class RotationTest extends AbstractTest
 {
@@ -22,6 +19,7 @@ class RotationTest extends AbstractTest
      * The tests.
      *
      * @dataProvider dataProvider
+     *
      * @param mixed $input
      * @param mixed $expected
      */

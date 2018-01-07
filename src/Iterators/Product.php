@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Product.
- *
- * @package drupol\phpermutations\Iterators
  */
 class Product extends Combinatorics implements \Iterator, \Countable
 {
@@ -29,7 +27,7 @@ class Product extends Combinatorics implements \Iterator, \Countable
      * Product constructor.
      *
      * @param array $datasetArray
-     *   The array of dataset.
+     *                            The array of dataset
      */
     public function __construct(array $datasetArray)
     {
@@ -75,7 +73,7 @@ class Product extends Combinatorics implements \Iterator, \Countable
             }
         }
 
-        $this->key++;
+        ++$this->key;
     }
 
     /**
@@ -132,7 +130,7 @@ class Product extends Combinatorics implements \Iterator, \Countable
      * Convert the iterator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {

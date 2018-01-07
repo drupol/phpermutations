@@ -6,8 +6,6 @@ use drupol\phpermutations\Iterators\Fibonacci as FibonacciIterator;
 
 /**
  * Class Fibonacci.
- *
- * @package drupol\phpermutations\Generators
  */
 class Fibonacci extends FibonacciIterator
 {
@@ -22,7 +20,7 @@ class Fibonacci extends FibonacciIterator
      * Alias of the get() method.
      *
      * @return \Generator
-     *   The prime generator.
+     *                    The prime generator
      */
     public function generator()
     {
@@ -33,6 +31,7 @@ class Fibonacci extends FibonacciIterator
      * The generator.
      *
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
      * @codingStandardsIgnoreEnd
      */
@@ -45,7 +44,7 @@ class Fibonacci extends FibonacciIterator
             yield $a;
 
             list($a, $b) = [$b, $a + $b];
-            $to--;
+            --$to;
         }
     }
 }

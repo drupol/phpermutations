@@ -4,8 +4,6 @@ namespace drupol\phpermutations;
 
 /**
  * Class Combinatorics.
- *
- * @package drupol\phpermutations
  */
 abstract class Combinatorics implements \Countable
 {
@@ -33,10 +31,10 @@ abstract class Combinatorics implements \Countable
     /**
      * Combinatorics constructor.
      *
-     * @param array $dataset
-     *   The dataset.
+     * @param array    $dataset
+     *                          The dataset
      * @param int|null $length
-     *   The length.
+     *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
@@ -49,7 +47,7 @@ abstract class Combinatorics implements \Countable
      * Set the length.
      *
      * @param int $length
-     *   The length.
+     *                    The length
      *
      * @return $this
      */
@@ -65,7 +63,7 @@ abstract class Combinatorics implements \Countable
      * Get the length.
      *
      * @return int
-     *   The length.
+     *             The length
      */
     public function getLength()
     {
@@ -76,7 +74,7 @@ abstract class Combinatorics implements \Countable
      * Set the dataset.
      *
      * @param array $dataset
-     *   The dataset.
+     *                       The dataset
      *
      * @return $this
      */
@@ -91,7 +89,7 @@ abstract class Combinatorics implements \Countable
      * Get the dataset.
      *
      * @return mixed[]
-     *   The dataset.
+     *                 The dataset
      */
     public function getDataset()
     {
@@ -102,12 +100,12 @@ abstract class Combinatorics implements \Countable
      * Compute the factorial of an integer.
      *
      * @param int $n
-     *   The number to get its factorial.
+     *                   The number to get its factorial
      * @param int $total
-     *   The total.
+     *                   The total
      *
      * @return int
-     *   The factorial of $n.
+     *             The factorial of $n
      */
     protected function fact($n, $total = 1)
     {
