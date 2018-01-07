@@ -1,55 +1,29 @@
 parameters:
   git_dir: .
-  bin_dir: vendor/bin
+  bin_dir: bin
   tasks:
-    phplint: ~
-    phpunit:
-      config_file: ./tests/phpunit.xml
-      always_execute: true
-    phpcs:
-      standard: PSR2
-      ignore_patterns:
-        - vendor/
-      triggered_by:
-        - php
-        - module
-        - inc
     phpcsfixer2:
-      rules:
-        '@PSR2': true
+      allow_risky: false
+      cache_file: ~
+      config: .php_cs.dist
+      rules: []
+      using_cache: true
+      config_contains_finder: true
+      verbose: true
+      diff: true
+      triggered_by: ['php']
     git_commit_message:
       matchers:
-        - '/^#\d+: [A-Z].+\./'
+        - '/^(([A-Z]+\-\d+)|(#\d+)): [A-Z].+\./'
       case_insensitive: false
       multiline: false
-    composer:
-      file: ./composer.json
-      no_check_all: false
-      no_check_lock: false
-      no_check_publish: false
-      with_dependencies: false
-      strict: true
+    phpspec:
+        format: pretty
+        stop_on_failure: true
+        verbose: true
     securitychecker:
-      lockfile: ./composer.lock
-      format: ~
-      end_point: http://security.sensiolabs.org/check_lock
-      timeout: ~
-      run_always: true
-    git_blacklist:
-      keywords:
-        - "die("
-        - "var_dump("
-        - "dump("
-        - "exit;"
-      triggered_by: [php]
-    yamllint:
-      ignore_patterns: []
-      object_support: false
-      exception_on_invalid_type: false
-    phpparser:
-      visitors:
-        no_exit_statements: ~
-        forbidden_function_calls:
-          blacklist: [var_dump]
-      metadata:
-        priority: 100000
+        lockfile: ./composer.lock
+        format: ~
+        end_point: ~
+        timeout: ~
+        run_always: false

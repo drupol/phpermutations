@@ -7,9 +7,6 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class PrimeTest.
- *
- * @package drupol\phpermutations\Tests\Iterators
- *
  */
 class PrimeTest extends AbstractTest
 {
@@ -22,6 +19,7 @@ class PrimeTest extends AbstractTest
      * The tests.
      *
      * @dataProvider dataProvider
+     *
      * @param mixed $input
      * @param mixed $expected
      */
@@ -41,7 +39,7 @@ class PrimeTest extends AbstractTest
         $this->assertEquals(
             $expected['dataset'],
             $prime->toArray(),
-            "\$canonicalize = true",
+            '$canonicalize = true',
             $delta = 0.0,
             $maxDepth = 10,
             $canonicalize = true

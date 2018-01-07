@@ -19,26 +19,25 @@
  *   3: Create this file at the root of the project,
  *   4: Run php e.php.
  */
+include './vendor/autoload.php';
 
-include "./vendor/autoload.php";
-
-for ($i = 2; $i < 15; $i++) {
+for ($i = 2; $i < 15; ++$i) {
     $input = range(1, $i);
     $size = $i;
 
-    echo "**********************************************************" . "\n";
-    echo "Size: " . $i . "\n";
+    echo '**********************************************************' . "\n";
+    echo 'Size: ' . $i . "\n";
 
     $Permutations = new \drupol\phpermutations\Generators\Permutations($input, $size);
 
     $j = 0;
     foreach ($Permutations->generator() as $permutation) {
         if (!($array3 = array_intersect_assoc($input, $permutation))) {
-            $j++;
+            ++$j;
         }
     }
 
-    echo "Number of permutations (#P0): " . $Permutations->count() . "\n";
-    echo "Number of permutations without item at the same place (#P1): " . $j . "\n";
-    echo "(#P0) / (#P1): " . $Permutations->count()/$j . "\n";
+    echo 'Number of permutations (#P0): ' . $Permutations->count() . "\n";
+    echo 'Number of permutations without item at the same place (#P1): ' . $j . "\n";
+    echo '(#P0) / (#P1): ' . $Permutations->count() / $j . "\n";
 }

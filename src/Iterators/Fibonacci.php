@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Fibonacci.
- *
- * @package drupol\phpermutations\Iterators
  */
 class Fibonacci extends Combinatorics implements \Iterator, \Countable
 {
@@ -69,7 +67,7 @@ class Fibonacci extends Combinatorics implements \Iterator, \Countable
     public function next()
     {
         list($this->current, $this->previous) = [$this->current + $this->previous, $this->current];
-        $this->key++;
+        ++$this->key;
     }
 
     /**
@@ -87,7 +85,7 @@ class Fibonacci extends Combinatorics implements \Iterator, \Countable
      */
     public function valid()
     {
-        return ($this->current < $this->getMaxLimit());
+        return $this->current < $this->getMaxLimit();
     }
 
     /**
@@ -102,7 +100,7 @@ class Fibonacci extends Combinatorics implements \Iterator, \Countable
      * Convert the iterator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {
@@ -119,7 +117,7 @@ class Fibonacci extends Combinatorics implements \Iterator, \Countable
      * Set the maximum limit.
      *
      * @param int $max
-     *   The limit.
+     *                 The limit
      */
     public function setMaxLimit($max)
     {
@@ -130,7 +128,7 @@ class Fibonacci extends Combinatorics implements \Iterator, \Countable
      * Get the maximum limit.
      *
      * @return int
-     *   The limit.
+     *             The limit
      */
     public function getMaxLimit()
     {

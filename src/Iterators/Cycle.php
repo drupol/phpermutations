@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Cycle.
- *
- * @package drupol\phpermutations\Iterators
  */
 class Cycle extends Combinatorics implements \Iterator, \Countable
 {

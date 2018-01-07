@@ -6,8 +6,6 @@ use drupol\phpermutations\Iterators\Product as ProductIterator;
 
 /**
  * Class Product.
- *
- * @package drupol\phpermutations\Generators
  */
 class Product extends ProductIterator
 {
@@ -15,7 +13,7 @@ class Product extends ProductIterator
      * Get the generator.
      *
      * @return \Generator
-     *   The generator.
+     *                    The generator
      */
     public function generator()
     {
@@ -26,10 +24,11 @@ class Product extends ProductIterator
      * Get the generator.
      *
      * @param array $data
-     *   The dataset.
+     *                    The dataset
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
-     *   The generator.
+     *                    The generator
      * @codingStandardsIgnoreEnd
      */
     protected function get(array $data)

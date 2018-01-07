@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Perfect.
- *
- * @package drupol\phpermutations\Iterators
  */
 class Perfect extends Combinatorics implements \Iterator, \Countable
 {
@@ -46,7 +44,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      */
     public function current()
     {
-        for ($i = $this->key(); $i < $this->getMaxLimit(); $i++) {
+        for ($i = $this->key(); $i < $this->getMaxLimit(); ++$i) {
             if ($this->isPerfectNumber($i)) {
                 $this->key = $i;
 
@@ -62,7 +60,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      */
     public function next()
     {
-        $this->key++;
+        ++$this->key;
     }
 
     /**
@@ -93,7 +91,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      * Count elements of an object.
      *
      * @return int
-     *   The number of element.
+     *             The number of element
      */
     public function count()
     {
@@ -104,7 +102,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      * Convert the iterator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {
@@ -121,7 +119,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      * Set the maximum limit.
      *
      * @param int $max
-     *   The limit.
+     *                 The limit
      */
     public function setMaxLimit($max)
     {
@@ -132,7 +130,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      * Get the maximum limit.
      *
      * @return int
-     *   The limit.
+     *             The limit
      */
     public function getMaxLimit()
     {
@@ -143,7 +141,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      * Set the minimum limit.
      *
      * @param int $min
-     *   The limit.
+     *                 The limit
      */
     public function setMinLimit($min)
     {
@@ -154,7 +152,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      * Get the minimum limit.
      *
      * @return int
-     *   The limit.
+     *             The limit
      */
     public function getMinLimit()
     {
@@ -167,16 +165,16 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      * Source: http://iceyboard.no-ip.org/projects/code/php/perfect_number/
      *
      * @param int $number
-     *   The number to test.
+     *                    The number to test
      *
      * @return bool
-     *   The true if the number is perfect, false otherwise.
+     *              The true if the number is perfect, false otherwise
      */
     protected function isPerfectNumber($number)
     {
         $d = 0;
         $max = sqrt($number);
-        for ($n = 2; $n <= $max; $n++) {
+        for ($n = 2; $n <= $max; ++$n) {
             if (!($number % $n)) {
                 $d += $n;
                 if ($n !== $number / $n) {

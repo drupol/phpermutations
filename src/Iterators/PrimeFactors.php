@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class PrimeFactors.
- *
- * @package drupol\phpermutations\Iterators
  */
 class PrimeFactors extends Combinatorics implements \Iterator, \Countable
 {
@@ -45,7 +43,7 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      */
     public function next()
     {
-        $this->key++;
+        ++$this->key;
         next($this->factors);
     }
 
@@ -77,7 +75,7 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      * Count elements of an object.
      *
      * @return int
-     *   The number of element.
+     *             The number of element
      */
     public function count()
     {
@@ -88,7 +86,7 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      * Convert the iterator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {
@@ -105,7 +103,7 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      * Set the number.
      *
      * @param int $number
-     *   The number.
+     *                    The number
      */
     public function setNumber($number)
     {
@@ -117,7 +115,7 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      * Get the number.
      *
      * @return int
-     *   The number.
+     *             The number
      */
     public function getNumber()
     {
@@ -128,8 +126,9 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      * Compute the prime factors of the number.
      *
      * @param mixed $number
+     *
      * @return int[]
-     *   The factors.
+     *               The factors
      */
     private function getFactors($number)
     {
@@ -137,8 +136,8 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
             $factors = [];
         }
 
-        for ($i = 2; $i <= $number / $i; $i++) {
-            while ($number % $i === 0) {
+        for ($i = 2; $i <= $number / $i; ++$i) {
+            while (0 === $number % $i) {
                 $factors[] = $i;
                 $number /= $i;
             }

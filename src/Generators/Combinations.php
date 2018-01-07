@@ -7,7 +7,6 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
 /**
  * Class Combinations.
  *
- * @package drupol\phpermutations\Generators
  *
  * @author Mark Wilson <mark@89allport.co.uk>
  */
@@ -17,7 +16,7 @@ class Combinations extends CombinationsIterator
      * Alias of the get() method.
      *
      * @return \Generator
-     *   The prime generator.
+     *                    The prime generator
      */
     public function generator()
     {
@@ -28,7 +27,7 @@ class Combinations extends CombinationsIterator
      * Convert the generator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {
@@ -45,11 +44,12 @@ class Combinations extends CombinationsIterator
      * The generator.
      *
      * @param array $dataset
-     *   The dataset.
-     * @param int $length
-     *   The length.
+     *                       The dataset
+     * @param int   $length
+     *                       The length
      *
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
      * @codingStandardsIgnoreEnd
      */
@@ -57,9 +57,9 @@ class Combinations extends CombinationsIterator
     {
         $originalLength = count($dataset);
         $remainingLength = $originalLength - $length + 1;
-        for ($i = 0; $i < $remainingLength; $i++) {
+        for ($i = 0; $i < $remainingLength; ++$i) {
             $current = $dataset[$i];
-            if ($length === 1) {
+            if (1 === $length) {
                 yield [$current];
             } else {
                 $remaining = array_slice($dataset, $i + 1);

@@ -8,8 +8,6 @@ use drupol\phpermutations\Iterators\FiniteGroup as FiniteGroupIterator;
  * Class FiniteGroup.
  *
  * The finite group is an abelian finite cyclic group.
- *
- * @package drupol\phpermutations\Generators
  */
 class FiniteGroup extends FiniteGroupIterator
 {
@@ -17,7 +15,7 @@ class FiniteGroup extends FiniteGroupIterator
      * Alias of the get() method.
      *
      * @return \Generator
-     *   The finite group generator.
+     *                    The finite group generator
      */
     public function generator()
     {
@@ -28,8 +26,9 @@ class FiniteGroup extends FiniteGroupIterator
      * The generator.
      *
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
-     *   The finite group generator.
+     *                    The finite group generator
      * @codingStandardsIgnoreEnd
      */
     protected function get()

@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Rotation.
- *
- * @package drupol\phpermutations\Iterators
  */
 class Rotation extends Combinatorics implements \Iterator, \Countable
 {
@@ -29,7 +27,7 @@ class Rotation extends Combinatorics implements \Iterator, \Countable
      * Rotation constructor.
      *
      * @param array $dataset
-     *   The dataset.
+     *                       The dataset
      */
     public function __construct(array $dataset = [])
     {
@@ -57,7 +55,7 @@ class Rotation extends Combinatorics implements \Iterator, \Countable
      * Compute the next value of the Iterator.
      *
      * @param int $offset
-     *   The offset.
+     *                    The offset
      */
     public function next($offset = 1)
     {

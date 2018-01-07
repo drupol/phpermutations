@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Combinations.
- *
- * @package drupol\phpermutations\Iterators
  */
 class Combinations extends Combinatorics implements \Iterator
 {
@@ -28,10 +26,10 @@ class Combinations extends Combinatorics implements \Iterator
     /**
      * Combinations constructor.
      *
-     * @param array $dataset
-     *   The dataset.
+     * @param array    $dataset
+     *                          The dataset
      * @param int|null $length
-     *   The length.
+     *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
@@ -53,7 +51,7 @@ class Combinations extends Combinatorics implements \Iterator
     public function current()
     {
         $r = [];
-        for ($i = 0; $i < $this->length; $i++) {
+        for ($i = 0; $i < $this->length; ++$i) {
             $r[] = $this->dataset[$this->c[$i]];
         }
 
@@ -66,7 +64,7 @@ class Combinations extends Combinatorics implements \Iterator
     public function next()
     {
         if ($this->nextHelper()) {
-            $this->key++;
+            ++$this->key;
         } else {
             $this->key = -1;
         }
@@ -93,7 +91,7 @@ class Combinations extends Combinatorics implements \Iterator
      * Convert the iterator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {
@@ -119,18 +117,18 @@ class Combinations extends Combinatorics implements \Iterator
      * Custom next() callback.
      *
      * @return bool
-     *   Return true or false.
+     *              Return true or false
      */
     protected function nextHelper()
     {
         $i = $this->length - 1;
         while ($i >= 0 && $this->c[$i] === $this->datasetCount - $this->length + $i) {
-            $i--;
+            --$i;
         }
         if ($i < 0) {
             return false;
         }
-        $this->c[$i]++;
+        ++$this->c[$i];
         while ($i++ < $this->length - 1) {
             $this->c[$i] = $this->c[$i - 1] + 1;
         }

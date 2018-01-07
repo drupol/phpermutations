@@ -7,9 +7,6 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class CycleTest.
- *
- * @package drupol\phpermutations\Tests\Iterators
- *
  */
 class CycleTest extends AbstractTest
 {
@@ -22,6 +19,7 @@ class CycleTest extends AbstractTest
      * The tests.
      *
      * @dataProvider dataProvider
+     *
      * @param mixed $input
      * @param mixed $expected
      */
@@ -29,7 +27,7 @@ class CycleTest extends AbstractTest
     {
         $cycle = new Cycle($input['dataset']);
 
-        for ($i = 0; $i < $input['turn']; $i++) {
+        for ($i = 0; $i < $input['turn']; ++$i) {
             $cycle->next();
         }
         $this->assertEquals($expected['current'], $cycle->current());

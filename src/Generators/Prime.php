@@ -6,8 +6,6 @@ use drupol\phpermutations\Iterators\Prime as PrimeIterator;
 
 /**
  * Class Prime.
- *
- * @package drupol\phpermutations\Generators
  */
 class Prime extends PrimeIterator
 {
@@ -15,7 +13,7 @@ class Prime extends PrimeIterator
      * Alias of the get() method.
      *
      * @return \Generator
-     *   The prime generator.
+     *                    The prime generator
      */
     public function generator()
     {
@@ -26,13 +24,14 @@ class Prime extends PrimeIterator
      * The generator.
      *
      * @codingStandardsIgnoreStart
+     *
      * @return \Generator
-     *   The prime generator.
+     *                    The prime generator
      * @codingStandardsIgnoreEnd
      */
     protected function get()
     {
-        for ($j = 2; $j <= $this->getMaxLimit(); $j++) {
+        for ($j = 2; $j <= $this->getMaxLimit(); ++$j) {
             if ($this->isPrimeNumber($j)) {
                 yield $j;
             }

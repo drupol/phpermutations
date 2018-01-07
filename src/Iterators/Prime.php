@@ -6,8 +6,6 @@ use drupol\phpermutations\Combinatorics;
 
 /**
  * Class Prime.
- *
- * @package drupol\phpermutations\Iterators
  */
 class Prime extends Combinatorics implements \Iterator, \Countable
 {
@@ -46,7 +44,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      */
     public function current()
     {
-        for ($i = $this->key(); $i < $this->getMaxLimit(); $i++) {
+        for ($i = $this->key(); $i < $this->getMaxLimit(); ++$i) {
             if ($this->isPrimeNumber($i)) {
                 $this->key = $i;
 
@@ -62,7 +60,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      */
     public function next()
     {
-        $this->key++;
+        ++$this->key;
     }
 
     /**
@@ -93,7 +91,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      * Count elements of an object.
      *
      * @return int
-     *   The number of element.
+     *             The number of element
      */
     public function count()
     {
@@ -104,7 +102,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      * Convert the iterator into an array.
      *
      * @return array
-     *   The elements.
+     *               The elements
      */
     public function toArray()
     {
@@ -121,7 +119,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      * Set the maximum limit.
      *
      * @param int $max
-     *   The limit.
+     *                 The limit
      */
     public function setMaxLimit($max)
     {
@@ -132,7 +130,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      * Get the maximum limit.
      *
      * @return int
-     *   The limit.
+     *             The limit
      */
     public function getMaxLimit()
     {
@@ -143,7 +141,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      * Set the minimum limit.
      *
      * @param int $min
-     *   The limit.
+     *                 The limit
      */
     public function setMinLimit($min)
     {
@@ -154,7 +152,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      * Get the minimum limit.
      *
      * @return int
-     *   The limit.
+     *             The limit
      */
     public function getMinLimit()
     {
@@ -165,10 +163,10 @@ class Prime extends Combinatorics implements \Iterator, \Countable
      * Test if a number is prime or not.
      *
      * @param int $number
-     *   The number to test.
+     *                    The number to test
      *
      * @return bool
-     *   The true if the number is prime, false otherwise.
+     *              The true if the number is prime, false otherwise
      */
     protected function isPrimeNumber($number)
     {
@@ -186,7 +184,7 @@ class Prime extends Combinatorics implements \Iterator, \Countable
 
         $sqrtNumber = sqrt($number);
         for ($divisor = 3; $divisor <= $sqrtNumber; $divisor += 2) {
-            if ($number % $divisor === 0) {
+            if (0 === $number % $divisor) {
                 return false;
             }
         }
