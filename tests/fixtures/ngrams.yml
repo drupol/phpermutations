@@ -1,0 +1,35 @@
+-
+    input:
+      dataset: [A, B, C, D, E]
+      length: 2
+      turn: 1
+    output:
+      current: [E, A]
+      count: 5
+
+-
+    input:
+      dataset: [A, B, C, D, E]
+      length: 3
+      turn: 3
+    output:
+      current: [C, D, E]
+      count: 5
+
+-
+    input:
+      dataset: [A, B, C, D, E]
+      length: 2
+      turn: 11
+    output:
+      current: [E, A]
+      count: 5
+
+-
+    input:
+      dataset: [A, B, C, D, E]
+      length: 3
+      turn: 13
+    output:
+      current: [C, D, E]
+      count: 5
