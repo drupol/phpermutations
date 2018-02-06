@@ -17,13 +17,14 @@ parameters:
         - '/^(([A-Z]+\-\d+)|(#\d+)): [A-Z].+\./'
       case_insensitive: false
       multiline: false
-    phpspec:
-        format: pretty
-        stop_on_failure: true
-        verbose: true
+    phpunit:
+      config_file: ./tests/phpunit.xml
+      testsuite: ~
+      group: []
+      always_execute: false
     securitychecker:
-        lockfile: ./composer.lock
-        format: ~
-        end_point: ~
-        timeout: ~
-        run_always: false
+      lockfile: ./composer.lock
+      format: ~
+      end_point: ~
+      timeout: ~
+      run_always: false
