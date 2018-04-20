@@ -25,14 +25,14 @@ class NgramsTest extends AbstractTest
      */
     public function testNgrams($input, $expected)
     {
-        $shift = new NGrams($input['dataset'], $input['length']);
+        $ngrams = new NGrams($input['dataset'], $input['length']);
 
         for ($i = 0; $i < $input['turn']; ++$i) {
-            $shift->next();
+            $ngrams->next();
         }
-        $this->assertEquals($expected['current'], $shift->current());
+        $this->assertEquals($expected['current'], $ngrams->current());
 
-        $this->assertEquals($input['dataset'], $shift->getDataset());
-        $this->assertEquals($expected['count'], $shift->count());
+        $this->assertEquals($input['dataset'], $ngrams->getDataset());
+        $this->assertEquals($expected['count'], $ngrams->count());
     }
 }
