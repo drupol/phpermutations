@@ -97,6 +97,42 @@ abstract class Combinatorics implements \Countable
     }
 
     /**
+     * Count elements of an object.
+     *
+     * @return int
+     *             The number of element
+     */
+    public function count()
+    {
+        return count($this->toArray());
+    }
+
+    /**
+     * Convert the iterator into an array.
+     *
+     * @return array
+     *               The elements
+     */
+    public function toArray()
+    {
+        $data = [];
+
+        for ($this->rewind(); $this->valid(); $this->next()) {
+            $data[] = $this->current();
+        }
+
+        return $data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function key()
+    {
+        return $this->key;
+    }
+
+    /**
      * Compute the factorial of an integer.
      *
      * @param int $n

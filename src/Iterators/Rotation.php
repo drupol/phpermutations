@@ -39,14 +39,6 @@ class Rotation extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         return $this->rotation;

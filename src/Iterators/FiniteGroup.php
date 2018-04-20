@@ -61,14 +61,6 @@ class FiniteGroup extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function valid()
     {
         return isset($this->group[$this->key()]);
@@ -91,23 +83,6 @@ class FiniteGroup extends Combinatorics implements IteratorInterface
     public function count()
     {
         return count($this->group);
-    }
-
-    /**
-     * Convert the iterator into an array.
-     *
-     * @return array
-     *               The elements
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
     }
 
     /**

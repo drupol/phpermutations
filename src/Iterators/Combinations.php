@@ -41,14 +41,6 @@ class Combinations extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         $r = [];
@@ -86,23 +78,6 @@ class Combinations extends Combinatorics implements IteratorInterface
     public function valid()
     {
         return $this->key >= 0;
-    }
-
-    /**
-     * Convert the iterator into an array.
-     *
-     * @return array
-     *               The elements
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
     }
 
     /**

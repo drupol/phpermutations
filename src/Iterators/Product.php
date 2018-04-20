@@ -80,14 +80,6 @@ class Product extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function valid()
     {
         $isUnlessOneValid = false;

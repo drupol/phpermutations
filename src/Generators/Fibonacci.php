@@ -11,13 +11,6 @@ use drupol\phpermutations\Iterators\Fibonacci as FibonacciIterator;
 class Fibonacci extends FibonacciIterator implements GeneratorInterface
 {
     /**
-     * The maximum value.
-     *
-     * @var int
-     */
-    protected $max;
-
-    /**
      * {@inheritdoc}
      */
     public function generator()
