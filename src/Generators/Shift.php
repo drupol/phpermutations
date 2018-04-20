@@ -11,10 +11,7 @@ use drupol\phpermutations\Iterators\Shift as ShiftIterator;
 class Shift extends ShiftIterator implements GeneratorInterface
 {
     /**
-     * Get the generator.
-     *
-     * @return \Generator
-     *                    The generator
+     * {@inheritdoc}
      */
     public function generator()
     {

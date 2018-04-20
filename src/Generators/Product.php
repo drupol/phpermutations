@@ -11,10 +11,7 @@ use drupol\phpermutations\Iterators\Product as ProductIterator;
 class Product extends ProductIterator implements GeneratorInterface
 {
     /**
-     * Get the generator.
-     *
-     * @return \Generator
-     *                    The generator
+     * {@inheritdoc}
      */
     public function generator()
     {

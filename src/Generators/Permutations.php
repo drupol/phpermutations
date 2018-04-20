@@ -32,12 +32,7 @@ class Permutations extends Combinatorics implements GeneratorInterface
     }
 
     /**
-     * Alias of the get() method.
-     *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
-     * @codingStandardsIgnoreEnd
+     * {@inheritdoc}
      */
     public function generator()
     {
@@ -49,10 +44,7 @@ class Permutations extends Combinatorics implements GeneratorInterface
     }
 
     /**
-     * Convert the generator into an array.
-     *
-     * @return array
-     *               The elements
+     * {@inheritdoc}
      */
     public function toArray()
     {

@@ -11,17 +11,7 @@ use drupol\phpermutations\Iterators\Perfect as PerfectIterator;
 class Perfect extends PerfectIterator implements GeneratorInterface
 {
     /**
-     * The maximum value.
-     *
-     * @var int
-     */
-    protected $max;
-
-    /**
-     * Alias of the get() method.
-     *
-     * @return \Generator
-     *                    The prime generator
+     * {@inheritdoc}
      */
     public function generator()
     {

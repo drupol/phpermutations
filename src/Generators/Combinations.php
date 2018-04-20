@@ -14,10 +14,7 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
 class Combinations extends CombinationsIterator implements GeneratorInterface
 {
     /**
-     * Alias of the get() method.
-     *
-     * @return \Generator
-     *                    The prime generator
+     * {@inheritdoc}
      */
     public function generator()
     {
@@ -25,10 +22,7 @@ class Combinations extends CombinationsIterator implements GeneratorInterface
     }
 
     /**
-     * Convert the generator into an array.
-     *
-     * @return array
-     *               The elements
+     * {@inheritdoc}
      */
     public function toArray()
     {

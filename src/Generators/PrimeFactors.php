@@ -11,10 +11,7 @@ use drupol\phpermutations\Iterators\PrimeFactors as PrimeFactorsIterator;
 class PrimeFactors extends PrimeFactorsIterator implements GeneratorInterface
 {
     /**
-     * Alias of the get() method.
-     *
-     * @return \Generator
-     *                    The prime factors generator
+     * {@inheritdoc}
      */
     public function generator()
     {

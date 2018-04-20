@@ -13,10 +13,7 @@ use drupol\phpermutations\Iterators\FiniteGroup as FiniteGroupIterator;
 class FiniteGroup extends FiniteGroupIterator implements GeneratorInterface
 {
     /**
-     * Alias of the get() method.
-     *
-     * @return \Generator
-     *                    The finite group generator
+     * {@inheritdoc}
      */
     public function generator()
     {

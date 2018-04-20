@@ -18,10 +18,7 @@ class Fibonacci extends FibonacciIterator implements GeneratorInterface
     protected $max;
 
     /**
-     * Alias of the get() method.
-     *
-     * @return \Generator
-     *                    The prime generator
+     * {@inheritdoc}
      */
     public function generator()
     {
