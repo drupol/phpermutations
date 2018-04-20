@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Combinations.
  */
-class Combinations extends Combinatorics implements \Iterator
+class Combinations extends Combinatorics implements IteratorInterface
 {
     /**
      * The values.
@@ -40,17 +41,10 @@ class Combinations extends Combinatorics implements \Iterator
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         $r = [];
+
         for ($i = 0; $i < $this->length; ++$i) {
             $r[] = $this->dataset[$this->c[$i]];
         }
@@ -88,23 +82,6 @@ class Combinations extends Combinatorics implements \Iterator
     }
 
     /**
-     * Convert the iterator into an array.
-     *
-     * @return array
-     *               The elements
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function count()
@@ -125,9 +102,11 @@ class Combinations extends Combinatorics implements \Iterator
         while ($i >= 0 && $this->c[$i] === $this->datasetCount - $this->length + $i) {
             --$i;
         }
+
         if ($i < 0) {
             return false;
         }
+
         ++$this->c[$i];
         while ($i++ < $this->length - 1) {
             $this->c[$i] = $this->c[$i - 1] + 1;

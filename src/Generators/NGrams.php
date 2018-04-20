@@ -3,14 +3,12 @@
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\GeneratorInterface;
-use drupol\phpermutations\Iterators\FiniteGroup as FiniteGroupIterator;
+use drupol\phpermutations\Iterators\NGrams as NGramsIterator;
 
 /**
- * Class FiniteGroup.
- *
- * The finite group is an abelian finite cyclic group.
+ * Class NGrams.
  */
-class FiniteGroup extends FiniteGroupIterator implements GeneratorInterface
+class NGrams extends NGramsIterator implements GeneratorInterface
 {
     /**
      * {@inheritdoc}
@@ -21,18 +19,27 @@ class FiniteGroup extends FiniteGroupIterator implements GeneratorInterface
     }
 
     /**
-     * The generator.
+     * {@inheritdoc}
+     */
+    public function toArray()
+    {
+        return [];
+    }
+
+    /**
+     * Get the generator.
      *
      * @codingStandardsIgnoreStart
      *
      * @return \Generator
-     *                    The finite group generator
+     *                    The generator
      * @codingStandardsIgnoreEnd
      */
     protected function get()
     {
-        foreach ($this->group as $number) {
-            yield $number;
+        while (true) {
+            $this->next();
+            yield $this->current();
         }
     }
 }

@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Perfect.
  */
-class Perfect extends Combinatorics implements \Iterator, \Countable
+class Perfect extends Combinatorics implements IteratorInterface
 {
     /**
      * The minimum limit.
@@ -37,6 +38,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
     {
         $this->setMaxLimit(PHP_INT_MAX);
         $this->setMinLimit(2);
+        parent::__construct([], null);
     }
 
     /**
@@ -66,14 +68,6 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function valid()
     {
         return $this->current() < $this->getMaxLimit();
@@ -85,34 +79,6 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
     public function rewind()
     {
         $this->key = $this->getMinLimit();
-    }
-
-    /**
-     * Count elements of an object.
-     *
-     * @return int
-     *             The number of element
-     */
-    public function count()
-    {
-        return count($this->toArray());
-    }
-
-    /**
-     * Convert the iterator into an array.
-     *
-     * @return array
-     *               The elements
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
     }
 
     /**
@@ -134,7 +100,7 @@ class Perfect extends Combinatorics implements \Iterator, \Countable
      */
     public function getMaxLimit()
     {
-        return intval($this->max);
+        return (int) $this->max;
     }
 
     /**

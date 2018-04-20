@@ -2,25 +2,16 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Fibonacci as FibonacciIterator;
 
 /**
  * Class Fibonacci.
  */
-class Fibonacci extends FibonacciIterator
+class Fibonacci extends FibonacciIterator implements GeneratorInterface
 {
     /**
-     * The maximum value.
-     *
-     * @var int
-     */
-    protected $max;
-
-    /**
-     * Alias of the get() method.
-     *
-     * @return \Generator
-     *                    The prime generator
+     * {@inheritdoc}
      */
     public function generator()
     {

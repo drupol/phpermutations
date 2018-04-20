@@ -3,13 +3,14 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class FiniteGroup.
  *
  * The finite group is an abelian finite cyclic group.
  */
-class FiniteGroup extends Combinatorics implements \Iterator, \Countable
+class FiniteGroup extends Combinatorics implements IteratorInterface
 {
     /**
      * The group size.
@@ -60,14 +61,6 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function valid()
     {
         return isset($this->group[$this->key()]);
@@ -93,23 +86,6 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable
     }
 
     /**
-     * Convert the iterator into an array.
-     *
-     * @return array
-     *               The elements
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
-    }
-
-    /**
      * Set the group size.
      *
      * @param int $size
@@ -129,7 +105,7 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable
      */
     public function getSize()
     {
-        return intval($this->size);
+        return (int) $this->size;
     }
 
     /**
@@ -146,7 +122,7 @@ class FiniteGroup extends Combinatorics implements \Iterator, \Countable
         $result = [];
 
         foreach (range(1, $this->getSize() - 1) as $number) {
-            $value = pow($generator, $number) % $this->getSize();
+            $value = ($generator ** $number) % $this->getSize();
             $result[$value] = $value;
         }
 

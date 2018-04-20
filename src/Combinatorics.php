@@ -53,7 +53,7 @@ abstract class Combinatorics implements \Countable
      */
     public function setLength($length = null)
     {
-        $length = is_null($length) ? $this->datasetCount : $length;
+        $length = (null === $length) ? $this->datasetCount : $length;
         $this->length = ($length > $this->datasetCount) ? $this->datasetCount : $length;
 
         return $this;
@@ -94,6 +94,42 @@ abstract class Combinatorics implements \Countable
     public function getDataset()
     {
         return $this->dataset;
+    }
+
+    /**
+     * Count elements of an object.
+     *
+     * @return int
+     *             The number of element
+     */
+    public function count()
+    {
+        return count($this->toArray());
+    }
+
+    /**
+     * Convert the iterator into an array.
+     *
+     * @return array
+     *               The elements
+     */
+    public function toArray()
+    {
+        $data = [];
+
+        for ($this->rewind(); $this->valid(); $this->next()) {
+            $data[] = $this->current();
+        }
+
+        return $data;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function key()
+    {
+        return $this->key;
     }
 
     /**

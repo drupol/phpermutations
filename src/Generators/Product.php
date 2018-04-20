@@ -2,18 +2,16 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Product as ProductIterator;
 
 /**
  * Class Product.
  */
-class Product extends ProductIterator
+class Product extends ProductIterator implements GeneratorInterface
 {
     /**
-     * Get the generator.
-     *
-     * @return \Generator
-     *                    The generator
+     * {@inheritdoc}
      */
     public function generator()
     {

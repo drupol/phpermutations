@@ -2,6 +2,7 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
 
 /**
@@ -10,13 +11,10 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
  *
  * @author Mark Wilson <mark@89allport.co.uk>
  */
-class Combinations extends CombinationsIterator
+class Combinations extends CombinationsIterator implements GeneratorInterface
 {
     /**
-     * Alias of the get() method.
-     *
-     * @return \Generator
-     *                    The prime generator
+     * {@inheritdoc}
      */
     public function generator()
     {
@@ -24,10 +22,7 @@ class Combinations extends CombinationsIterator
     }
 
     /**
-     * Convert the generator into an array.
-     *
-     * @return array
-     *               The elements
+     * {@inheritdoc}
      */
     public function toArray()
     {

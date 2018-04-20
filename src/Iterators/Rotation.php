@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Rotation.
  */
-class Rotation extends Combinatorics implements \Iterator, \Countable
+class Rotation extends Combinatorics implements IteratorInterface
 {
     /**
      * The key.
@@ -38,14 +39,6 @@ class Rotation extends Combinatorics implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function current()
     {
         return $this->rotation;
@@ -59,7 +52,7 @@ class Rotation extends Combinatorics implements \Iterator, \Countable
      */
     public function next($offset = 1)
     {
-        $offset = is_null($offset) ? 1 : $offset % $this->count();
+        $offset = (null === $offset) ? 1 : $offset % $this->count();
         $this->rotation = array_merge(array_slice($this->rotation, $offset), array_slice($this->rotation, 0, $offset));
     }
 

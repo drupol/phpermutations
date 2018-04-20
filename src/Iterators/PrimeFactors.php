@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class PrimeFactors.
  */
-class PrimeFactors extends Combinatorics implements \Iterator, \Countable
+class PrimeFactors extends Combinatorics implements IteratorInterface
 {
     /**
      * The number.
@@ -50,14 +51,6 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
     /**
      * {@inheritdoc}
      */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function valid()
     {
         return isset($this->factors[$this->key()]);
@@ -83,23 +76,6 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
     }
 
     /**
-     * Convert the iterator into an array.
-     *
-     * @return array
-     *               The elements
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
-    }
-
-    /**
      * Set the number.
      *
      * @param int $number
@@ -119,7 +95,7 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      */
     public function getNumber()
     {
-        return intval($this->number);
+        return (int) $this->number;
     }
 
     /**
@@ -132,9 +108,7 @@ class PrimeFactors extends Combinatorics implements \Iterator, \Countable
      */
     private function getFactors($number)
     {
-        if ($number <= 0) {
-            $factors = [];
-        }
+        $factors = [];
 
         for ($i = 2; $i <= $number / $i; ++$i) {
             while (0 === $number % $i) {

@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\GeneratorInterface;
 
 /**
  * Class Permutations.
  */
-class Permutations extends Combinatorics
+class Permutations extends Combinatorics implements GeneratorInterface
 {
     /**
      * The combinations generator.
@@ -31,12 +32,7 @@ class Permutations extends Combinatorics
     }
 
     /**
-     * Alias of the get() method.
-     *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
-     * @codingStandardsIgnoreEnd
+     * {@inheritdoc}
      */
     public function generator()
     {
@@ -48,10 +44,7 @@ class Permutations extends Combinatorics
     }
 
     /**
-     * Convert the generator into an array.
-     *
-     * @return array
-     *               The elements
+     * {@inheritdoc}
      */
     public function toArray()
     {

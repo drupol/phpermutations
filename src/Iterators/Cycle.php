@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Cycle.
  */
-class Cycle extends Combinatorics implements \Iterator, \Countable
+class Cycle extends Combinatorics implements IteratorInterface
 {
     /**
      * The key.
@@ -15,14 +16,6 @@ class Cycle extends Combinatorics implements \Iterator, \Countable
      * @var int
      */
     protected $key = 0;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function key()
-    {
-        return $this->key;
-    }
 
     /**
      * {@inheritdoc}

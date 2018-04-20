@@ -2,22 +2,28 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Shift as ShiftIterator;
 
 /**
  * Class Shift.
  */
-class Shift extends ShiftIterator
+class Shift extends ShiftIterator implements GeneratorInterface
 {
     /**
-     * Get the generator.
-     *
-     * @return \Generator
-     *                    The generator
+     * {@inheritdoc}
      */
     public function generator()
     {
         return $this->get();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function toArray()
+    {
+        return [];
     }
 
     /**

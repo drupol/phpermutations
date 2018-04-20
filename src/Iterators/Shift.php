@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Shift.
  */
-class Shift extends Combinatorics implements \Iterator, \Countable
+class Shift extends Combinatorics implements IteratorInterface
 {
     /**
      * The key.
@@ -42,18 +43,10 @@ class Shift extends Combinatorics implements \Iterator, \Countable
      */
     public function setLength($length = null)
     {
-        $length = is_null($length) ? $this->datasetCount : $length;
+        $length = (null === $length) ? $this->datasetCount : $length;
         $this->length = (abs($length) > $this->datasetCount) ? $this->datasetCount : $length;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function key()
-    {
-        return $this->key;
     }
 
     /**
@@ -114,8 +107,8 @@ class Shift extends Combinatorics implements \Iterator, \Countable
         }
 
         $this->current = array_merge(
-        array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
-        array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
-      );
+            array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
+            array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
+        );
     }
 }
