@@ -2,12 +2,13 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Prime as PrimeIterator;
 
 /**
  * Class Prime.
  */
-class Prime extends PrimeIterator
+class Prime extends PrimeIterator implements GeneratorInterface
 {
     /**
      * Alias of the get() method.

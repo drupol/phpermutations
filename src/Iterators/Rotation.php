@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Rotation.
  */
-class Rotation extends Combinatorics implements \Iterator, \Countable
+class Rotation extends Combinatorics implements IteratorInterface
 {
     /**
      * The key.

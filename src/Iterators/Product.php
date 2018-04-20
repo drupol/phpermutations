@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Product.
  */
-class Product extends Combinatorics implements \Iterator, \Countable
+class Product extends Combinatorics implements IteratorInterface
 {
     /**
      * The key.

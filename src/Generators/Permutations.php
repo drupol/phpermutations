@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\GeneratorInterface;
 
 /**
  * Class Permutations.
  */
-class Permutations extends Combinatorics
+class Permutations extends Combinatorics implements GeneratorInterface
 {
     /**
      * The combinations generator.

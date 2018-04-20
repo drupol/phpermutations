@@ -2,6 +2,7 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
 
 /**
@@ -10,7 +11,7 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
  *
  * @author Mark Wilson <mark@89allport.co.uk>
  */
-class Combinations extends CombinationsIterator
+class Combinations extends CombinationsIterator implements GeneratorInterface
 {
     /**
      * Alias of the get() method.

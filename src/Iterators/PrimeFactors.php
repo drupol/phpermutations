@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class PrimeFactors.
  */
-class PrimeFactors extends Combinatorics implements \Iterator, \Countable
+class PrimeFactors extends Combinatorics implements IteratorInterface
 {
     /**
      * The number.

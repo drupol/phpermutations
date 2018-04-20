@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Perfect.
  */
-class Perfect extends Combinatorics implements \Iterator, \Countable
+class Perfect extends Combinatorics implements IteratorInterface
 {
     /**
      * The minimum limit.

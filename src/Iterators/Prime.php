@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Prime.
  */
-class Prime extends Combinatorics implements \Iterator, \Countable
+class Prime extends Combinatorics implements IteratorInterface
 {
     /**
      * The minimum limit.

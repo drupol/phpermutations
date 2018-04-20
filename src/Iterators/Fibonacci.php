@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Fibonacci.
  */
-class Fibonacci extends Combinatorics implements \Iterator, \Countable
+class Fibonacci extends Combinatorics implements IteratorInterface
 {
     /**
      * The maximum limit.

@@ -5,7 +5,7 @@ namespace drupol\phpermutations\Iterators;
 /**
  * Class NGrams.
  */
-class NGrams extends Shift implements \Iterator, \Countable
+class NGrams extends Shift
 {
     /**
      * @var

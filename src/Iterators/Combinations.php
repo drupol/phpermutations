@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Combinations.
  */
-class Combinations extends Combinatorics implements \Iterator
+class Combinations extends Combinatorics implements IteratorInterface
 {
     /**
      * The values.

@@ -2,6 +2,7 @@
 
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\FiniteGroup as FiniteGroupIterator;
 
 /**
@@ -9,7 +10,7 @@ use drupol\phpermutations\Iterators\FiniteGroup as FiniteGroupIterator;
  *
  * The finite group is an abelian finite cyclic group.
  */
-class FiniteGroup extends FiniteGroupIterator
+class FiniteGroup extends FiniteGroupIterator implements GeneratorInterface
 {
     /**
      * Alias of the get() method.

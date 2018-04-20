@@ -3,11 +3,12 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class Shift.
  */
-class Shift extends Combinatorics implements \Iterator, \Countable
+class Shift extends Combinatorics implements IteratorInterface
 {
     /**
      * The key.

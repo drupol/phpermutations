@@ -3,13 +3,14 @@
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
+use drupol\phpermutations\IteratorInterface;
 
 /**
  * Class FiniteGroup.
  *
  * The finite group is an abelian finite cyclic group.
  */
-class FiniteGroup extends Combinatorics implements \Iterator, \Countable
+class FiniteGroup extends Combinatorics implements IteratorInterface
 {
     /**
      * The group size.
