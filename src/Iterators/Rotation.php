@@ -52,7 +52,7 @@ class Rotation extends Combinatorics implements IteratorInterface
      */
     public function next($offset = 1)
     {
-        $offset = is_null($offset) ? 1 : $offset % $this->count();
+        $offset = (null === $offset) ? 1 : $offset % $this->count();
         $this->rotation = array_merge(array_slice($this->rotation, $offset), array_slice($this->rotation, 0, $offset));
     }
 

@@ -53,7 +53,7 @@ abstract class Combinatorics implements \Countable
      */
     public function setLength($length = null)
     {
-        $length = is_null($length) ? $this->datasetCount : $length;
+        $length = (null === $length) ? $this->datasetCount : $length;
         $this->length = ($length > $this->datasetCount) ? $this->datasetCount : $length;
 
         return $this;

@@ -43,7 +43,7 @@ class Shift extends Combinatorics implements IteratorInterface
      */
     public function setLength($length = null)
     {
-        $length = is_null($length) ? $this->datasetCount : $length;
+        $length = (null === $length) ? $this->datasetCount : $length;
         $this->length = (abs($length) > $this->datasetCount) ? $this->datasetCount : $length;
 
         return $this;
@@ -107,8 +107,8 @@ class Shift extends Combinatorics implements IteratorInterface
         }
 
         $this->current = array_merge(
-        array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
-        array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
-      );
+            array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
+            array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
+        );
     }
 }

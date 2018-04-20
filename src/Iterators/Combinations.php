@@ -44,6 +44,7 @@ class Combinations extends Combinatorics implements IteratorInterface
     public function current()
     {
         $r = [];
+
         for ($i = 0; $i < $this->length; ++$i) {
             $r[] = $this->dataset[$this->c[$i]];
         }
@@ -101,9 +102,11 @@ class Combinations extends Combinatorics implements IteratorInterface
         while ($i >= 0 && $this->c[$i] === $this->datasetCount - $this->length + $i) {
             --$i;
         }
+
         if ($i < 0) {
             return false;
         }
+
         ++$this->c[$i];
         while ($i++ < $this->length - 1) {
             $this->c[$i] = $this->c[$i - 1] + 1;

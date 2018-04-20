@@ -44,6 +44,7 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     public function __construct()
     {
         $this->setMaxLimit(PHP_INT_MAX);
+        parent::__construct([], null);
     }
 
     /**
@@ -100,6 +101,6 @@ class Fibonacci extends Combinatorics implements IteratorInterface
      */
     public function getMaxLimit()
     {
-        return intval($this->max);
+        return (int) $this->max;
     }
 }

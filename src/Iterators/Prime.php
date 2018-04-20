@@ -38,6 +38,7 @@ class Prime extends Combinatorics implements IteratorInterface
     {
         $this->setMaxLimit(PHP_INT_MAX);
         $this->setMinLimit(0);
+        parent::__construct([], null);
     }
 
     /**
@@ -99,7 +100,7 @@ class Prime extends Combinatorics implements IteratorInterface
      */
     public function getMaxLimit()
     {
-        return intval($this->max);
+        return (int) $this->max;
     }
 
     /**
@@ -121,7 +122,7 @@ class Prime extends Combinatorics implements IteratorInterface
      */
     public function getMinLimit()
     {
-        return $this->min <= 2 ? 2 : intval($this->min);
+        return $this->min <= 2 ? 2 : (int) $this->min;
     }
 
     /**

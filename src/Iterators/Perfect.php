@@ -38,6 +38,7 @@ class Perfect extends Combinatorics implements IteratorInterface
     {
         $this->setMaxLimit(PHP_INT_MAX);
         $this->setMinLimit(2);
+        parent::__construct([], null);
     }
 
     /**
@@ -99,7 +100,7 @@ class Perfect extends Combinatorics implements IteratorInterface
      */
     public function getMaxLimit()
     {
-        return intval($this->max);
+        return (int) $this->max;
     }
 
     /**

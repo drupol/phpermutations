@@ -95,7 +95,7 @@ class PrimeFactors extends Combinatorics implements IteratorInterface
      */
     public function getNumber()
     {
-        return intval($this->number);
+        return (int) $this->number;
     }
 
     /**
@@ -108,9 +108,7 @@ class PrimeFactors extends Combinatorics implements IteratorInterface
      */
     private function getFactors($number)
     {
-        if ($number <= 0) {
-            $factors = [];
-        }
+        $factors = [];
 
         for ($i = 2; $i <= $number / $i; ++$i) {
             while (0 === $number % $i) {

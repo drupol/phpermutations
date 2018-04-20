@@ -105,7 +105,7 @@ class FiniteGroup extends Combinatorics implements IteratorInterface
      */
     public function getSize()
     {
-        return intval($this->size);
+        return (int) $this->size;
     }
 
     /**
@@ -122,7 +122,7 @@ class FiniteGroup extends Combinatorics implements IteratorInterface
         $result = [];
 
         foreach (range(1, $this->getSize() - 1) as $number) {
-            $value = pow($generator, $number) % $this->getSize();
+            $value = ($generator ** $number) % $this->getSize();
             $result[$value] = $value;
         }
 
