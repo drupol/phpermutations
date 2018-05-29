@@ -29,7 +29,8 @@ class CombinationsTest extends AbstractTest
 
         $this->assertEquals($input['dataset'], $combinations->getDataset());
         $this->assertEquals($input['length'], $combinations->getLength());
-        $this->assertEquals(count($input['dataset']), count($combinations->getDataset()));
+        $this->assertCount(count($input['dataset']),
+            $combinations->getDataset());
         $this->assertEquals(
             $expected['dataset'],
             $combinations->toArray(),
@@ -39,5 +40,16 @@ class CombinationsTest extends AbstractTest
             $canonicalize = true
         );
         $this->assertEquals($expected['count'], $combinations->count());
+    }
+
+    /**
+     * Test combinations with big numbers.
+     *
+     * @see https://github.com/drupol/phpermutations/issues/10
+     */
+    public function testCombinationsWithBigNumbers()
+    {
+        $combinations = new Combinations(range(1, 200), 2);
+        $this->assertCount($combinations->count(), $combinations->toArray());
     }
 }
