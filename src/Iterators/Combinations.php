@@ -86,8 +86,13 @@ class Combinations extends Combinatorics implements IteratorInterface
      */
     public function count()
     {
-        return $this->fact(count($this->getDataset())) /
-          ($this->fact($this->getLength()) * $this->fact(count($this->getDataset()) - $this->getLength()));
+        $i = 0;
+
+        for ($this->rewind(); $this->valid(); $this->next()) {
+            ++$i;
+        }
+
+        return $i;
     }
 
     /**
