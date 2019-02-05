@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\GeneratorInterface;

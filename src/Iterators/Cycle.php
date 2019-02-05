@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
@@ -16,6 +18,14 @@ class Cycle extends Combinatorics implements IteratorInterface
      * @var int
      */
     protected $key = 0;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function count()
+    {
+        return \count($this->getDataset());
+    }
 
     /**
      * {@inheritdoc}
@@ -47,13 +57,5 @@ class Cycle extends Combinatorics implements IteratorInterface
     public function valid()
     {
         return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function count()
-    {
-        return count($this->getDataset());
     }
 }

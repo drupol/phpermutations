@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Rotation;
@@ -7,8 +9,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class RotationTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class RotationTest extends AbstractTest
+final class RotationTest extends AbstractTest
 {
     /**
      * The type.
@@ -28,13 +33,13 @@ class RotationTest extends AbstractTest
         $rotation = new Rotation($input['dataset']);
 
         $input += [
-        'turn' => null,
+            'turn' => null,
         ];
         $rotation->next($input['turn']);
         $this->assertSame($expected['dataset'], $rotation->current());
 
         $rotation->rewind();
         $this->assertSame($input['dataset'], $rotation->current());
-        $this->assertEquals(count($input['dataset']), $rotation->count());
+        $this->assertSame(\count($input['dataset']), $rotation->count());
     }
 }

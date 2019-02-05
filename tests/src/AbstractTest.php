@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -43,13 +45,13 @@ abstract class AbstractTest extends TestCase
         $data = [];
 
         $finder = new Finder();
-        $finder->files()->in(realpath(__DIR__ . '/../fixtures'));
+        $finder->files()->in(\realpath(__DIR__ . '/../fixtures'));
         foreach ($finder as $file) {
-            $type = basename($file->getRelativePathname(), '.yml');
+            $type = \basename($file->getRelativePathname(), '.yml');
             $data[$type] = [
-            'file' => $file->getRelativePathname(),
-            'type' => basename($file->getRelativePathname(), '.yml'),
-            'content' => Yaml::parse($file->getContents()),
+                'file' => $file->getRelativePathname(),
+                'type' => \basename($file->getRelativePathname(), '.yml'),
+                'content' => Yaml::parse($file->getContents()),
             ];
         }
 

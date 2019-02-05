@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Shift;
@@ -7,8 +9,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class ShiftTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class ShiftTest extends AbstractTest
+final class ShiftTest extends AbstractTest
 {
     /**
      * The type.
@@ -30,9 +35,9 @@ class ShiftTest extends AbstractTest
         for ($i = 0; $i < $input['turn']; ++$i) {
             $shift->next();
         }
-        $this->assertEquals($expected['current'], $shift->current());
+        $this->assertSame($expected['current'], $shift->current());
 
-        $this->assertEquals($input['dataset'], $shift->getDataset());
-        $this->assertEquals($expected['count'], $shift->count());
+        $this->assertSame($input['dataset'], $shift->getDataset());
+        $this->assertSame($expected['count'], $shift->count());
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Iterators\PrimeFactors;
@@ -7,8 +9,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class PrimeFactorsTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class PrimeFactorsTest extends AbstractTest
+final class PrimeFactorsTest extends AbstractTest
 {
     /**
      * The type.
@@ -28,7 +33,7 @@ class PrimeFactorsTest extends AbstractTest
         $prime = new PrimeFactors();
         $prime->setNumber($input['number']);
 
-        $this->assertEquals($expected['count'], $prime->count());
+        $this->assertSame($expected['count'], $prime->count());
         $this->assertEquals(
             $expected['dataset'],
             $prime->toArray(),

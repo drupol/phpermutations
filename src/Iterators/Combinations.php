@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
@@ -29,13 +31,27 @@ class Combinations extends Combinatorics implements IteratorInterface
      *
      * @param array    $dataset
      *                          The dataset
-     * @param int|null $length
+     * @param null|int $length
      *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
-        parent::__construct(array_values($dataset), $length);
+        parent::__construct(\array_values($dataset), $length);
         $this->rewind();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function count()
+    {
+        $i = 0;
+
+        for ($this->rewind(); $this->valid(); $this->next()) {
+            ++$i;
+        }
+
+        return $i;
     }
 
     /**
@@ -69,7 +85,7 @@ class Combinations extends Combinatorics implements IteratorInterface
      */
     public function rewind()
     {
-        $this->c = range(0, $this->length);
+        $this->c = \range(0, $this->length);
         $this->key = 0;
     }
 
@@ -78,21 +94,7 @@ class Combinations extends Combinatorics implements IteratorInterface
      */
     public function valid()
     {
-        return $this->key >= 0;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function count()
-    {
-        $i = 0;
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            ++$i;
-        }
-
-        return $i;
+        return 0 <= $this->key;
     }
 
     /**
@@ -104,16 +106,16 @@ class Combinations extends Combinatorics implements IteratorInterface
     protected function nextHelper()
     {
         $i = $this->length - 1;
-        while ($i >= 0 && $this->c[$i] === $this->datasetCount - $this->length + $i) {
+        while (0 <= $i && $this->datasetCount - $this->length + $i === $this->c[$i]) {
             --$i;
         }
 
-        if ($i < 0) {
+        if (0 > $i) {
             return false;
         }
 
         ++$this->c[$i];
-        while ($i++ < $this->length - 1) {
+        while ($this->length - 1 > $i++) {
             $this->c[$i] = $this->c[$i - 1] + 1;
         }
 

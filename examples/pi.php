@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
  * Find the number pi (3.1415926535898 => M_PI constant in PHP).
  *
@@ -32,7 +34,7 @@ include './vendor/autoload.php';
 
 $Fibonacci = new \drupol\phpermutations\Generators\Fibonacci();
 
-for ($i = 2; $i <= 50; $i = $i + 2) {
+for ($i = 2; 50 >= $i; $i = $i + 2) {
     $gen = $Fibonacci->generator();
 
     $input = [];
@@ -41,9 +43,9 @@ for ($i = 2; $i <= 50; $i = $i + 2) {
         $gen->next();
     }
 
-    $input = array_sum(array_filter(array_map(function ($item) {
-        return 4 * atan(1 / $item);
-    }, array_slice($input, 3)), function ($key) {
+    $input = \array_sum(\array_filter(\array_map(function ($item) {
+        return 4 * \atan(1 / $item);
+    }, \array_slice($input, 3)), function ($key) {
         return !($key % 2);
     }, ARRAY_FILTER_USE_KEY));
 

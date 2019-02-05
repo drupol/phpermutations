@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\GeneratorInterface;
@@ -29,7 +31,7 @@ class Prime extends PrimeIterator implements GeneratorInterface
      */
     protected function get()
     {
-        for ($j = 2; $j <= $this->getMaxLimit(); ++$j) {
+        for ($j = 2; $this->getMaxLimit() >= $j; ++$j) {
             if ($this->isPrimeNumber($j)) {
                 yield $j;
             }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Generators\Permutations;
@@ -7,8 +9,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class PermutationsTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class PermutationsTest extends AbstractTest
+final class PermutationsTest extends AbstractTest
 {
     /**
      * The type.
@@ -28,9 +33,9 @@ class PermutationsTest extends AbstractTest
     {
         $generator = new Permutations($input['dataset'], $input['length']);
 
-        $this->assertEquals($input['dataset'], $generator->getDataset());
-        $this->assertEquals($input['length'], $generator->getLength());
-        $this->assertEquals($expected['count'], $generator->count());
+        $this->assertSame($input['dataset'], $generator->getDataset());
+        $this->assertSame($input['length'], $generator->getLength());
+        $this->assertSame($expected['count'], $generator->count());
         $this->assertEquals(
             $expected['dataset'],
             $generator->toArray(),

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\NGrams;
@@ -7,8 +9,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class NgramsTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class NgramsTest extends AbstractTest
+final class NgramsTest extends AbstractTest
 {
     /**
      * The type.
@@ -30,9 +35,9 @@ class NgramsTest extends AbstractTest
         for ($i = 0; $i < $input['turn']; ++$i) {
             $ngrams->next();
         }
-        $this->assertEquals($expected['current'], $ngrams->current());
+        $this->assertSame($expected['current'], $ngrams->current());
 
-        $this->assertEquals($input['dataset'], $ngrams->getDataset());
-        $this->assertEquals($expected['count'], $ngrams->count());
+        $this->assertSame($input['dataset'], $ngrams->getDataset());
+        $this->assertSame($expected['count'], $ngrams->count());
     }
 }

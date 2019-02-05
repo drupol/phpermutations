@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations;
 
 /**
@@ -22,6 +24,13 @@ abstract class Combinatorics implements \Countable
     protected $datasetCount;
 
     /**
+     * The key.
+     *
+     * @var int
+     */
+    protected $key;
+
+    /**
      * The length.
      *
      * @var int
@@ -33,30 +42,36 @@ abstract class Combinatorics implements \Countable
      *
      * @param array    $dataset
      *                          The dataset
-     * @param int|null $length
+     * @param null|int $length
      *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
         $this->setDataset($dataset);
-        $this->datasetCount = count($this->dataset);
+        $this->datasetCount = \count($this->dataset);
         $this->setLength($length);
     }
 
     /**
-     * Set the length.
+     * Count elements of an object.
      *
-     * @param int $length
-     *                    The length
-     *
-     * @return $this
+     * @return int
+     *             The number of element
      */
-    public function setLength($length = null)
+    public function count()
     {
-        $length = (null === $length) ? $this->datasetCount : $length;
-        $this->length = ($length > $this->datasetCount) ? $this->datasetCount : $length;
+        return \count($this->toArray());
+    }
 
-        return $this;
+    /**
+     * Get the dataset.
+     *
+     * @return mixed[]
+     *                 The dataset
+     */
+    public function getDataset()
+    {
+        return $this->dataset;
     }
 
     /**
@@ -68,6 +83,14 @@ abstract class Combinatorics implements \Countable
     public function getLength()
     {
         return (int) $this->length;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function key()
+    {
+        return $this->key;
     }
 
     /**
@@ -86,25 +109,19 @@ abstract class Combinatorics implements \Countable
     }
 
     /**
-     * Get the dataset.
+     * Set the length.
      *
-     * @return mixed[]
-     *                 The dataset
+     * @param int $length
+     *                    The length
+     *
+     * @return $this
      */
-    public function getDataset()
+    public function setLength($length = null)
     {
-        return $this->dataset;
-    }
+        $length = $length ?? $this->datasetCount;
+        $this->length = ($length > $this->datasetCount) ? $this->datasetCount : $length;
 
-    /**
-     * Count elements of an object.
-     *
-     * @return int
-     *             The number of element
-     */
-    public function count()
-    {
-        return count($this->toArray());
+        return $this;
     }
 
     /**
@@ -125,14 +142,6 @@ abstract class Combinatorics implements \Countable
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function key()
-    {
-        return $this->key;
-    }
-
-    /**
      * Compute the factorial of an integer.
      *
      * @param int $n
@@ -145,6 +154,6 @@ abstract class Combinatorics implements \Countable
      */
     protected function fact($n, $total = 1)
     {
-        return ($n < 2) ? $total : $this->fact($n - 1, $total * $n);
+        return (2 > $n) ? $total : $this->fact($n - 1, $total * $n);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
@@ -11,18 +13,17 @@ use drupol\phpermutations\IteratorInterface;
 class Shift extends Combinatorics implements IteratorInterface
 {
     /**
-     * The key.
-     *
-     * @var int
-     */
-    protected $key = 0;
-
-    /**
      * A copy of the dataset at a give time.
      *
      * @var array
      */
     protected $current;
+    /**
+     * The key.
+     *
+     * @var int
+     */
+    protected $key = 0;
 
     /**
      * Shift constructor.
@@ -41,12 +42,9 @@ class Shift extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function setLength($length = null)
+    public function count()
     {
-        $length = (null === $length) ? $this->datasetCount : $length;
-        $this->length = (abs($length) > $this->datasetCount) ? $this->datasetCount : $length;
-
-        return $this;
+        return \count($this->getDataset());
     }
 
     /**
@@ -76,17 +74,20 @@ class Shift extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function valid()
+    public function setLength($length = null)
     {
-        return true;
+        $length = (null === $length) ? $this->datasetCount : $length;
+        $this->length = (\abs($length) > $this->datasetCount) ? $this->datasetCount : $length;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function valid()
     {
-        return count($this->getDataset());
+        return true;
     }
 
     /**
@@ -98,17 +99,17 @@ class Shift extends Combinatorics implements IteratorInterface
     {
         $parameters = [];
 
-        if ($length < 0) {
-            $parameters[] = ['start' => abs($length), 'end' => null];
-            $parameters[] = ['start' => 0, 'end' => abs($length)];
+        if (0 > $length) {
+            $parameters[] = ['start' => \abs($length), 'end' => null];
+            $parameters[] = ['start' => 0, 'end' => \abs($length)];
         } else {
             $parameters[] = ['start' => -1 * $length, 'end' => null];
             $parameters[] = ['start' => 0, 'end' => $this->datasetCount + $length * -1];
         }
 
-        $this->current = array_merge(
-            array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
-            array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
+        $this->current = \array_merge(
+            \array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
+            \array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
         );
     }
 }

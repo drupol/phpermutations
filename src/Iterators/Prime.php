@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
@@ -11,11 +13,11 @@ use drupol\phpermutations\IteratorInterface;
 class Prime extends Combinatorics implements IteratorInterface
 {
     /**
-     * The minimum limit.
+     * The key.
      *
      * @var int
      */
-    protected $min;
+    protected $key;
 
     /**
      * The maximum limit.
@@ -23,13 +25,12 @@ class Prime extends Combinatorics implements IteratorInterface
      * @var int
      */
     protected $max;
-
     /**
-     * The key.
+     * The minimum limit.
      *
      * @var int
      */
-    protected $key;
+    protected $min;
 
     /**
      * Prime constructor.
@@ -46,7 +47,7 @@ class Prime extends Combinatorics implements IteratorInterface
      */
     public function current()
     {
-        for ($i = $this->key(); $i < $this->getMaxLimit(); ++$i) {
+        for ($i = $this->key(); $this->getMaxLimit() > $i; ++$i) {
             if ($this->isPrimeNumber($i)) {
                 $this->key = $i;
 
@@ -58,19 +59,33 @@ class Prime extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get the maximum limit.
+     *
+     * @return int
+     *             The limit
      */
-    public function next()
+    public function getMaxLimit()
     {
-        ++$this->key;
+        return (int) $this->max;
+    }
+
+    /**
+     * Get the minimum limit.
+     *
+     * @return int
+     *             The limit
+     */
+    public function getMinLimit()
+    {
+        return 2 >= $this->min ? 2 : (int) $this->min;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function valid()
+    public function next()
     {
-        return $this->current() < $this->getMaxLimit();
+        ++$this->key;
     }
 
     /**
@@ -93,17 +108,6 @@ class Prime extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * Get the maximum limit.
-     *
-     * @return int
-     *             The limit
-     */
-    public function getMaxLimit()
-    {
-        return (int) $this->max;
-    }
-
-    /**
      * Set the minimum limit.
      *
      * @param int $min
@@ -115,14 +119,11 @@ class Prime extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * Get the minimum limit.
-     *
-     * @return int
-     *             The limit
+     * {@inheritdoc}
      */
-    public function getMinLimit()
+    public function valid()
     {
-        return $this->min <= 2 ? 2 : (int) $this->min;
+        return $this->current() < $this->getMaxLimit();
     }
 
     /**
@@ -136,7 +137,7 @@ class Prime extends Combinatorics implements IteratorInterface
      */
     protected function isPrimeNumber($number)
     {
-        $number = abs($number);
+        $number = \abs($number);
 
         // 2 is an exception.
         if (2 === $number) {
@@ -148,7 +149,7 @@ class Prime extends Combinatorics implements IteratorInterface
             return false;
         }
 
-        $sqrtNumber = sqrt($number);
+        $sqrtNumber = \sqrt($number);
         for ($divisor = 3; $divisor <= $sqrtNumber; $divisor += 2) {
             if (0 === $number % $divisor) {
                 return false;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Combinatorics;
@@ -11,18 +13,17 @@ use drupol\phpermutations\IteratorInterface;
 class Fibonacci extends Combinatorics implements IteratorInterface
 {
     /**
+     * The current key.
+     *
+     * @var int
+     */
+    protected $key = 0;
+    /**
      * The maximum limit.
      *
      * @var int
      */
     protected $max;
-
-    /**
-     * The previous element.
-     *
-     * @var int
-     */
-    private $previous = 1;
 
     /**
      * The current element.
@@ -32,11 +33,11 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     private $current = 0;
 
     /**
-     * The current key.
+     * The previous element.
      *
      * @var int
      */
-    private $key = 0;
+    private $previous = 1;
 
     /**
      * Fibonacci constructor.
@@ -44,7 +45,8 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     public function __construct()
     {
         $this->setMaxLimit(PHP_INT_MAX);
-        parent::__construct([], null);
+
+        parent::__construct();
     }
 
     /**
@@ -53,6 +55,17 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     public function current()
     {
         return $this->current;
+    }
+
+    /**
+     * Get the maximum limit.
+     *
+     * @return int
+     *             The limit
+     */
+    public function getMaxLimit()
+    {
+        return (int) $this->max;
     }
 
     /**
@@ -75,14 +88,6 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function valid()
-    {
-        return $this->current < $this->getMaxLimit();
-    }
-
-    /**
      * Set the maximum limit.
      *
      * @param int $max
@@ -94,13 +99,10 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * Get the maximum limit.
-     *
-     * @return int
-     *             The limit
+     * {@inheritdoc}
      */
-    public function getMaxLimit()
+    public function valid()
     {
-        return (int) $this->max;
+        return $this->getMaxLimit() > $this->current;
     }
 }
