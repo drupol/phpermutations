@@ -25,5 +25,4 @@ script:
   - composer grumphp
 
 after_success:
-  - phpenv config-rm xdebug.ini
-  - composer scrutinizer
+  - bash <(curl -s https://codecov.io/bash) -f build/logs/clover.xml

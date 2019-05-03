@@ -1,5 +1,11 @@
+[![Latest Stable Version](https://img.shields.io/packagist/v/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
+ [![GitHub stars](https://img.shields.io/github/stars/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
+ [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
+ [![Build Status](https://img.shields.io/travis/drupol/phpermutations/master.svg?style=flat-square)](https://travis-ci.org/drupol/phpermutations)
+ ![Code Coverage](https://img.shields.io/codecov/c/github/drupol/phpermutations.svg?style=flat-square)
+ [![License](https://img.shields.io/packagist/l/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
+
 ## PHPermutations
-[![Build Status](https://travis-ci.org/drupol/phpermutations.svg?branch=master)](https://travis-ci.org/drupol/phpermutations) [![Code Coverage](https://scrutinizer-ci.com/g/drupol/phpermutations/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/drupol/phpermutations/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/drupol/phpermutations/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/drupol/phpermutations/?branch=master) [![Dependency Status](https://www.versioneye.com/user/projects/5870ade140543803e80abb5b/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/5870ade140543803e80abb5b)
 
 PHP Iterators and Generators to generate combinations and permutations in an efficient way.
 
