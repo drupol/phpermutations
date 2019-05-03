@@ -60,3 +60,4 @@ fabric.properties
 /.php_cs.cache
 /composer.lock
 /test.php
+/build/

@@ -2,7 +2,7 @@
  [![GitHub stars](https://img.shields.io/github/stars/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
  [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
  [![Build Status](https://img.shields.io/travis/drupol/phpermutations/master.svg?style=flat-square)](https://travis-ci.org/drupol/phpermutations)
- ![Code Coverage](https://img.shields.io/codecov/c/github/drupol/phpermutations.svg?style=flat-square)
+ [![Code Coverage](https://img.shields.io/codecov/c/github/drupol/phpermutations.svg?style=flat-square)](https://codecov.io/gh/drupol/phpermutations)
  [![License](https://img.shields.io/packagist/l/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
 
 ## PHPermutations
