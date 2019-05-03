@@ -8,7 +8,6 @@ use drupol\phpermutations\Iterators\Combinations as CombinationsIterator;
 /**
  * Class Combinations.
  *
- *
  * @author Mark Wilson <mark@89allport.co.uk>
  */
 class Combinations extends CombinationsIterator implements GeneratorInterface
@@ -19,20 +18,6 @@ class Combinations extends CombinationsIterator implements GeneratorInterface
     public function generator()
     {
         return $this->get($this->getDataset(), $this->getLength());
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        foreach ($this->generator() as $value) {
-            $data[] = $value;
-        }
-
-        return $data;
     }
 
     /**
@@ -50,16 +35,16 @@ class Combinations extends CombinationsIterator implements GeneratorInterface
      */
     protected function get(array $dataset, $length)
     {
-        $originalLength = count($dataset);
+        $originalLength = \count($dataset);
         $remainingLength = $originalLength - $length + 1;
         for ($i = 0; $i < $remainingLength; ++$i) {
             $current = $dataset[$i];
             if (1 === $length) {
                 yield [$current];
             } else {
-                $remaining = array_slice($dataset, $i + 1);
+                $remaining = \array_slice($dataset, $i + 1);
                 foreach ($this->get($remaining, $length - 1) as $permutation) {
-                    array_unshift($permutation, $current);
+                    \array_unshift($permutation, $current);
                     yield $permutation;
                 }
             }

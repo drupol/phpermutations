@@ -2,5 +2,5 @@
     input:
       size: 10
     output:
-      dataset: [1, 2, 4, 5, 7, 8]
-      count: 6
+      dataset: [1, 3, 7, 9]
+      count: 4

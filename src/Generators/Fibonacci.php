@@ -31,7 +31,7 @@ class Fibonacci extends FibonacciIterator implements GeneratorInterface
         $a = 0;
         $b = 1;
         $to = $this->getMaxLimit();
-        while ($to > 0) {
+        while (0 < $to) {
             yield $a;
 
             list($a, $b) = [$b, $a + $b];

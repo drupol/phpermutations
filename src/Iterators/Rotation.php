@@ -2,21 +2,13 @@
 
 namespace drupol\phpermutations\Iterators;
 
-use drupol\phpermutations\Combinatorics;
-use drupol\phpermutations\IteratorInterface;
+use drupol\phpermutations\Iterators;
 
 /**
  * Class Rotation.
  */
-class Rotation extends Combinatorics implements IteratorInterface
+class Rotation extends Iterators
 {
-    /**
-     * The key.
-     *
-     * @var int
-     */
-    protected $key = 0;
-
     /**
      * A copy of the original data.
      *
@@ -39,6 +31,14 @@ class Rotation extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
+    public function count()
+    {
+        return \count($this->getDataset());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function current()
     {
         return $this->rotation;
@@ -47,13 +47,23 @@ class Rotation extends Combinatorics implements IteratorInterface
     /**
      * Compute the next value of the Iterator.
      *
-     * @param int $offset
+     * @param null|int $offset
      *                    The offset
      */
     public function next($offset = 1)
     {
         $offset = (null === $offset) ? 1 : $offset % $this->count();
-        $this->rotation = array_merge(array_slice($this->rotation, $offset), array_slice($this->rotation, 0, $offset));
+        $this->rotation = \array_merge(
+            \array_slice(
+                $this->rotation,
+                $offset
+            ),
+            \array_slice(
+                $this->rotation,
+                0,
+                $offset
+            )
+        );
     }
 
     /**
@@ -70,13 +80,5 @@ class Rotation extends Combinatorics implements IteratorInterface
     public function valid()
     {
         return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function count()
-    {
-        return count($this->getDataset());
     }
 }

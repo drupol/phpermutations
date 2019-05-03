@@ -22,13 +22,21 @@ class Permutations extends Combinatorics implements GeneratorInterface
      *
      * @param array    $dataset
      *                          The dataset
-     * @param int|null $length
+     * @param null|int $length
      *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
         parent::__construct($dataset, $length);
         $this->combinations = new Combinations($dataset, $this->getLength());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function count()
+    {
+        return $this->combinations->count() * $this->fact($this->getLength());
     }
 
     /**
@@ -58,14 +66,6 @@ class Permutations extends Combinatorics implements GeneratorInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function count()
-    {
-        return $this->combinations->count() * $this->fact($this->getLength());
-    }
-
-    /**
      * The permutations generator.
      *
      * @param array $dataset
@@ -80,14 +80,17 @@ class Permutations extends Combinatorics implements GeneratorInterface
     {
         foreach ($dataset as $key => $firstItem) {
             $remaining = $dataset;
-            array_splice($remaining, $key, 1);
-            if (0 === count($remaining)) {
+
+            \array_splice($remaining, $key, 1);
+
+            if (0 === \count($remaining)) {
                 yield [$firstItem];
 
                 continue;
             }
+
             foreach ($this->get($remaining) as $permutation) {
-                array_unshift($permutation, $firstItem);
+                \array_unshift($permutation, $firstItem);
                 yield $permutation;
             }
         }

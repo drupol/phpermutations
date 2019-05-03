@@ -2,14 +2,18 @@
 
 namespace drupol\phpermutations\Iterators;
 
-use drupol\phpermutations\Combinatorics;
-use drupol\phpermutations\IteratorInterface;
+use drupol\phpermutations\Iterators;
 
 /**
  * Class Fibonacci.
  */
-class Fibonacci extends Combinatorics implements IteratorInterface
+class Fibonacci extends Iterators
 {
+    /**
+     * @var int
+     */
+    protected $current;
+
     /**
      * The maximum limit.
      *
@@ -25,34 +29,23 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     private $previous = 1;
 
     /**
-     * The current element.
-     *
-     * @var int
-     */
-    private $current = 0;
-
-    /**
-     * The current key.
-     *
-     * @var int
-     */
-    private $key = 0;
-
-    /**
      * Fibonacci constructor.
      */
     public function __construct()
     {
         $this->setMaxLimit(PHP_INT_MAX);
-        parent::__construct([], null);
+        parent::__construct();
     }
 
     /**
-     * {@inheritdoc}
+     * Get the maximum limit.
+     *
+     * @return int
+     *             The limit
      */
-    public function current()
+    public function getMaxLimit()
     {
-        return $this->current;
+        return (int) $this->max;
     }
 
     /**
@@ -75,14 +68,6 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function valid()
-    {
-        return $this->current < $this->getMaxLimit();
-    }
-
-    /**
      * Set the maximum limit.
      *
      * @param int $max
@@ -94,13 +79,10 @@ class Fibonacci extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * Get the maximum limit.
-     *
-     * @return int
-     *             The limit
+     * {@inheritdoc}
      */
-    public function getMaxLimit()
+    public function valid()
     {
-        return (int) $this->max;
+        return $this->getMaxLimit() > $this->current;
     }
 }

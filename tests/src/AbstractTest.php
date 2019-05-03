@@ -25,7 +25,8 @@ abstract class AbstractTest extends TestCase
     public function dataProvider()
     {
         $fixtures = $this->fixtureProvider();
-        if (null !== $this::TYPE && $fixtures[$this::TYPE]['content']) {
+
+        if (isset($fixtures[$this::TYPE]['content'])) {
             return $fixtures[$this::TYPE]['content'];
         }
 
@@ -42,15 +43,17 @@ abstract class AbstractTest extends TestCase
     {
         $data = [];
 
-        $finder = new Finder();
-        $finder->files()->in(realpath(__DIR__ . '/../fixtures'));
-        foreach ($finder as $file) {
-            $type = basename($file->getRelativePathname(), '.yml');
-            $data[$type] = [
-            'file' => $file->getRelativePathname(),
-            'type' => basename($file->getRelativePathname(), '.yml'),
-            'content' => Yaml::parse($file->getContents()),
-            ];
+        $path = \realpath(__DIR__ . '/../fixtures');
+
+        if (false !== $path) {
+            foreach ((new Finder())->files()->in($path) as $file) {
+                $type = \basename($file->getRelativePathname(), '.yml');
+                $data[$type] = [
+                    'file' => $file->getRelativePathname(),
+                    'type' => \basename($file->getRelativePathname(), '.yml'),
+                    'content' => Yaml::parse($file->getContents()),
+                ];
+            }
         }
 
         return $data;

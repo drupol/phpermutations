@@ -15,21 +15,7 @@ class Prime extends PrimeIterator implements GeneratorInterface
      */
     public function generator()
     {
-        return $this->get();
-    }
-
-    /**
-     * The generator.
-     *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
-     *                    The prime generator
-     * @codingStandardsIgnoreEnd
-     */
-    protected function get()
-    {
-        for ($j = 2; $j <= $this->getMaxLimit(); ++$j) {
+        for ($j = 2; $this->getMaxLimit() >= $j; ++$j) {
             if ($this->isPrimeNumber($j)) {
                 yield $j;
             }

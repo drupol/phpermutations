@@ -34,7 +34,6 @@ objects), the library will still continue to work without any trouble.
 ## Requirements
 
 * PHP >= 5.6,
-* (optional) [PHPUnit](https://phpunit.de/) to run tests.
 
 ## How to use
 

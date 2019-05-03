@@ -7,8 +7,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class CombinationsTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class CombinationsTest extends AbstractTest
+final class CombinationsTest extends AbstractTest
 {
     /**
      * The type.
@@ -27,10 +30,12 @@ class CombinationsTest extends AbstractTest
     {
         $combinations = new Combinations($input['dataset'], $input['length']);
 
-        $this->assertEquals($input['dataset'], $combinations->getDataset());
-        $this->assertEquals($input['length'], $combinations->getLength());
-        $this->assertCount(count($input['dataset']),
-            $combinations->getDataset());
+        $this->assertSame($input['dataset'], $combinations->getDataset());
+        $this->assertSame($input['length'], $combinations->getLength());
+        $this->assertCount(
+            \count($input['dataset']),
+            $combinations->getDataset()
+        );
         $this->assertEquals(
             $expected['dataset'],
             $combinations->toArray(),
@@ -39,7 +44,7 @@ class CombinationsTest extends AbstractTest
             $maxDepth = 10,
             $canonicalize = true
         );
-        $this->assertEquals($expected['count'], $combinations->count());
+        $this->assertSame($expected['count'], $combinations->count());
     }
 
     /**
@@ -49,7 +54,7 @@ class CombinationsTest extends AbstractTest
      */
     public function testCombinationsWithBigNumbers()
     {
-        $combinations = new Combinations(range(1, 200), 2);
+        $combinations = new Combinations(\range(1, 200), 2);
         $this->assertCount($combinations->count(), $combinations->toArray());
     }
 }

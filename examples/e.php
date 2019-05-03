@@ -21,8 +21,8 @@
  */
 include './vendor/autoload.php';
 
-for ($i = 2; $i < 15; ++$i) {
-    $input = range(1, $i);
+for ($i = 2; 15 > $i; ++$i) {
+    $input = \range(1, $i);
     $size = $i;
 
     echo '**********************************************************' . "\n";
@@ -32,7 +32,7 @@ for ($i = 2; $i < 15; ++$i) {
 
     $j = 0;
     foreach ($Permutations->generator() as $permutation) {
-        if (!($array3 = array_intersect_assoc($input, $permutation))) {
+        if (!($array3 = \array_intersect_assoc($input, $permutation))) {
             ++$j;
         }
     }

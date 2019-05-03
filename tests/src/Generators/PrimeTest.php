@@ -7,8 +7,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class PrimeTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class PrimeTest extends AbstractTest
+final class PrimeTest extends AbstractTest
 {
     /**
      * The type.
@@ -29,14 +32,14 @@ class PrimeTest extends AbstractTest
         $prime->setMinLimit($input['min']);
         $prime->setMaxLimit($input['max']);
 
-        if ($input['min'] < 2) {
-            $this->assertEquals(2, $prime->getMinLimit());
+        if (2 > $input['min']) {
+            $this->assertSame(2, $prime->getMinLimit());
         } else {
-            $this->assertEquals($input['min'], $prime->getMinLimit());
+            $this->assertSame($input['min'], $prime->getMinLimit());
         }
-        $this->assertEquals($input['max'], $prime->getMaxLimit());
+        $this->assertSame($input['max'], $prime->getMaxLimit());
 
-        $this->assertEquals($expected['count'], $prime->count());
+        $this->assertSame($expected['count'], $prime->count());
         $this->assertEquals(
             $expected['dataset'],
             $prime->toArray(),

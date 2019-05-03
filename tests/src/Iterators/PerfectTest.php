@@ -7,8 +7,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class PerfectTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class PerfectTest extends AbstractTest
+final class PerfectTest extends AbstractTest
 {
     /**
      * The type.
@@ -29,14 +32,14 @@ class PerfectTest extends AbstractTest
         $perfect->setMinLimit($input['min']);
         $perfect->setMaxLimit($input['max']);
 
-        if ($input['min'] < 2) {
-            $this->assertEquals(2, $perfect->getMinLimit());
+        if (2 > $input['min']) {
+            $this->assertSame(2, $perfect->getMinLimit());
         } else {
-            $this->assertEquals($input['min'], $perfect->getMinLimit());
+            $this->assertSame($input['min'], $perfect->getMinLimit());
         }
-        $this->assertEquals($input['max'], $perfect->getMaxLimit());
-        $this->assertEquals($input['max'], $perfect->getMaxLimit());
-        $this->assertEquals($expected['count'], $perfect->count());
+        $this->assertSame($input['max'], $perfect->getMaxLimit());
+        $this->assertSame($input['max'], $perfect->getMaxLimit());
+        $this->assertSame($expected['count'], $perfect->count());
         $this->assertEquals(
             $expected['dataset'],
             $perfect->toArray(),

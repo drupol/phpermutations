@@ -15,20 +15,7 @@ class Perfect extends PerfectIterator implements GeneratorInterface
      */
     public function generator()
     {
-        return $this->get();
-    }
-
-    /**
-     * The generator.
-     *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
-     * @codingStandardsIgnoreEnd
-     */
-    protected function get()
-    {
-        for ($j = 2; $j <= $this->getMaxLimit(); ++$j) {
+        for ($j = 2; $this->getMaxLimit() >= $j; ++$j) {
             if ($this->isPerfectNumber($j)) {
                 yield $j;
             }

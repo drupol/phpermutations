@@ -32,10 +32,10 @@ class Product extends ProductIterator implements GeneratorInterface
     protected function get(array $data)
     {
         if (!empty($data)) {
-            if ($u = array_pop($data)) {
+            if ($u = \array_pop($data)) {
                 foreach ($this->get($data) as $p) {
                     foreach ($u as $v) {
-                        yield $p + [count($p) => $v];
+                        yield $p + [\count($p) => $v];
                     }
                 }
             }

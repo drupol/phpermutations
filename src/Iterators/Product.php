@@ -2,21 +2,13 @@
 
 namespace drupol\phpermutations\Iterators;
 
-use drupol\phpermutations\Combinatorics;
-use drupol\phpermutations\IteratorInterface;
+use drupol\phpermutations\Iterators;
 
 /**
  * Class Product.
  */
-class Product extends Combinatorics implements IteratorInterface
+class Product extends Iterators
 {
-    /**
-     * The key.
-     *
-     * @var int
-     */
-    protected $key;
-
     /**
      * The iterators.
      *
@@ -44,6 +36,20 @@ class Product extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
+    public function count()
+    {
+        $product = 1;
+
+        foreach ($this->getDataset() as $dataset) {
+            $product *= \count($dataset);
+        }
+
+        return $product;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function current()
     {
         $tuple = [];
@@ -60,12 +66,12 @@ class Product extends Combinatorics implements IteratorInterface
      */
     public function next()
     {
-        foreach (array_reverse($this->iterators) as $key => $iterator) {
+        foreach (\array_reverse($this->iterators) as $key => $iterator) {
             $iterator->next();
             if ($iterator->valid()) {
-                $count_iterators = count($this->iterators);
+                $count_iterators = \count($this->iterators);
                 foreach ($this->iterators as $key2 => $iterator2) {
-                    if ($key >= $count_iterators - $key2) {
+                    if ($count_iterators - $key2 <= $key) {
                         $iterator2->rewind();
                     }
                 }
@@ -75,22 +81,6 @@ class Product extends Combinatorics implements IteratorInterface
         }
 
         ++$this->key;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
-    {
-        $isUnlessOneValid = false;
-
-        foreach ($this->iterators as $iterator) {
-            if ($iterator->valid()) {
-                $isUnlessOneValid = true;
-            }
-        }
-
-        return $isUnlessOneValid;
     }
 
     /**
@@ -108,31 +98,16 @@ class Product extends Combinatorics implements IteratorInterface
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function valid()
     {
-        $product = 1;
+        $isUnlessOneValid = false;
 
-        foreach ($this->getDataset() as $dataset) {
-            $product *= count($dataset);
+        foreach ($this->iterators as $iterator) {
+            if ($iterator->valid()) {
+                $isUnlessOneValid = true;
+            }
         }
 
-        return $product;
-    }
-
-    /**
-     * Convert the iterator into an array.
-     *
-     * @return array
-     *               The elements
-     */
-    public function toArray()
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
+        return $isUnlessOneValid;
     }
 }

@@ -2,28 +2,13 @@
 
 namespace drupol\phpermutations\Iterators;
 
-use drupol\phpermutations\Combinatorics;
-use drupol\phpermutations\IteratorInterface;
+use drupol\phpermutations\Iterators;
 
 /**
  * Class PrimeFactors.
  */
-class PrimeFactors extends Combinatorics implements IteratorInterface
+class PrimeFactors extends Iterators
 {
-    /**
-     * The number.
-     *
-     * @var int
-     */
-    protected $number;
-
-    /**
-     * The key.
-     *
-     * @var int
-     */
-    protected $key;
-
     /**
      * The prime factors.
      *
@@ -32,37 +17,11 @@ class PrimeFactors extends Combinatorics implements IteratorInterface
     protected $factors;
 
     /**
-     * {@inheritdoc}
+     * The number.
+     *
+     * @var int
      */
-    public function current()
-    {
-        return current($this->factors);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function next()
-    {
-        ++$this->key;
-        next($this->factors);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function valid()
-    {
-        return isset($this->factors[$this->key()]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function rewind()
-    {
-        $this->key = 0;
-    }
+    protected $number;
 
     /**
      * Count elements of an object.
@@ -72,7 +31,43 @@ class PrimeFactors extends Combinatorics implements IteratorInterface
      */
     public function count()
     {
-        return count($this->factors);
+        return \count($this->factors);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function current()
+    {
+        return \current($this->factors);
+    }
+
+    /**
+     * Get the number.
+     *
+     * @return int
+     *             The number
+     */
+    public function getNumber()
+    {
+        return (int) $this->number;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function next()
+    {
+        ++$this->key;
+        \next($this->factors);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rewind()
+    {
+        $this->key = 0;
     }
 
     /**
@@ -88,14 +83,11 @@ class PrimeFactors extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * Get the number.
-     *
-     * @return int
-     *             The number
+     * {@inheritdoc}
      */
-    public function getNumber()
+    public function valid()
     {
-        return (int) $this->number;
+        return isset($this->factors[$this->key()]);
     }
 
     /**
@@ -110,14 +102,14 @@ class PrimeFactors extends Combinatorics implements IteratorInterface
     {
         $factors = [];
 
-        for ($i = 2; $i <= $number / $i; ++$i) {
+        for ($i = 2; $number / $i >= $i; ++$i) {
             while (0 === $number % $i) {
                 $factors[] = $i;
                 $number /= $i;
             }
         }
 
-        if ($number > 1) {
+        if (1 < $number) {
             $factors[] = $number;
         }
 

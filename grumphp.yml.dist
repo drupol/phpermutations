@@ -1,30 +1,14 @@
+imports:
+  - { resource: vendor/drupol/php-conventions/config/php56/grumphp.yml }
+
 parameters:
   git_dir: .
   bin_dir: bin
-  tasks:
-    phpcsfixer2:
-      allow_risky: false
-      cache_file: ~
-      config: .php_cs.dist
-      rules: []
-      using_cache: true
-      config_contains_finder: true
-      verbose: true
-      diff: true
-      triggered_by: ['php']
-    git_commit_message:
-      matchers:
-        - '/^(([A-Z]+\-\d+)|(#\d+)): [A-Z].+\./'
-      case_insensitive: false
-      multiline: false
+  extensions:
+    - drupol\PhpConventions\GrumphpTasksExtension
+  extra_tasks:
     phpunit:
       config_file: ./tests/phpunit.xml
       testsuite: ~
       group: []
       always_execute: false
-    securitychecker:
-      lockfile: ./composer.lock
-      format: ~
-      end_point: ~
-      timeout: ~
-      run_always: false

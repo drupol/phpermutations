@@ -7,8 +7,11 @@ use drupol\phpermutations\Tests\AbstractTest;
 
 /**
  * Class CycleTest.
+ *
+ * @internal
+ * @coversNothing
  */
-class CycleTest extends AbstractTest
+final class CycleTest extends AbstractTest
 {
     /**
      * The type.
@@ -30,9 +33,9 @@ class CycleTest extends AbstractTest
         for ($i = 0; $i < $input['turn']; ++$i) {
             $cycle->next();
         }
-        $this->assertEquals($expected['current'], $cycle->current());
+        $this->assertSame($expected['current'], $cycle->current());
 
-        $this->assertEquals($input['dataset'], $cycle->getDataset());
-        $this->assertEquals($expected['count'], $cycle->count());
+        $this->assertSame($input['dataset'], $cycle->getDataset());
+        $this->assertSame($expected['count'], $cycle->count());
     }
 }

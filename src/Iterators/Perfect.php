@@ -2,34 +2,25 @@
 
 namespace drupol\phpermutations\Iterators;
 
-use drupol\phpermutations\Combinatorics;
-use drupol\phpermutations\IteratorInterface;
+use drupol\phpermutations\Iterators;
 
 /**
  * Class Perfect.
  */
-class Perfect extends Combinatorics implements IteratorInterface
+class Perfect extends Iterators
 {
-    /**
-     * The minimum limit.
-     *
-     * @var int
-     */
-    protected $min;
-
     /**
      * The maximum limit.
      *
      * @var int
      */
     protected $max;
-
     /**
-     * The key.
+     * The minimum limit.
      *
      * @var int
      */
-    protected $key;
+    protected $min;
 
     /**
      * Perfect constructor.
@@ -46,7 +37,7 @@ class Perfect extends Combinatorics implements IteratorInterface
      */
     public function current()
     {
-        for ($i = $this->key(); $i < $this->getMaxLimit(); ++$i) {
+        for ($i = $this->key(); $this->getMaxLimit() > $i; ++$i) {
             if ($this->isPerfectNumber($i)) {
                 $this->key = $i;
 
@@ -58,19 +49,33 @@ class Perfect extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get the maximum limit.
+     *
+     * @return int
+     *             The limit
      */
-    public function next()
+    public function getMaxLimit()
     {
-        ++$this->key;
+        return (int) $this->max;
+    }
+
+    /**
+     * Get the minimum limit.
+     *
+     * @return int
+     *             The limit
+     */
+    public function getMinLimit()
+    {
+        return 2 > $this->min ? 2 : $this->min;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function valid()
+    public function next()
     {
-        return $this->current() < $this->getMaxLimit();
+        ++$this->key;
     }
 
     /**
@@ -93,17 +98,6 @@ class Perfect extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * Get the maximum limit.
-     *
-     * @return int
-     *             The limit
-     */
-    public function getMaxLimit()
-    {
-        return (int) $this->max;
-    }
-
-    /**
      * Set the minimum limit.
      *
      * @param int $min
@@ -115,14 +109,11 @@ class Perfect extends Combinatorics implements IteratorInterface
     }
 
     /**
-     * Get the minimum limit.
-     *
-     * @return int
-     *             The limit
+     * {@inheritdoc}
      */
-    public function getMinLimit()
+    public function valid()
     {
-        return $this->min < 2 ? 2 : $this->min;
+        return $this->current() < $this->getMaxLimit();
     }
 
     /**
@@ -139,11 +130,11 @@ class Perfect extends Combinatorics implements IteratorInterface
     protected function isPerfectNumber($number)
     {
         $d = 0;
-        $max = sqrt($number);
+        $max = \sqrt($number);
         for ($n = 2; $n <= $max; ++$n) {
             if (!($number % $n)) {
                 $d += $n;
-                if ($n !== $number / $n) {
+                if ($number / $n !== $n) {
                     $d += $number / $n;
                 }
             }

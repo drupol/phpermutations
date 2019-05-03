@@ -2,20 +2,20 @@
 
 namespace drupol\phpermutations\Iterators;
 
-use drupol\phpermutations\Combinatorics;
-use drupol\phpermutations\IteratorInterface;
+use drupol\phpermutations\Iterators;
 
 /**
  * Class Cycle.
  */
-class Cycle extends Combinatorics implements IteratorInterface
+class Cycle extends Iterators
 {
     /**
-     * The key.
-     *
-     * @var int
+     * {@inheritdoc}
      */
-    protected $key = 0;
+    public function count()
+    {
+        return \count($this->getDataset());
+    }
 
     /**
      * {@inheritdoc}
@@ -47,13 +47,5 @@ class Cycle extends Combinatorics implements IteratorInterface
     public function valid()
     {
         return true;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function count()
-    {
-        return count($this->getDataset());
     }
 }
