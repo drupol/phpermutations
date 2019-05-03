@@ -1,9 +1,4 @@
-build:
-    nodes:
-        analysis:
-            tests:
-                override:
-                    - php-scrutinizer-run
+build: false
 
 filter:
     paths:
@@ -12,7 +7,3 @@ filter:
 tools:
     external_code_coverage:
         timeout: 600
-    php_loc: true
-    php_pdepend: true
-    php_sim: true
-    php_changetracking: true
