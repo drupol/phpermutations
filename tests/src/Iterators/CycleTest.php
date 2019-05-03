@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class CycleTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\Cycle
  */
 final class CycleTest extends AbstractTest
 {
@@ -33,9 +33,9 @@ final class CycleTest extends AbstractTest
         for ($i = 0; $i < $input['turn']; ++$i) {
             $cycle->next();
         }
-        $this->assertSame($expected['current'], $cycle->current());
+        static::assertSame($expected['current'], $cycle->current());
 
-        $this->assertSame($input['dataset'], $cycle->getDataset());
-        $this->assertSame($expected['count'], $cycle->count());
+        static::assertSame($input['dataset'], $cycle->getDataset());
+        static::assertSame($expected['count'], $cycle->count());
     }
 }

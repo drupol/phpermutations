@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class NgramsTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\NGrams
  */
 final class NgramsTest extends AbstractTest
 {
@@ -33,9 +33,9 @@ final class NgramsTest extends AbstractTest
         for ($i = 0; $i < $input['turn']; ++$i) {
             $ngrams->next();
         }
-        $this->assertSame($expected['current'], $ngrams->current());
+        static::assertSame($expected['current'], $ngrams->current());
 
-        $this->assertSame($input['dataset'], $ngrams->getDataset());
-        $this->assertSame($expected['count'], $ngrams->count());
+        static::assertSame($input['dataset'], $ngrams->getDataset());
+        static::assertSame($expected['count'], $ngrams->count());
     }
 }

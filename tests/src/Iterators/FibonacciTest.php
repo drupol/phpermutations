@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class FibonacciTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\Fibonacci
  */
 final class FibonacciTest extends AbstractTest
 {
@@ -31,8 +31,8 @@ final class FibonacciTest extends AbstractTest
         $prime = new Fibonacci();
         $prime->setMaxLimit(1000);
 
-        $this->assertSame($expected['count'], $prime->count());
-        $this->assertEquals(
+        static::assertSame($expected['count'], $prime->count());
+        static::assertEquals(
             $expected['dataset'],
             $prime->toArray(),
             '$canonicalize = true',

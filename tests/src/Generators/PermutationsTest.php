@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PermutationsTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Generators\Permutations
  */
 final class PermutationsTest extends AbstractTest
 {
@@ -31,10 +31,10 @@ final class PermutationsTest extends AbstractTest
     {
         $generator = new Permutations($input['dataset'], $input['length']);
 
-        $this->assertSame($input['dataset'], $generator->getDataset());
-        $this->assertSame($input['length'], $generator->getLength());
-        $this->assertSame($expected['count'], $generator->count());
-        $this->assertEquals(
+        static::assertSame($input['dataset'], $generator->getDataset());
+        static::assertSame($input['length'], $generator->getLength());
+        static::assertSame($expected['count'], $generator->count());
+        static::assertEquals(
             $expected['dataset'],
             $generator->toArray(),
             '$canonicalize = true',

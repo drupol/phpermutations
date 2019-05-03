@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PrimeTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\Prime
  */
 final class PrimeTest extends AbstractTest
 {
@@ -33,13 +33,13 @@ final class PrimeTest extends AbstractTest
         $prime->setMaxLimit($input['max']);
 
         if (2 > $input['min']) {
-            $this->assertSame(2, $prime->getMinLimit());
+            static::assertSame(2, $prime->getMinLimit());
         } else {
-            $this->assertSame($input['min'], $prime->getMinLimit());
+            static::assertSame($input['min'], $prime->getMinLimit());
         }
-        $this->assertSame($input['max'], $prime->getMaxLimit());
-        $this->assertSame($expected['count'], $prime->count());
-        $this->assertEquals(
+        static::assertSame($input['max'], $prime->getMaxLimit());
+        static::assertSame($expected['count'], $prime->count());
+        static::assertEquals(
             $expected['dataset'],
             $prime->toArray(),
             '$canonicalize = true',

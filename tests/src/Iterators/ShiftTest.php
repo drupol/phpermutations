@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class ShiftTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\Shift
  */
 final class ShiftTest extends AbstractTest
 {
@@ -33,9 +33,9 @@ final class ShiftTest extends AbstractTest
         for ($i = 0; $i < $input['turn']; ++$i) {
             $shift->next();
         }
-        $this->assertSame($expected['current'], $shift->current());
+        static::assertSame($expected['current'], $shift->current());
 
-        $this->assertSame($input['dataset'], $shift->getDataset());
-        $this->assertSame($expected['count'], $shift->count());
+        static::assertSame($input['dataset'], $shift->getDataset());
+        static::assertSame($expected['count'], $shift->count());
     }
 }

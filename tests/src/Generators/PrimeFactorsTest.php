@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PrimeFactorsTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Generators\PrimeFactors
  */
 final class PrimeFactorsTest extends AbstractTest
 {
@@ -31,8 +31,8 @@ final class PrimeFactorsTest extends AbstractTest
         $prime = new PrimeFactors();
         $prime->setNumber($input['number']);
 
-        $this->assertSame($expected['count'], $prime->count());
-        $this->assertEquals(
+        static::assertSame($expected['count'], $prime->count());
+        static::assertEquals(
             $expected['dataset'],
             $prime->toArray(),
             '$canonicalize = true',

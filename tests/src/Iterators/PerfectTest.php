@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class PerfectTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\Perfect
  */
 final class PerfectTest extends AbstractTest
 {
@@ -33,14 +33,14 @@ final class PerfectTest extends AbstractTest
         $perfect->setMaxLimit($input['max']);
 
         if (2 > $input['min']) {
-            $this->assertSame(2, $perfect->getMinLimit());
+            static::assertSame(2, $perfect->getMinLimit());
         } else {
-            $this->assertSame($input['min'], $perfect->getMinLimit());
+            static::assertSame($input['min'], $perfect->getMinLimit());
         }
-        $this->assertSame($input['max'], $perfect->getMaxLimit());
-        $this->assertSame($input['max'], $perfect->getMaxLimit());
-        $this->assertSame($expected['count'], $perfect->count());
-        $this->assertEquals(
+        static::assertSame($input['max'], $perfect->getMaxLimit());
+        static::assertSame($input['max'], $perfect->getMaxLimit());
+        static::assertSame($expected['count'], $perfect->count());
+        static::assertEquals(
             $expected['dataset'],
             $perfect->toArray(),
             '$canonicalize = true',

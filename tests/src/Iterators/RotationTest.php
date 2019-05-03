@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class RotationTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\Rotation
  */
 final class RotationTest extends AbstractTest
 {
@@ -34,10 +34,10 @@ final class RotationTest extends AbstractTest
             'turn' => null,
         ];
         $rotation->next($input['turn']);
-        $this->assertSame($expected['dataset'], $rotation->current());
+        static::assertSame($expected['dataset'], $rotation->current());
 
         $rotation->rewind();
-        $this->assertSame($input['dataset'], $rotation->current());
-        $this->assertSame(\count($input['dataset']), $rotation->count());
+        static::assertSame($input['dataset'], $rotation->current());
+        static::assertSame(\count($input['dataset']), $rotation->count());
     }
 }

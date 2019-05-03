@@ -9,7 +9,7 @@ use drupol\phpermutations\Tests\AbstractTest;
  * Class ProductTest.
  *
  * @internal
- * @coversNothing
+ * @covers \drupol\phpermutations\Iterators\Product
  */
 final class ProductTest extends AbstractTest
 {
@@ -30,8 +30,8 @@ final class ProductTest extends AbstractTest
     {
         $product = new Product($input['dataset']);
 
-        $this->assertSame($input['dataset'], $product->getDataset());
-        $this->assertEquals(
+        static::assertSame($input['dataset'], $product->getDataset());
+        static::assertEquals(
             $expected['dataset'],
             $product->toArray(),
             '$canonicalize = true',
@@ -39,6 +39,6 @@ final class ProductTest extends AbstractTest
             $maxDepth = 10,
             $canonicalize = true
         );
-        $this->assertSame($expected['count'], $product->count());
+        static::assertSame($expected['count'], $product->count());
     }
 }
