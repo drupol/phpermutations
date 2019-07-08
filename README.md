@@ -2,9 +2,14 @@
  [![GitHub stars](https://img.shields.io/github/stars/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
  [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
  [![Build Status](https://img.shields.io/travis/drupol/phpermutations/master.svg?style=flat-square)](https://travis-ci.org/drupol/phpermutations)
- [![Code Coverage](https://img.shields.io/codecov/c/github/drupol/phpermutations.svg?style=flat-square)](https://codecov.io/gh/drupol/phpermutations)
+ [![Build Status](https://img.shields.io/appveyor/ci/drupol/phpermutations.svg?style=flat-square)](https://ci.appveyor.com/project/drupol/phpermutations)
+ [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/drupol/phpermutations/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phpermutations/?branch=master)
+ [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/drupol/phpermutations/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phpermutations/?branch=master)
+ [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/drupol/phpermutations/master)](https://stryker-mutator.github.io)
  [![License](https://img.shields.io/packagist/l/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
-
+ [![Say Thanks!](https://img.shields.io/badge/Say-thanks-brightgreen.svg?style=flat-square)](https://saythanks.io/to/drupol)
+ [![Donate!](https://img.shields.io/badge/Donate-Paypal-brightgreen.svg?style=flat-square)](https://paypal.me/drupol)
+ 
 ## PHPermutations
 
 PHP Iterators and Generators to generate combinations and permutations in an efficient way.
