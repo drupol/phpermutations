@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use function count;
 
 /**
  * Class PrimeFactors.
@@ -31,7 +35,7 @@ class PrimeFactors extends Iterators
      */
     public function count()
     {
-        return \count($this->factors);
+        return count($this->factors);
     }
 
     /**
@@ -39,7 +43,7 @@ class PrimeFactors extends Iterators
      */
     public function current()
     {
-        return \current($this->factors);
+        return current($this->factors);
     }
 
     /**
@@ -59,7 +63,7 @@ class PrimeFactors extends Iterators
     public function next()
     {
         ++$this->key;
-        \next($this->factors);
+        next($this->factors);
     }
 
     /**

@@ -1,8 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
+use ArrayIterator;
 use drupol\phpermutations\Iterators;
+use Iterator;
+
+use function count;
 
 /**
  * Class Product.
@@ -12,14 +18,14 @@ class Product extends Iterators
     /**
      * The iterators.
      *
-     * @var \Iterator[]
+     * @var Iterator[]
      */
     protected $iterators = [];
 
     /**
      * Product constructor.
      *
-     * @param array $datasetArray
+     * @param array<int, mixed> $datasetArray
      *                            The array of dataset
      */
     public function __construct(array $datasetArray)
@@ -27,7 +33,7 @@ class Product extends Iterators
         parent::__construct($datasetArray);
 
         foreach ($datasetArray as $dataset) {
-            $this->iterators[] = new \ArrayIterator($dataset);
+            $this->iterators[] = new ArrayIterator($dataset);
         }
 
         $this->key = 0;
@@ -41,7 +47,7 @@ class Product extends Iterators
         $product = 1;
 
         foreach ($this->getDataset() as $dataset) {
-            $product *= \count($dataset);
+            $product *= count($dataset);
         }
 
         return $product;
@@ -66,10 +72,12 @@ class Product extends Iterators
      */
     public function next()
     {
-        foreach (\array_reverse($this->iterators) as $key => $iterator) {
+        foreach (array_reverse($this->iterators) as $key => $iterator) {
             $iterator->next();
+
             if ($iterator->valid()) {
-                $count_iterators = \count($this->iterators);
+                $count_iterators = count($this->iterators);
+
                 foreach ($this->iterators as $key2 => $iterator2) {
                     if ($count_iterators - $key2 <= $key) {
                         $iterator2->rewind();

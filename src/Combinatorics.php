@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations;
+
+use function count;
 
 /**
  * Class Combinatorics.
@@ -10,7 +14,7 @@ abstract class Combinatorics
     /**
      * The dataset.
      *
-     * @var array
+     * @var array<int, mixed>
      */
     protected $dataset;
 
@@ -31,15 +35,15 @@ abstract class Combinatorics
     /**
      * Combinatorics constructor.
      *
-     * @param array    $dataset
+     * @param array<int, mixed>    $dataset
      *                          The dataset
-     * @param null|int $length
+     * @param int|null $length
      *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
         $this->setDataset($dataset);
-        $this->datasetCount = \count($this->dataset);
+        $this->datasetCount = count($this->dataset);
         $this->setLength($length);
     }
 
@@ -51,7 +55,7 @@ abstract class Combinatorics
      */
     public function count()
     {
-        return \count($this->toArray());
+        return count($this->toArray());
     }
 
     /**
@@ -79,7 +83,7 @@ abstract class Combinatorics
     /**
      * Set the dataset.
      *
-     * @param array $dataset
+     * @param array<int, mixed> $dataset
      *                       The dataset
      *
      * @return $this
@@ -94,21 +98,21 @@ abstract class Combinatorics
     /**
      * Set the length.
      *
-     * @param null|int $length
+     * @param int|null $length
      *                    The length
      *
      * @return $this
      */
     public function setLength($length = null)
     {
-        $length = (null === $length) ? $this->datasetCount : $length;
-        $this->length = (\abs($length) > $this->datasetCount) ? $this->datasetCount : $length;
+        $length = $length ?? $this->datasetCount;
+        $this->length = (abs($length) > $this->datasetCount) ? $this->datasetCount : $length;
 
         return $this;
     }
 
     /**
-     * @return array
+     * @return array<int, mixed>
      */
     public function toArray()
     {

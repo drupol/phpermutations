@@ -1,14 +1,19 @@
 {
     "name": "drupol/phpermutations",
-    "description": "Generators and iterators, permutations and combinations.",
     "type": "library",
+    "description": "Generators and iterators, permutations and combinations.",
+    "keywords": [
+        "math",
+        "numbers",
+        "permutations",
+        "combinations",
+        "iterators",
+        "fibonacci",
+        "prime numbers",
+        "product"
+    ],
     "homepage": "https://github.com/drupol/phpermutations",
-    "keywords": ["math", "numbers", "permutations", "combinations", "iterators", "fibonacci", "prime numbers", "product"],
     "license": "GPL-3.0-only",
-    "support": {
-        "issues": "https://github.com/drupol/phpermutations/issues",
-        "source": "https://github.com/drupol/phpermutations"
-    },
     "authors": [
         {
             "name": "Pol Dellaiera",
@@ -16,16 +21,16 @@
         }
     ],
     "require": {
-        "php": ">= 5.6"
+        "php": ">= 7.1.3"
     },
     "require-dev": {
-        "drupol/php-conventions": "^1.3",
-        "phpunit/phpunit": "^5 || ^6",
-        "phpunit/php-code-coverage": "^4 || ^5"
+        "drupol/php-conventions": "^1.6.8",
+        "phpunit/php-code-coverage": "^4 || ^5",
+        "phpunit/phpunit": "^6 || ^7",
+        "symfony/process": "^4.4.1"
     },
-    "scripts": {
-        "phpunit": "./vendor/bin/phpunit --coverage-clover build/logs/clover.xml -c tests/phpunit.xml tests",
-        "grumphp": "./vendor/bin/grumphp run"
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -33,7 +38,12 @@
             "drupol\\phpermutations\\Tests\\": "tests/src/"
         }
     },
-    "config": {
-        "sort-packages": true
+    "scripts": {
+        "grumphp": "./vendor/bin/grumphp run",
+        "phpunit": "./vendor/bin/phpunit --coverage-clover build/logs/clover.xml -c tests/phpunit.xml tests"
+    },
+    "support": {
+        "issues": "https://github.com/drupol/phpermutations/issues",
+        "source": "https://github.com/drupol/phpermutations"
     }
 }

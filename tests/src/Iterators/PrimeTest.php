@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Prime;
@@ -16,7 +18,7 @@ final class PrimeTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'prime';
+    public const TYPE = 'prime';
 
     /**
      * The tests.
@@ -33,13 +35,13 @@ final class PrimeTest extends AbstractTest
         $prime->setMaxLimit($input['max']);
 
         if (2 > $input['min']) {
-            static::assertSame(2, $prime->getMinLimit());
+            self::assertSame(2, $prime->getMinLimit());
         } else {
-            static::assertSame($input['min'], $prime->getMinLimit());
+            self::assertSame($input['min'], $prime->getMinLimit());
         }
-        static::assertSame($input['max'], $prime->getMaxLimit());
-        static::assertSame($expected['count'], $prime->count());
-        static::assertEquals(
+        self::assertSame($input['max'], $prime->getMaxLimit());
+        self::assertSame($expected['count'], $prime->count());
+        self::assertEquals(
             $expected['dataset'],
             $prime->toArray(),
             '$canonicalize = true',

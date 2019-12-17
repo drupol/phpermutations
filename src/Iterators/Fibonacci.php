@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use const PHP_INT_MAX;
 
 /**
  * Class Fibonacci.
@@ -53,7 +57,7 @@ class Fibonacci extends Iterators
      */
     public function next()
     {
-        list($this->current, $this->previous) = [$this->current + $this->previous, $this->current];
+        [$this->current, $this->previous] = [$this->current + $this->previous, $this->current];
         ++$this->key;
     }
 

@@ -1,7 +1,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
  [![GitHub stars](https://img.shields.io/github/stars/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
  [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phpermutations.svg?style=flat-square)](https://packagist.org/packages/drupol/phpermutations)
- [![Build Status](https://img.shields.io/travis/drupol/phpermutations/master.svg?style=flat-square)](https://travis-ci.org/drupol/phpermutations)
+ [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/drupol/phpermutations/Continuous%20Integration?style=flat-square)](https://github.com/drupol/phpermutations/actions)
  [![Build Status](https://img.shields.io/appveyor/ci/drupol/phpermutations.svg?style=flat-square)](https://ci.appveyor.com/project/drupol/phpermutations)
  [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/drupol/phpermutations/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phpermutations/?branch=master)
  [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/drupol/phpermutations/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phpermutations/?branch=master)
@@ -44,7 +44,7 @@ objects), the library will still continue to work without any trouble.
 
 ## Requirements
 
-* PHP >= 5.6,
+* PHP >= 7.1.3,
 
 ## How to use
 
@@ -166,7 +166,7 @@ of each combinations having a length of 3 of that array.
 
 Each Generators and Iterators are tested using the same values as input. I try to be as much complete as possible with
 the [tests](https://github.com/drupol/phpermutations/tree/master/tests/fixtures).
-Every time the sources are modified, [Travis](https://travis-ci.org/drupol/phpermutations), the continuous integration
+Every time the sources are modified, [Github](https://github.com/drupol/phpermutations/actions), the continuous integration
 service, tests the code against those tests, this way you are aware if the changes that you are introducing are valid.
 
 # Contributing

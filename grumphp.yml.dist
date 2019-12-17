@@ -1,11 +1,7 @@
 imports:
-  - { resource: vendor/drupol/php-conventions/config/php56/grumphp.yml }
+  - { resource: vendor/drupol/php-conventions/config/php71/grumphp.yml }
 
 parameters:
-  git_dir: .
-  bin_dir: bin
-  extensions:
-    - drupol\PhpConventions\GrumphpTasksExtension
   extra_tasks:
     phpunit:
       config_file: ./tests/phpunit.xml

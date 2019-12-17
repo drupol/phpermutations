@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Product;
@@ -16,7 +18,7 @@ final class ProductTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'product';
+    public const TYPE = 'product';
 
     /**
      * The tests.
@@ -30,8 +32,8 @@ final class ProductTest extends AbstractTest
     {
         $product = new Product($input['dataset']);
 
-        static::assertSame($input['dataset'], $product->getDataset());
-        static::assertEquals(
+        self::assertSame($input['dataset'], $product->getDataset());
+        self::assertEquals(
             $expected['dataset'],
             $product->toArray(),
             '$canonicalize = true',
@@ -39,6 +41,6 @@ final class ProductTest extends AbstractTest
             $maxDepth = 10,
             $canonicalize = true
         );
-        static::assertSame($expected['count'], $product->count());
+        self::assertSame($expected['count'], $product->count());
     }
 }

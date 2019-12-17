@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Rotation;
 use drupol\phpermutations\Tests\AbstractTest;
+use function count;
 
 /**
  * Class RotationTest.
@@ -16,7 +19,7 @@ final class RotationTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'rotation';
+    public const TYPE = 'rotation';
 
     /**
      * The tests.
@@ -34,10 +37,10 @@ final class RotationTest extends AbstractTest
             'turn' => null,
         ];
         $rotation->next($input['turn']);
-        static::assertSame($expected['dataset'], $rotation->current());
+        self::assertSame($expected['dataset'], $rotation->current());
 
         $rotation->rewind();
-        static::assertSame($input['dataset'], $rotation->current());
-        static::assertSame(\count($input['dataset']), $rotation->count());
+        self::assertSame($input['dataset'], $rotation->current());
+        self::assertSame(count($input['dataset']), $rotation->count());
     }
 }

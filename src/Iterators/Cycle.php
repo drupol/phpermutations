@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use function count;
 
 /**
  * Class Cycle.
@@ -14,7 +18,7 @@ class Cycle extends Iterators
      */
     public function count()
     {
-        return \count($this->getDataset());
+        return count($this->getDataset());
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Generators\Shift;
@@ -16,7 +18,7 @@ final class ShiftTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'shift';
+    public const TYPE = 'shift';
 
     /**
      * The tests.
@@ -30,7 +32,7 @@ final class ShiftTest extends AbstractTest
     {
         $shift = new Shift($input['dataset']);
 
-        static::assertSame($input['dataset'], $shift->getDataset());
-        static::assertSame($expected['count'], $shift->count());
+        self::assertSame($input['dataset'], $shift->getDataset());
+        self::assertSame($expected['count'], $shift->count());
     }
 }

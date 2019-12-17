@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\Combinatorics;
 use drupol\phpermutations\GeneratorInterface;
+use Generator;
+
+use function count;
 
 /**
  * Class Permutations.
@@ -18,11 +23,11 @@ class Permutations extends Combinatorics implements GeneratorInterface
     protected $combinations;
 
     /**
-     * Combinatorics constructor.
+     * Permutations constructor.
      *
-     * @param array    $dataset
+     * @param array<int, mixed> $dataset
      *                          The dataset
-     * @param null|int $length
+     * @param int|null $length
      *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
@@ -68,29 +73,27 @@ class Permutations extends Combinatorics implements GeneratorInterface
     /**
      * The permutations generator.
      *
-     * @param array $dataset
+     * @param array<int, mixed> $dataset
      *                       The dataset
      *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
-     * @codingStandardsIgnoreEnd
+     * @return Generator<array>
      */
     protected function get(array $dataset)
     {
         foreach ($dataset as $key => $firstItem) {
             $remaining = $dataset;
 
-            \array_splice($remaining, $key, 1);
+            array_splice($remaining, $key, 1);
 
-            if (0 === \count($remaining)) {
+            if (0 === count($remaining)) {
                 yield [$firstItem];
 
                 continue;
             }
 
             foreach ($this->get($remaining) as $permutation) {
-                \array_unshift($permutation, $firstItem);
+                array_unshift($permutation, $firstItem);
+
                 yield $permutation;
             }
         }

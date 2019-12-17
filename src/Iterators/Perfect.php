@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use const PHP_INT_MAX;
 
 /**
  * Class Perfect.
@@ -15,6 +19,7 @@ class Perfect extends Iterators
      * @var int
      */
     protected $max;
+
     /**
      * The minimum limit.
      *
@@ -130,10 +135,12 @@ class Perfect extends Iterators
     protected function isPerfectNumber($number)
     {
         $d = 0;
-        $max = \sqrt($number);
+        $max = sqrt($number);
+
         for ($n = 2; $n <= $max; ++$n) {
             if (!($number % $n)) {
                 $d += $n;
+
                 if ($number / $n !== $n) {
                     $d += $number / $n;
                 }

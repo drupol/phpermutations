@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Perfect;
@@ -16,7 +18,7 @@ final class PerfectTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'perfect';
+    public const TYPE = 'perfect';
 
     /**
      * The tests.
@@ -33,14 +35,14 @@ final class PerfectTest extends AbstractTest
         $perfect->setMaxLimit($input['max']);
 
         if (2 > $input['min']) {
-            static::assertSame(2, $perfect->getMinLimit());
+            self::assertSame(2, $perfect->getMinLimit());
         } else {
-            static::assertSame($input['min'], $perfect->getMinLimit());
+            self::assertSame($input['min'], $perfect->getMinLimit());
         }
-        static::assertSame($input['max'], $perfect->getMaxLimit());
-        static::assertSame($input['max'], $perfect->getMaxLimit());
-        static::assertSame($expected['count'], $perfect->count());
-        static::assertEquals(
+        self::assertSame($input['max'], $perfect->getMaxLimit());
+        self::assertSame($input['max'], $perfect->getMaxLimit());
+        self::assertSame($expected['count'], $perfect->count());
+        self::assertEquals(
             $expected['dataset'],
             $perfect->toArray(),
             '$canonicalize = true',

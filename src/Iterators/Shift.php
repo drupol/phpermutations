@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use function array_slice;
+use function count;
 
 /**
  * Class Shift.
@@ -12,7 +17,7 @@ class Shift extends Iterators
     /**
      * Shift constructor.
      *
-     * @param array $dataset
+     * @param array<int, mixed> $dataset
      *                       The dataset
      * @param int   $length
      *                       The shift length
@@ -28,7 +33,7 @@ class Shift extends Iterators
      */
     public function count()
     {
-        return \count($this->getDataset());
+        return count($this->getDataset());
     }
 
     /**
@@ -65,16 +70,16 @@ class Shift extends Iterators
         $parameters = [];
 
         if (0 > $length) {
-            $parameters[] = ['start' => \abs($length), 'end' => null];
-            $parameters[] = ['start' => 0, 'end' => \abs($length)];
+            $parameters[] = ['start' => abs($length), 'end' => null];
+            $parameters[] = ['start' => 0, 'end' => abs($length)];
         } else {
             $parameters[] = ['start' => -1 * $length, 'end' => null];
             $parameters[] = ['start' => 0, 'end' => $this->datasetCount + $length * -1];
         }
 
-        $this->current = \array_merge(
-            \array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
-            \array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
+        $this->current = array_merge(
+            array_slice($this->current, $parameters[0]['start'], $parameters[0]['end']),
+            array_slice($this->current, $parameters[1]['start'], $parameters[1]['end'])
         );
     }
 }

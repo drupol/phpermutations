@@ -1,16 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations;
+
+use Countable;
 
 /**
  * Class Iterators.
  */
-abstract class Iterators extends Combinatorics implements IteratorInterface, \Countable
+abstract class Iterators extends Combinatorics implements Countable, IteratorInterface
 {
     /**
      * A copy of the dataset at a give time.
      *
-     * @var array
+     * @var array<int, mixed>
      */
     protected $current;
 
@@ -46,7 +50,7 @@ abstract class Iterators extends Combinatorics implements IteratorInterface, \Co
     /**
      * Convert the iterator into an array.
      *
-     * @return array
+     * @return array<int, mixed>
      *               The elements
      */
     public function toArray()

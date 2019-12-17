@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -8,13 +10,15 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class AbstractTest.
+ *
+ * @internal
  */
 abstract class AbstractTest extends TestCase
 {
     /**
      * The type.
      */
-    const TYPE = null;
+    public const TYPE = null;
 
     /**
      * The data provider.
@@ -43,14 +47,14 @@ abstract class AbstractTest extends TestCase
     {
         $data = [];
 
-        $path = \realpath(__DIR__ . '/../fixtures');
+        $path = realpath(__DIR__ . '/../fixtures');
 
         if (false !== $path) {
             foreach ((new Finder())->files()->in($path) as $file) {
-                $type = \basename($file->getRelativePathname(), '.yml');
+                $type = basename($file->getRelativePathname(), '.yml');
                 $data[$type] = [
                     'file' => $file->getRelativePathname(),
-                    'type' => \basename($file->getRelativePathname(), '.yml'),
+                    'type' => basename($file->getRelativePathname(), '.yml'),
                     'content' => Yaml::parse($file->getContents()),
                 ];
             }

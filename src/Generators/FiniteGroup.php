@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\FiniteGroup as FiniteGroupIterator;
+use Generator;
 
 /**
  * Class FiniteGroup.
@@ -23,11 +26,8 @@ class FiniteGroup extends FiniteGroupIterator implements GeneratorInterface
     /**
      * The generator.
      *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
+     * @return Generator<int>
      *                    The finite group generator
-     * @codingStandardsIgnoreEnd
      */
     protected function get()
     {

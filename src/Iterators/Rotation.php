@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use function array_slice;
+use function count;
 
 /**
  * Class Rotation.
@@ -19,7 +24,7 @@ class Rotation extends Iterators
     /**
      * Rotation constructor.
      *
-     * @param array $dataset
+     * @param array<int, mixed> $dataset
      *                       The dataset
      */
     public function __construct(array $dataset = [])
@@ -33,7 +38,7 @@ class Rotation extends Iterators
      */
     public function count()
     {
-        return \count($this->getDataset());
+        return count($this->getDataset());
     }
 
     /**
@@ -47,18 +52,18 @@ class Rotation extends Iterators
     /**
      * Compute the next value of the Iterator.
      *
-     * @param null|int $offset
+     * @param int|null $offset
      *                    The offset
      */
     public function next($offset = 1)
     {
         $offset = (null === $offset) ? 1 : $offset % $this->count();
-        $this->rotation = \array_merge(
-            \array_slice(
+        $this->rotation = array_merge(
+            array_slice(
                 $this->rotation,
                 $offset
             ),
-            \array_slice(
+            array_slice(
                 $this->rotation,
                 0,
                 $offset

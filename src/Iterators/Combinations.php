@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
@@ -12,21 +14,21 @@ class Combinations extends Iterators
     /**
      * The values.
      *
-     * @var array
+     * @var array<int, mixed>
      */
     protected $c = [];
 
     /**
      * Combinations constructor.
      *
-     * @param array    $dataset
+     * @param array<int, mixed> $dataset
      *                          The dataset
-     * @param null|int $length
+     * @param int|null $length
      *                          The length
      */
     public function __construct(array $dataset = [], $length = null)
     {
-        parent::__construct(\array_values($dataset), $length);
+        parent::__construct(array_values($dataset), $length);
         $this->rewind();
     }
 
@@ -75,7 +77,7 @@ class Combinations extends Iterators
      */
     public function rewind()
     {
-        $this->c = \range(0, $this->length);
+        $this->c = range(0, $this->length);
         $this->key = 0;
     }
 
@@ -96,6 +98,7 @@ class Combinations extends Iterators
     protected function nextHelper()
     {
         $i = $this->length - 1;
+
         while (0 <= $i && $this->datasetCount - $this->length + $i === $this->c[$i]) {
             --$i;
         }
@@ -105,6 +108,7 @@ class Combinations extends Iterators
         }
 
         ++$this->c[$i];
+
         while ($this->length - 1 > $i++) {
             $this->c[$i] = $this->c[$i - 1] + 1;
         }

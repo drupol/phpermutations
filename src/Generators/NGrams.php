@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\NGrams as NGramsIterator;
+use Generator;
 
 /**
  * Class NGrams.
@@ -29,16 +32,14 @@ class NGrams extends NGramsIterator implements GeneratorInterface
     /**
      * Get the generator.
      *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
+     * @return Generator<int>
      *                    The generator
-     * @codingStandardsIgnoreEnd
      */
     protected function get()
     {
         while (true) {
             $this->next();
+
             yield $this->current();
         }
     }

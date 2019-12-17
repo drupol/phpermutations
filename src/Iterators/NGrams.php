@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
+
+use function array_slice;
 
 /**
  * Class NGrams.
@@ -15,7 +19,7 @@ class NGrams extends Shift
     /**
      * NGrams constructor.
      *
-     * @param array $dataset
+     * @param array<int, mixed> $dataset
      *                       The dataset
      * @param int   $length
      *                       The shift length
@@ -24,7 +28,7 @@ class NGrams extends Shift
     {
         parent::__construct($dataset, $length);
 
-        $this->currentValue = \array_slice(
+        $this->currentValue = array_slice(
             $this->getDataset(),
             0,
             $length
@@ -45,7 +49,7 @@ class NGrams extends Shift
     public function next()
     {
         parent::next();
-        $this->currentValue = \array_slice($this->current, 0, $this->getLength());
+        $this->currentValue = array_slice($this->current, 0, $this->getLength());
     }
 
     /**
@@ -54,6 +58,6 @@ class NGrams extends Shift
     public function rewind()
     {
         parent::rewind();
-        $this->currentValue = \array_slice($this->current, 0, $this->getLength());
+        $this->currentValue = array_slice($this->current, 0, $this->getLength());
     }
 }

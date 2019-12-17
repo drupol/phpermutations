@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Fibonacci;
@@ -16,7 +18,7 @@ final class FibonacciTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'fibonacci';
+    public const TYPE = 'fibonacci';
 
     /**
      * The tests.
@@ -31,8 +33,8 @@ final class FibonacciTest extends AbstractTest
         $prime = new Fibonacci();
         $prime->setMaxLimit(1000);
 
-        static::assertSame($expected['count'], $prime->count());
-        static::assertEquals(
+        self::assertSame($expected['count'], $prime->count());
+        self::assertEquals(
             $expected['dataset'],
             $prime->toArray(),
             '$canonicalize = true',

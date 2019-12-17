@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use const PHP_INT_MAX;
 
 /**
  * Class Prime.
@@ -15,6 +19,7 @@ class Prime extends Iterators
      * @var int
      */
     protected $max;
+
     /**
      * The minimum limit.
      *
@@ -127,7 +132,7 @@ class Prime extends Iterators
      */
     protected function isPrimeNumber($number)
     {
-        $number = \abs($number);
+        $number = abs($number);
 
         // 2 is an exception.
         if (2 === $number) {
@@ -139,7 +144,8 @@ class Prime extends Iterators
             return false;
         }
 
-        $sqrtNumber = \sqrt($number);
+        $sqrtNumber = sqrt($number);
+
         for ($divisor = 3; $divisor <= $sqrtNumber; $divisor += 2) {
             if (0 === $number % $divisor) {
                 return false;

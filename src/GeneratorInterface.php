@@ -1,13 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations;
+
+use Generator;
 
 interface GeneratorInterface
 {
     /**
      * Get the generator.
      *
-     * @return \Generator
+     * @return Generator<int, mixed>
      *                    The generator
      */
     public function generator();
@@ -15,7 +19,7 @@ interface GeneratorInterface
     /**
      * Convert the generator into an array.
      *
-     * @return array
+     * @return array<int, mixed>
      */
     public function toArray();
 }

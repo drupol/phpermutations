@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\FiniteGroup;
@@ -16,7 +18,7 @@ final class FiniteGroupTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'finitegroup';
+    public const TYPE = 'finitegroup';
 
     /**
      * The tests.
@@ -31,8 +33,8 @@ final class FiniteGroupTest extends AbstractTest
         $prime = new FiniteGroup();
         $prime->setSize($input['size']);
 
-        static::assertSame($expected['count'], $prime->count());
-        static::assertEquals(
+        self::assertSame($expected['count'], $prime->count());
+        self::assertEquals(
             $expected['dataset'],
             $prime->toArray(),
             '$canonicalize = true',

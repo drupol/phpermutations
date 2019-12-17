@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Generators\Permutations;
@@ -16,7 +18,7 @@ final class PermutationsTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'permutations';
+    public const TYPE = 'permutations';
 
     /**
      * Test.
@@ -31,10 +33,10 @@ final class PermutationsTest extends AbstractTest
     {
         $generator = new Permutations($input['dataset'], $input['length']);
 
-        static::assertSame($input['dataset'], $generator->getDataset());
-        static::assertSame($input['length'], $generator->getLength());
-        static::assertSame($expected['count'], $generator->count());
-        static::assertEquals(
+        self::assertSame($input['dataset'], $generator->getDataset());
+        self::assertSame($input['length'], $generator->getLength());
+        self::assertSame($expected['count'], $generator->count());
+        self::assertEquals(
             $expected['dataset'],
             $generator->toArray(),
             '$canonicalize = true',

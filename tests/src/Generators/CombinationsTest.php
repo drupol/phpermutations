@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Generators\Combinations;
@@ -16,7 +18,7 @@ final class CombinationsTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'combinations';
+    public const TYPE = 'combinations';
 
     /**
      * The tests.
@@ -30,9 +32,9 @@ final class CombinationsTest extends AbstractTest
     {
         $combinations = new Combinations($input['dataset'], $input['length']);
 
-        static::assertSame($input['dataset'], $combinations->getDataset());
-        static::assertSame($input['length'], $combinations->getLength());
-        static::assertEquals(
+        self::assertSame($input['dataset'], $combinations->getDataset());
+        self::assertSame($input['length'], $combinations->getLength());
+        self::assertEquals(
             $expected['dataset'],
             $combinations->toArray(),
             '$canonicalize = true',
@@ -40,6 +42,6 @@ final class CombinationsTest extends AbstractTest
             $maxDepth = 10,
             $canonicalize = true
         );
-        static::assertSame($expected['count'], $combinations->count());
+        self::assertSame($expected['count'], $combinations->count());
     }
 }

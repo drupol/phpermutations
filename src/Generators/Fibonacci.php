@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Generators;
 
 use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Fibonacci as FibonacciIterator;
+use Generator;
 
 /**
  * Class Fibonacci.
@@ -21,20 +24,18 @@ class Fibonacci extends FibonacciIterator implements GeneratorInterface
     /**
      * The generator.
      *
-     * @codingStandardsIgnoreStart
-     *
-     * @return \Generator
-     * @codingStandardsIgnoreEnd
+     * @return Generator<int>
      */
     protected function get()
     {
         $a = 0;
         $b = 1;
         $to = $this->getMaxLimit();
+
         while (0 < $to) {
             yield $a;
 
-            list($a, $b) = [$b, $a + $b];
+            [$a, $b] = [$b, $a + $b];
             --$to;
         }
     }

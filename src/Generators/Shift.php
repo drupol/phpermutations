@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Generators;
 
+use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Shift as ShiftIterator;
 
 /**
  * Class Shift.
  */
-class Shift extends ShiftIterator
+class Shift extends ShiftIterator implements GeneratorInterface
 {
     /**
      * {@inheritdoc}
@@ -16,6 +19,7 @@ class Shift extends ShiftIterator
     {
         while (true) {
             $this->next();
+
             yield $this->current();
         }
     }

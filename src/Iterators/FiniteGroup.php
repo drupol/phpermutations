@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
+
+use function count;
 
 /**
  * Class FiniteGroup.
@@ -33,7 +37,7 @@ class FiniteGroup extends Iterators
      */
     public function count()
     {
-        return \count($this->group);
+        return count($this->group);
     }
 
     /**
@@ -41,7 +45,7 @@ class FiniteGroup extends Iterators
      */
     public function current()
     {
-        return \current($this->group);
+        return current($this->group);
     }
 
     /**
@@ -61,7 +65,7 @@ class FiniteGroup extends Iterators
     public function next()
     {
         ++$this->key;
-        \next($this->group);
+        next($this->group);
     }
 
     /**
@@ -77,12 +81,12 @@ class FiniteGroup extends Iterators
     {
         $result = [];
 
-        foreach (\range(1, $this->getSize()) as $number) {
+        foreach (range(1, $this->getSize()) as $number) {
             $value = ($generator ** $number) % $this->getSize();
             $result[$value] = $value;
         }
 
-        return \count($result);
+        return count($result);
     }
 
     /**
@@ -112,7 +116,7 @@ class FiniteGroup extends Iterators
     {
         $this->group = [];
 
-        foreach (\range(1, $this->getSize()) as $number) {
+        foreach (range(1, $this->getSize()) as $number) {
             if (1 === $this->gcd($number, $this->getSize())) {
                 $this->group[] = $number;
             }

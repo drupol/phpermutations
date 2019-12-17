@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace drupol\phpermutations\Tests\Generators;
 
 use drupol\phpermutations\Iterators\PrimeFactors;
@@ -16,7 +18,7 @@ final class PrimeFactorsTest extends AbstractTest
     /**
      * The type.
      */
-    const TYPE = 'primefactors';
+    public const TYPE = 'primefactors';
 
     /**
      * The tests.
@@ -31,8 +33,8 @@ final class PrimeFactorsTest extends AbstractTest
         $prime = new PrimeFactors();
         $prime->setNumber($input['number']);
 
-        static::assertSame($expected['count'], $prime->count());
-        static::assertEquals(
+        self::assertSame($expected['count'], $prime->count());
+        self::assertEquals(
             $expected['dataset'],
             $prime->toArray(),
             '$canonicalize = true',
