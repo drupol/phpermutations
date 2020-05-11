@@ -8,9 +8,6 @@ use drupol\phpermutations\Iterators;
 
 use function count;
 
-/**
- * Class Cycle.
- */
 class Cycle extends Iterators
 {
     /**
@@ -31,6 +28,8 @@ class Cycle extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -47,6 +46,8 @@ class Cycle extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {

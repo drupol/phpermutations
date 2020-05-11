@@ -9,9 +9,6 @@ use drupol\phpermutations\Iterators;
 use function array_slice;
 use function count;
 
-/**
- * Class Rotation.
- */
 class Rotation extends Iterators
 {
     /**
@@ -54,6 +51,8 @@ class Rotation extends Iterators
      *
      * @param int|null $offset
      *                    The offset
+     *
+     * @return void
      */
     public function next($offset = 1)
     {
@@ -81,6 +80,8 @@ class Rotation extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {

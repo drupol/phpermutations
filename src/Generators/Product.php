@@ -10,9 +10,6 @@ use Generator;
 
 use function count;
 
-/**
- * Class Product.
- */
 class Product extends ProductIterator implements GeneratorInterface
 {
     /**

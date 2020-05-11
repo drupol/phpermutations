@@ -6,9 +6,6 @@ namespace drupol\phpermutations;
 
 use Countable;
 
-/**
- * Class Iterators.
- */
 abstract class Iterators extends Combinatorics implements Countable, IteratorInterface
 {
     /**
@@ -41,6 +38,8 @@ abstract class Iterators extends Combinatorics implements Countable, IteratorInt
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function rewind()
     {

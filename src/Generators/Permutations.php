@@ -10,9 +10,6 @@ use Generator;
 
 use function count;
 
-/**
- * Class Permutations.
- */
 class Permutations extends Combinatorics implements GeneratorInterface
 {
     /**

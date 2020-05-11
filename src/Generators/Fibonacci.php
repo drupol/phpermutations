@@ -8,9 +8,6 @@ use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Fibonacci as FibonacciIterator;
 use Generator;
 
-/**
- * Class Fibonacci.
- */
 class Fibonacci extends FibonacciIterator implements GeneratorInterface
 {
     /**

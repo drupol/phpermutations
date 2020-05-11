@@ -6,9 +6,6 @@ namespace drupol\phpermutations;
 
 use function count;
 
-/**
- * Class Combinatorics.
- */
 abstract class Combinatorics
 {
     /**

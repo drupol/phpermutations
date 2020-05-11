@@ -6,9 +6,6 @@ namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
 
-/**
- * Class Combinations.
- */
 class Combinations extends Iterators
 {
     /**
@@ -62,6 +59,8 @@ class Combinations extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -83,6 +82,8 @@ class Combinations extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {

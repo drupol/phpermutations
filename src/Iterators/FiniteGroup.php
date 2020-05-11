@@ -61,6 +61,8 @@ class FiniteGroup extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -94,6 +96,8 @@ class FiniteGroup extends Iterators
      *
      * @param int $size
      *                  The size
+     *
+     * @return void
      */
     public function setSize($size)
     {
@@ -103,6 +107,8 @@ class FiniteGroup extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {
@@ -111,6 +117,8 @@ class FiniteGroup extends Iterators
 
     /**
      * Clean out the group from unwanted values.
+     *
+     * @return void
      */
     private function computeGroup()
     {

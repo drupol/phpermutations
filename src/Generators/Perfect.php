@@ -7,9 +7,6 @@ namespace drupol\phpermutations\Generators;
 use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Perfect as PerfectIterator;
 
-/**
- * Class Perfect.
- */
 class Perfect extends PerfectIterator implements GeneratorInterface
 {
     /**

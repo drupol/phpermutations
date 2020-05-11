@@ -7,9 +7,6 @@ namespace drupol\phpermutations\Generators;
 use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\Shift as ShiftIterator;
 
-/**
- * Class Shift.
- */
 class Shift extends ShiftIterator implements GeneratorInterface
 {
     /**

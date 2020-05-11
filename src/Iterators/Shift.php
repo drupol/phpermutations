@@ -9,9 +9,6 @@ use drupol\phpermutations\Iterators;
 use function array_slice;
 use function count;
 
-/**
- * Class Shift.
- */
 class Shift extends Iterators
 {
     /**
@@ -38,6 +35,8 @@ class Shift extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -54,6 +53,8 @@ class Shift extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {
@@ -64,6 +65,8 @@ class Shift extends Iterators
      * Internal function to do the shift.
      *
      * @param int $length
+     *
+     * @return void
      */
     protected function doShift($length = 1)
     {

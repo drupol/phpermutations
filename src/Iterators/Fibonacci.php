@@ -8,9 +8,6 @@ use drupol\phpermutations\Iterators;
 
 use const PHP_INT_MAX;
 
-/**
- * Class Fibonacci.
- */
 class Fibonacci extends Iterators
 {
     /**
@@ -54,6 +51,8 @@ class Fibonacci extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -76,6 +75,8 @@ class Fibonacci extends Iterators
      *
      * @param int $max
      *                 The limit
+     *
+     * @return void
      */
     public function setMaxLimit($max)
     {
@@ -84,6 +85,8 @@ class Fibonacci extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {

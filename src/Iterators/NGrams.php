@@ -6,9 +6,6 @@ namespace drupol\phpermutations\Iterators;
 
 use function array_slice;
 
-/**
- * Class NGrams.
- */
 class NGrams extends Shift
 {
     /**
@@ -45,6 +42,8 @@ class NGrams extends Shift
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -54,6 +53,8 @@ class NGrams extends Shift
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function rewind()
     {

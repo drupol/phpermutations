@@ -8,9 +8,6 @@ use drupol\phpermutations\Iterators;
 
 use function count;
 
-/**
- * Class PrimeFactors.
- */
 class PrimeFactors extends Iterators
 {
     /**
@@ -59,6 +56,8 @@ class PrimeFactors extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -79,6 +78,8 @@ class PrimeFactors extends Iterators
      *
      * @param int $number
      *                    The number
+     *
+     * @return void
      */
     public function setNumber($number)
     {
@@ -88,6 +89,8 @@ class PrimeFactors extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {

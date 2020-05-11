@@ -8,9 +8,6 @@ use drupol\phpermutations\GeneratorInterface;
 use drupol\phpermutations\Iterators\NGrams as NGramsIterator;
 use Generator;
 
-/**
- * Class NGrams.
- */
 class NGrams extends NGramsIterator implements GeneratorInterface
 {
     /**

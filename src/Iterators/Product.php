@@ -10,9 +10,6 @@ use Iterator;
 
 use function count;
 
-/**
- * Class Product.
- */
 class Product extends Iterators
 {
     /**
@@ -69,6 +66,8 @@ class Product extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function next()
     {
@@ -93,6 +92,8 @@ class Product extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     public function rewind()
     {
@@ -105,6 +106,8 @@ class Product extends Iterators
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
     public function valid()
     {
