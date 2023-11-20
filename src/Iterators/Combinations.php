@@ -32,7 +32,7 @@ class Combinations extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         $i = 0;
 
@@ -62,7 +62,7 @@ class Combinations extends Iterators
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         if ($this->nextHelper()) {
             ++$this->key;
@@ -85,7 +85,7 @@ class Combinations extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return 0 <= $this->key;
     }
@@ -96,7 +96,7 @@ class Combinations extends Iterators
      * @return bool
      *              Return true or false
      */
-    protected function nextHelper()
+    protected function nextHelper(): bool
     {
         $i = $this->length - 1;
 
