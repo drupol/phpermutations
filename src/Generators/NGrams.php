@@ -13,7 +13,7 @@ class NGrams extends NGramsIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): Generator
     {
         return $this->get();
     }
@@ -21,7 +21,7 @@ class NGrams extends NGramsIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [];
     }
@@ -32,7 +32,7 @@ class NGrams extends NGramsIterator implements GeneratorInterface
      * @return Generator<int>
      *                    The generator
      */
-    protected function get()
+    protected function get(): Generator
     {
         while (true) {
             $this->next();

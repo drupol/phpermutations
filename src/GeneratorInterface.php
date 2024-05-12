@@ -14,12 +14,12 @@ interface GeneratorInterface
      * @return Generator<int, mixed>
      *                    The generator
      */
-    public function generator();
+    public function generator(): Generator;
 
     /**
      * Convert the generator into an array.
      *
      * @return array<int, mixed>
      */
-    public function toArray();
+    public function toArray(): array;
 }

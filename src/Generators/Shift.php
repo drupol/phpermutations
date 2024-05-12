@@ -12,7 +12,7 @@ class Shift extends ShiftIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): \Generator
     {
         while (true) {
             $this->next();
@@ -24,7 +24,7 @@ class Shift extends ShiftIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [];
     }

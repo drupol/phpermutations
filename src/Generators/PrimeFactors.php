@@ -12,7 +12,7 @@ class PrimeFactors extends PrimeFactorsIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): \Generator
     {
         $number = $this->getNumber();
 

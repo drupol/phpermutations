@@ -39,7 +39,7 @@ class Product extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         $product = 1;
 
@@ -109,7 +109,7 @@ class Product extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         $isUnlessOneValid = false;
 

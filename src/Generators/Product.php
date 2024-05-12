@@ -15,7 +15,7 @@ class Product extends ProductIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): Generator
     {
         return $this->get($this->getDataset());
     }
@@ -28,7 +28,7 @@ class Product extends ProductIterator implements GeneratorInterface
      *
      * @return Generator<array>
      */
-    protected function get(array $data)
+    protected function get(array $data): Generator
     {
         if (!empty($data)) {
             if ($u = array_pop($data)) {

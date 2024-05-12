@@ -13,7 +13,7 @@ class Cycle extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         return count($this->getDataset());
     }
@@ -49,7 +49,7 @@ class Cycle extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }

@@ -36,7 +36,7 @@ class Permutations extends Combinatorics implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         return $this->combinations->count() * $this->fact($this->getLength());
     }
@@ -44,7 +44,7 @@ class Permutations extends Combinatorics implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): Generator
     {
         foreach ($this->combinations->generator() as $combination) {
             foreach ($this->get($combination) as $current) {
@@ -56,7 +56,7 @@ class Permutations extends Combinatorics implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $data = [];
 
@@ -75,7 +75,7 @@ class Permutations extends Combinatorics implements GeneratorInterface
      *
      * @return Generator<array>
      */
-    protected function get(array $dataset)
+    protected function get(array $dataset): Generator
     {
         foreach ($dataset as $key => $firstItem) {
             $remaining = $dataset;

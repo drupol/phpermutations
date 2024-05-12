@@ -52,7 +52,7 @@ abstract class Iterators extends Combinatorics implements Countable, IteratorInt
      * @return array<int, mixed>
      *               The elements
      */
-    public function toArray()
+    public function toArray(): array
     {
         $data = [];
 

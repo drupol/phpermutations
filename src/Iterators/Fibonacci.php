@@ -44,7 +44,7 @@ class Fibonacci extends Iterators
      * @return int
      *             The limit
      */
-    public function getMaxLimit()
+    public function getMaxLimit(): int
     {
         return (int) $this->max;
     }
@@ -88,7 +88,7 @@ class Fibonacci extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->getMaxLimit() > $this->current;
     }

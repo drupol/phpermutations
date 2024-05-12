@@ -12,7 +12,7 @@ class Prime extends PrimeIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): \Generator
     {
         for ($j = 2; $this->getMaxLimit() >= $j; ++$j) {
             if ($this->isPrimeNumber($j)) {
