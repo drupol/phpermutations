@@ -33,7 +33,7 @@ class Rotation extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         return count($this->getDataset());
     }
@@ -83,7 +83,7 @@ class Rotation extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }

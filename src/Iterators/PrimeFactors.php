@@ -30,7 +30,7 @@ class PrimeFactors extends Iterators
      * @return int
      *             The number of element
      */
-    public function count()
+    public function count(): int
     {
         return count($this->factors);
     }
@@ -49,7 +49,7 @@ class PrimeFactors extends Iterators
      * @return int
      *             The number
      */
-    public function getNumber()
+    public function getNumber(): int
     {
         return (int) $this->number;
     }
@@ -92,7 +92,7 @@ class PrimeFactors extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return isset($this->factors[$this->key()]);
     }
@@ -105,7 +105,7 @@ class PrimeFactors extends Iterators
      * @return int[]
      *               The factors
      */
-    private function getFactors($number)
+    private function getFactors($number): array
     {
         $factors = [];
 

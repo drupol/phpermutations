@@ -35,7 +35,7 @@ class FiniteGroup extends Iterators
      * @return int
      *             The number of element
      */
-    public function count()
+    public function count(): int
     {
         return count($this->group);
     }
@@ -54,7 +54,7 @@ class FiniteGroup extends Iterators
      * @return int
      *             The size
      */
-    public function getSize()
+    public function getSize(): int
     {
         return (int) $this->size;
     }
@@ -79,7 +79,7 @@ class FiniteGroup extends Iterators
      * @return int
      *             The order
      */
-    public function order($generator)
+    public function order($generator): int
     {
         $result = [];
 
@@ -110,7 +110,7 @@ class FiniteGroup extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return isset($this->group[$this->key()]);
     }
@@ -142,7 +142,7 @@ class FiniteGroup extends Iterators
      * @return int
      *             The greater common divisor between $a and $b
      */
-    private function gcd($a, $b)
+    private function gcd($a, $b): int
     {
         return $b ? $this->gcd($b, $a % $b) : $a;
     }

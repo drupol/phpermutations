@@ -18,7 +18,7 @@ class FiniteGroup extends FiniteGroupIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): Generator
     {
         return $this->get();
     }
@@ -29,7 +29,7 @@ class FiniteGroup extends FiniteGroupIterator implements GeneratorInterface
      * @return Generator<int>
      *                    The finite group generator
      */
-    protected function get()
+    protected function get(): Generator
     {
         foreach ($this->group as $number) {
             yield $number;

@@ -50,7 +50,7 @@ abstract class Combinatorics
      * @return int
      *             The number of element
      */
-    public function count()
+    public function count(): int
     {
         return count($this->toArray());
     }
@@ -61,7 +61,7 @@ abstract class Combinatorics
      * @return mixed[]
      *                 The dataset
      */
-    public function getDataset()
+    public function getDataset(): array
     {
         return $this->dataset;
     }
@@ -72,7 +72,7 @@ abstract class Combinatorics
      * @return int
      *             The length
      */
-    public function getLength()
+    public function getLength(): int
     {
         return (int) $this->length;
     }
@@ -85,7 +85,7 @@ abstract class Combinatorics
      *
      * @return $this
      */
-    public function setDataset(array $dataset = [])
+    public function setDataset(array $dataset = []): Combinatorics
     {
         $this->dataset = $dataset;
 
@@ -100,7 +100,7 @@ abstract class Combinatorics
      *
      * @return $this
      */
-    public function setLength($length = null)
+    public function setLength($length = null): Combinatorics
     {
         $length = $length ?? $this->datasetCount;
         $this->length = (abs($length) > $this->datasetCount) ? $this->datasetCount : $length;
@@ -111,7 +111,7 @@ abstract class Combinatorics
     /**
      * @return array<int, mixed>
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [];
     }
@@ -127,7 +127,7 @@ abstract class Combinatorics
      * @return int
      *             The factorial of $n
      */
-    protected function fact($n, $total = 1)
+    protected function fact($n, $total = 1): int
     {
         return (2 > $n) ? $total : $this->fact($n - 1, $total * $n);
     }

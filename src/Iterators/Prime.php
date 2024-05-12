@@ -56,7 +56,7 @@ class Prime extends Iterators
      * @return int
      *             The limit
      */
-    public function getMaxLimit()
+    public function getMaxLimit(): int
     {
         return (int) $this->max;
     }
@@ -67,7 +67,7 @@ class Prime extends Iterators
      * @return int
      *             The limit
      */
-    public function getMinLimit()
+    public function getMinLimit(): int
     {
         return 2 >= $this->min ? 2 : (int) $this->min;
     }
@@ -121,7 +121,7 @@ class Prime extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->current() < $this->getMaxLimit();
     }
@@ -135,7 +135,7 @@ class Prime extends Iterators
      * @return bool
      *              The true if the number is prime, false otherwise
      */
-    protected function isPrimeNumber($number)
+    protected function isPrimeNumber($number): bool
     {
         $number = abs($number);
 

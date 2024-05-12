@@ -56,7 +56,7 @@ class Perfect extends Iterators
      * @return int
      *             The limit
      */
-    public function getMaxLimit()
+    public function getMaxLimit(): int
     {
         return (int) $this->max;
     }
@@ -67,7 +67,7 @@ class Perfect extends Iterators
      * @return int
      *             The limit
      */
-    public function getMinLimit()
+    public function getMinLimit(): int
     {
         return 2 > $this->min ? 2 : $this->min;
     }
@@ -121,7 +121,7 @@ class Perfect extends Iterators
      *
      * @return bool
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->current() < $this->getMaxLimit();
     }
@@ -137,7 +137,7 @@ class Perfect extends Iterators
      * @return bool
      *              The true if the number is perfect, false otherwise
      */
-    protected function isPerfectNumber($number)
+    protected function isPerfectNumber($number): bool
     {
         $d = 0;
         $max = sqrt($number);

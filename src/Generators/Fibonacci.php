@@ -13,7 +13,7 @@ class Fibonacci extends FibonacciIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): Generator
     {
         return $this->get();
     }
@@ -23,7 +23,7 @@ class Fibonacci extends FibonacciIterator implements GeneratorInterface
      *
      * @return Generator<int>
      */
-    protected function get()
+    protected function get(): Generator
     {
         $a = 0;
         $b = 1;

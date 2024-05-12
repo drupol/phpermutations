@@ -21,7 +21,7 @@ class Combinations extends CombinationsIterator implements GeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generator()
+    public function generator(): Generator
     {
         return $this->get($this->getDataset(), $this->getLength());
     }
@@ -36,7 +36,7 @@ class Combinations extends CombinationsIterator implements GeneratorInterface
      *
      * @return Generator<array>
      */
-    protected function get(array $dataset, $length)
+    protected function get(array $dataset, $length): Generator
     {
         $originalLength = count($dataset);
         $remainingLength = $originalLength - $length + 1;
