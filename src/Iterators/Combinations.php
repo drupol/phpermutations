@@ -46,7 +46,7 @@ class Combinations extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         $r = [];
 
@@ -74,7 +74,7 @@ class Combinations extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->c = range(0, $this->length);
         $this->key = 0;

@@ -38,7 +38,7 @@ class PrimeFactors extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->factors);
     }
@@ -59,7 +59,7 @@ class PrimeFactors extends Iterators
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->key;
         next($this->factors);
@@ -68,7 +68,7 @@ class PrimeFactors extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->key = 0;
     }
@@ -81,7 +81,7 @@ class PrimeFactors extends Iterators
      *
      * @return void
      */
-    public function setNumber($number)
+    public function setNumber($number): void
     {
         $this->number = $number;
         $this->factors = $this->getFactors($this->getNumber());

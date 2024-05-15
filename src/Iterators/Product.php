@@ -53,7 +53,7 @@ class Product extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         $tuple = [];
 
@@ -69,7 +69,7 @@ class Product extends Iterators
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         foreach (array_reverse($this->iterators) as $key => $iterator) {
             $iterator->next();
@@ -95,7 +95,7 @@ class Product extends Iterators
      *
      * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         foreach ($this->iterators as $iterator) {
             $iterator->rewind();

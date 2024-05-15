@@ -35,7 +35,7 @@ class NGrams extends Shift
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->currentValue;
     }
@@ -45,7 +45,7 @@ class NGrams extends Shift
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         parent::next();
         $this->currentValue = array_slice($this->current, 0, $this->getLength());
@@ -56,7 +56,7 @@ class NGrams extends Shift
      *
      * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         parent::rewind();
         $this->currentValue = array_slice($this->current, 0, $this->getLength());

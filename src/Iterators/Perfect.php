@@ -37,7 +37,7 @@ class Perfect extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         for ($i = $this->key(); $this->getMaxLimit() > $i; ++$i) {
             if ($this->isPerfectNumber($i)) {
@@ -77,7 +77,7 @@ class Perfect extends Iterators
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->key;
     }
@@ -85,7 +85,7 @@ class Perfect extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->key = $this->getMinLimit();
     }
@@ -98,7 +98,7 @@ class Perfect extends Iterators
      *
      * @return void
      */
-    public function setMaxLimit($max)
+    public function setMaxLimit($max): void
     {
         $this->max = $max;
     }
@@ -111,7 +111,7 @@ class Perfect extends Iterators
      *
      * @return void
      */
-    public function setMinLimit($min)
+    public function setMinLimit($min): void
     {
         $this->min = $min;
     }

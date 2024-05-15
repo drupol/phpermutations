@@ -43,7 +43,7 @@ class FiniteGroup extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->group);
     }
@@ -64,7 +64,7 @@ class FiniteGroup extends Iterators
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->key;
         next($this->group);
@@ -99,7 +99,7 @@ class FiniteGroup extends Iterators
      *
      * @return void
      */
-    public function setSize($size)
+    public function setSize($size): void
     {
         $this->size = $size;
         $this->computeGroup();
@@ -120,7 +120,7 @@ class FiniteGroup extends Iterators
      *
      * @return void
      */
-    private function computeGroup()
+    private function computeGroup(): void
     {
         $this->group = [];
 
