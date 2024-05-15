@@ -54,7 +54,7 @@ class Fibonacci extends Iterators
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         [$this->current, $this->previous] = [$this->current + $this->previous, $this->current];
         ++$this->key;
@@ -63,7 +63,7 @@ class Fibonacci extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->previous = 1;
         $this->current = 0;
@@ -78,7 +78,7 @@ class Fibonacci extends Iterators
      *
      * @return void
      */
-    public function setMaxLimit($max)
+    public function setMaxLimit($max): void
     {
         $this->max = $max;
     }

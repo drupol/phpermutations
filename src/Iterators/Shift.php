@@ -38,7 +38,7 @@ class Shift extends Iterators
      *
      * @return void
      */
-    public function next()
+    public function next(): void
     {
         $this->doShift(1);
     }
@@ -46,7 +46,7 @@ class Shift extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->doShift(-1);
     }
@@ -68,7 +68,7 @@ class Shift extends Iterators
      *
      * @return void
      */
-    protected function doShift($length = 1)
+    protected function doShift($length = 1): void
     {
         $parameters = [];
 

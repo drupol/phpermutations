@@ -21,7 +21,7 @@ class Cycle extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->dataset[$this->key];
     }
@@ -39,7 +39,7 @@ class Cycle extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->key = 0;
     }

@@ -41,7 +41,7 @@ class Rotation extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function current()
+    public function current(): mixed
     {
         return $this->rotation;
     }
@@ -54,7 +54,7 @@ class Rotation extends Iterators
      *
      * @return void
      */
-    public function next($offset = 1)
+    public function next($offset = 1): void
     {
         $offset = (null === $offset) ? 1 : $offset % $this->count();
         $this->rotation = array_merge(
@@ -73,7 +73,7 @@ class Rotation extends Iterators
     /**
      * {@inheritdoc}
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->rotation = $this->getDataset();
     }
