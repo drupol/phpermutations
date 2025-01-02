@@ -1,18 +1,15 @@
--
-    input:
+- input:
       number: 643455
-    output:
+  expected:
       dataset: [3, 3, 5, 79, 181]
       count: 5
--
-    input:
+- input:
       number: 29
-    output:
+  expected:
       dataset: [29]
       count: 1
--
-    input:
+- input:
       number: 100
-    output:
+  expected:
       dataset: [2, 2, 5, 5]
       count: 4

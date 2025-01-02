@@ -5,30 +5,18 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Combinations;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use function count;
 
-/**
- * Class CombinationsTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\Combinations
- */
-final class CombinationsTest extends AbstractTest
+#[CoversClass(Combinations::class)]
+final class CombinationsTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'combinations';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testCombinations($input, $expected)
     {
         $combinations = new Combinations($input['dataset'], $input['length']);
@@ -39,15 +27,15 @@ final class CombinationsTest extends AbstractTest
             count($input['dataset']),
             $combinations->getDataset()
         );
+
+        $array = iterator_to_array($combinations, false);
+
         self::assertEquals(
             $expected['dataset'],
-            $combinations->toArray(),
-            '$canonicalize = true',
-            $delta = 0.0,
-            $maxDepth = 10,
-            $canonicalize = true
+            $array,
         );
-        self::assertSame($expected['count'], $combinations->count());
+
+        self::assertCount($expected['count'], $array);
     }
 
     /**
@@ -58,6 +46,8 @@ final class CombinationsTest extends AbstractTest
     public function testCombinationsWithBigNumbers()
     {
         $combinations = new Combinations(range(1, 200), 2);
-        self::assertCount($combinations->count(), $combinations->toArray());
+        $array = iterator_to_array($combinations, false);
+
+        self::assertCount(19900, $array);
     }
 }

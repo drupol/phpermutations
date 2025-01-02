@@ -5,29 +5,16 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Cycle;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Class CycleTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\Cycle
- */
-final class CycleTest extends AbstractTest
+#[CoversClass(Cycle::class)]
+final class CycleTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'cycle';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testCycle($input, $expected)
     {
         $cycle = new Cycle($input['dataset']);

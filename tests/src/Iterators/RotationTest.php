@@ -5,30 +5,18 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Rotation;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+
 use function count;
 
-/**
- * Class RotationTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\Rotation
- */
-final class RotationTest extends AbstractTest
+#[CoversClass(Rotation::class)]
+final class RotationTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'rotation';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testRotation($input, $expected)
     {
         $rotation = new Rotation($input['dataset']);

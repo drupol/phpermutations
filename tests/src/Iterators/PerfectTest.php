@@ -5,34 +5,22 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Perfect;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Class PerfectTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\Perfect
- */
-final class PerfectTest extends AbstractTest
+#[CoversClass(Perfect::class)]
+final class PerfectTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'perfect';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testPerfect($input, $expected)
     {
         $perfect = new Perfect();
         $perfect->setMinLimit($input['min']);
         $perfect->setMaxLimit($input['max']);
+        $array = iterator_to_array($perfect, false);
 
         if (2 > $input['min']) {
             self::assertSame(2, $perfect->getMinLimit());
@@ -41,14 +29,10 @@ final class PerfectTest extends AbstractTest
         }
         self::assertSame($input['max'], $perfect->getMaxLimit());
         self::assertSame($input['max'], $perfect->getMaxLimit());
-        self::assertSame($expected['count'], $perfect->count());
+        self::assertCount($expected['count'], $array);
         self::assertEquals(
             $expected['dataset'],
-            $perfect->toArray(),
-            '$canonicalize = true',
-            $delta = 0.0,
-            $maxDepth = 10,
-            $canonicalize = true
+            $array,
         );
     }
 }

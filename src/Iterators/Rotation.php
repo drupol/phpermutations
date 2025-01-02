@@ -9,7 +9,7 @@ use drupol\phpermutations\Iterators;
 use function array_slice;
 use function count;
 
-class Rotation extends Iterators
+final class Rotation extends Iterators
 {
     /**
      * A copy of the original data.

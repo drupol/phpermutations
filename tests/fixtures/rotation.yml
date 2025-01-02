@@ -1,29 +1,24 @@
--
-    input:
+- input:
       dataset: [1, 2, 3, 4, 5]
-    output:
+  expected:
       dataset: [2, 3, 4, 5, 1]
--
-    input:
+- input:
       dataset: [1, 2, 3, 4, 5]
       turn: 0
-    output:
+  expected:
       dataset: [1, 2, 3, 4, 5]
--
-    input:
+- input:
       dataset: [1, 2, 3, 4, 5]
       turn: 1
-    output:
+  expected:
       dataset: [2, 3, 4, 5, 1]
--
-    input:
+- input:
       dataset: [1, 2, 3, 4, 5]
       turn: 6
-    output:
+  expected:
       dataset: [2, 3, 4, 5, 1]
--
-    input:
+- input:
       dataset: [1, 2, 3, 4, 5]
       turn: 5
-    output:
+  expected:
       dataset: [1, 2, 3, 4, 5]

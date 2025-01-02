@@ -1,35 +1,31 @@
--
-    input:
+- input:
       dataset: [A, B, C, D, E]
       length: 2
       turn: 1
-    output:
+  expected:
       current: [E, A]
       count: 5
 
--
-    input:
+- input:
       dataset: [A, B, C, D, E]
       length: 3
       turn: 3
-    output:
+  expected:
       current: [C, D, E]
       count: 5
 
--
-    input:
+- input:
       dataset: [A, B, C, D, E]
       length: 2
       turn: 11
-    output:
+  expected:
       current: [E, A]
       count: 5
 
--
-    input:
+- input:
       dataset: [A, B, C, D, E]
       length: 3
       turn: 13
-    output:
+  expected:
       current: [C, D, E]
       count: 5

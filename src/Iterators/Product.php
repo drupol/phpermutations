@@ -10,7 +10,7 @@ use Iterator;
 
 use function count;
 
-class Product extends Iterators
+final class Product extends Iterators
 {
     /**
      * The iterators.

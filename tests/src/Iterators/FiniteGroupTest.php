@@ -5,42 +5,26 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\FiniteGroup;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Class FiniteGroupTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\FiniteGroup
- */
-final class FiniteGroupTest extends AbstractTest
+#[CoversClass(FiniteGroup::class)]
+final class FiniteGroupTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'finitegroup';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testFiniteGroup($input, $expected)
     {
         $prime = new FiniteGroup();
         $prime->setSize($input['size']);
+        $array = iterator_to_array($prime, false);
 
-        self::assertSame($expected['count'], $prime->count());
+        self::assertCount($expected['count'], $array);
         self::assertEquals(
             $expected['dataset'],
-            $prime->toArray(),
-            '$canonicalize = true',
-            $delta = 0.0,
-            $maxDepth = 10,
-            $canonicalize = true
+            $array,
         );
     }
 }

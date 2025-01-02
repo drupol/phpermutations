@@ -9,7 +9,7 @@ use drupol\phpermutations\Iterators;
 use function array_slice;
 use function count;
 
-class Shift extends Iterators
+final class Shift extends Iterators
 {
     /**
      * Shift constructor.

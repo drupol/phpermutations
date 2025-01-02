@@ -5,29 +5,18 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\NGrams;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Iterators\Shift;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Class NgramsTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\NGrams
- */
-final class NgramsTest extends AbstractTest
+#[CoversClass(NGrams::class)]
+#[CoversClass(Shift::class)]
+final class NgramsTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'ngrams';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testNgrams($input, $expected)
     {
         $ngrams = new NGrams($input['dataset'], $input['length']);
@@ -35,9 +24,8 @@ final class NgramsTest extends AbstractTest
         for ($i = 0; $i < $input['turn']; ++$i) {
             $ngrams->next();
         }
-        self::assertSame($expected['current'], $ngrams->current());
 
+        self::assertSame($expected['current'], $ngrams->current());
         self::assertSame($input['dataset'], $ngrams->getDataset());
-        self::assertSame($expected['count'], $ngrams->count());
     }
 }

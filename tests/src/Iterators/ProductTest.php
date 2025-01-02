@@ -5,42 +5,26 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Product;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Class ProductTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\Product
- */
-final class ProductTest extends AbstractTest
+#[CoversClass(Product::class)]
+final class ProductTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'product';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testProduct($input, $expected)
     {
         $product = new Product($input['dataset']);
+        $array = iterator_to_array($product, false);
 
+        self::assertCount($expected['count'], $array);
         self::assertSame($input['dataset'], $product->getDataset());
         self::assertEquals(
             $expected['dataset'],
-            $product->toArray(),
-            '$canonicalize = true',
-            $delta = 0.0,
-            $maxDepth = 10,
-            $canonicalize = true
+            $array,
         );
-        self::assertSame($expected['count'], $product->count());
     }
 }

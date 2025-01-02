@@ -8,7 +8,7 @@ use drupol\phpermutations\Iterators;
 
 use function count;
 
-class Cycle extends Iterators
+final class Cycle extends Iterators
 {
     /**
      * {@inheritdoc}

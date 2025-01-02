@@ -5,42 +5,26 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\PrimeFactors;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Class PrimeFactorsTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\PrimeFactors
- */
-final class PrimeFactorsTest extends AbstractTest
+#[CoversClass(PrimeFactors::class)]
+final class PrimeFactorsTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'primefactors';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testPrimeFactors($input, $expected)
     {
         $prime = new PrimeFactors();
         $prime->setNumber($input['number']);
+        $array = iterator_to_array($prime, false);
 
-        self::assertSame($expected['count'], $prime->count());
+        self::assertCount($expected['count'], $array);
         self::assertEquals(
             $expected['dataset'],
-            $prime->toArray(),
-            '$canonicalize = true',
-            $delta = 0.0,
-            $maxDepth = 10,
-            $canonicalize = true
+            $array,
         );
     }
 }

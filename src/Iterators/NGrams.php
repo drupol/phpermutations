@@ -4,61 +4,42 @@ declare(strict_types=1);
 
 namespace drupol\phpermutations\Iterators;
 
-use function array_slice;
+use drupol\phpermutations\Iterators;
 
-class NGrams extends Shift
+final class NGrams extends Iterators
 {
-    /**
-     * @var mixed
-     */
-    protected $currentValue;
+    private Shift $shift;
 
-    /**
-     * NGrams constructor.
-     *
-     * @param array<int, mixed> $dataset
-     *                       The dataset
-     * @param int   $length
-     *                       The shift length
-     */
-    public function __construct(array $dataset = [], $length = 1)
+    protected $length;
+
+    public function __construct(array $dataset = [], int $length = 1)
     {
-        parent::__construct($dataset, $length);
-
-        $this->currentValue = array_slice(
-            $this->getDataset(),
-            0,
-            $length
-        );
+        $this->shift = new Shift($dataset, $length);
+        $this->length = $length;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    public function getDataset(): array
+    {
+        return $this->shift->getDataset();
+    }
+
     public function current(): mixed
     {
-        return $this->currentValue;
+        return array_slice($this->shift->current(), 0, $this->length);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return void
-     */
     public function next(): void
     {
-        parent::next();
-        $this->currentValue = array_slice($this->current, 0, $this->getLength());
+        $this->shift->next();
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return void
-     */
     public function rewind(): void
     {
-        parent::rewind();
-        $this->currentValue = array_slice($this->current, 0, $this->getLength());
+        $this->shift->rewind();
+    }
+
+    public function valid(): bool
+    {
+        return $this->shift->valid();
     }
 }
