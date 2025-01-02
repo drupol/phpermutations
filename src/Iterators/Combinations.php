@@ -6,62 +6,24 @@ namespace drupol\phpermutations\Iterators;
 
 use drupol\phpermutations\Iterators;
 
-class Combinations extends Iterators
+final class Combinations extends Iterators
 {
-    /**
-     * The values.
-     *
-     * @var array<int, mixed>
-     */
-    protected $c = [];
+    private array $c = [];
 
-    /**
-     * Combinations constructor.
-     *
-     * @param array<int, mixed> $dataset
-     *                          The dataset
-     * @param int|null $length
-     *                          The length
-     */
-    public function __construct(array $dataset = [], $length = null)
+    public function __construct(array $dataset = [], ?int $length = null)
     {
         parent::__construct(array_values($dataset), $length);
         $this->rewind();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function count(): int
-    {
-        $i = 0;
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            ++$i;
-        }
-
-        return $i;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function current(): mixed
     {
-        $r = [];
-
-        for ($i = 0; $i < $this->length; ++$i) {
-            $r[] = $this->dataset[$this->c[$i]];
-        }
-
-        return $r;
+        return array_map(
+            fn(int $index): mixed => $this->dataset[$this->c[$index]],
+            range(0, $this->length - 1)
+        );
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return void
-     */
     public function next(): void
     {
         if ($this->nextHelper()) {
@@ -71,32 +33,18 @@ class Combinations extends Iterators
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rewind(): void
     {
         $this->c = range(0, $this->length);
         $this->key = 0;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return bool
-     */
     public function valid(): bool
     {
         return 0 <= $this->key;
     }
 
-    /**
-     * Custom next() callback.
-     *
-     * @return bool
-     *              Return true or false
-     */
-    protected function nextHelper(): bool
+    private function nextHelper(): bool
     {
         $i = $this->length - 1;
 

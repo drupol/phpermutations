@@ -13,7 +13,7 @@ use Symfony\Component\Yaml\Yaml;
  *
  * @internal
  */
-abstract class AbstractTest extends TestCase
+abstract class AbstractTester extends TestCase
 {
     /**
      * The type.
@@ -26,12 +26,12 @@ abstract class AbstractTest extends TestCase
      * @return array
      *               The test input values and their expected output
      */
-    public function dataProvider()
+    public static function dataProvider()
     {
-        $fixtures = $this->fixtureProvider();
+        $fixtures = self::fixtureProvider();
 
-        if (isset($fixtures[$this::TYPE]['content'])) {
-            return $fixtures[$this::TYPE]['content'];
+        if (isset($fixtures[static::TYPE]['content'])) {
+            return $fixtures[static::TYPE]['content'];
         }
 
         return [];
@@ -43,7 +43,7 @@ abstract class AbstractTest extends TestCase
      * @return array
      *               List of component fixtures
      */
-    public function fixtureProvider()
+    public static function fixtureProvider()
     {
         $data = [];
 

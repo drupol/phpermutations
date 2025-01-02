@@ -8,7 +8,7 @@ use drupol\phpermutations\Iterators;
 
 use function count;
 
-class PrimeFactors extends Iterators
+final class PrimeFactors extends Iterators
 {
     /**
      * The prime factors.

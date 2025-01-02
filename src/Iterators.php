@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace drupol\phpermutations;
 
 use Countable;
+use Iterator;
 
-abstract class Iterators extends Combinatorics implements Countable, IteratorInterface
+abstract class Iterators extends Combinatorics implements Iterator
 {
     /**
      * A copy of the dataset at a give time.
@@ -15,10 +16,7 @@ abstract class Iterators extends Combinatorics implements Countable, IteratorInt
      */
     protected $current;
 
-    /**
-     * @var int
-     */
-    protected $key = 0;
+    protected int $key = 0;
 
     /**
      * {@inheritdoc}
@@ -44,22 +42,5 @@ abstract class Iterators extends Combinatorics implements Countable, IteratorInt
     public function rewind(): void
     {
         $this->key = 0;
-    }
-
-    /**
-     * Convert the iterator into an array.
-     *
-     * @return array<int, mixed>
-     *               The elements
-     */
-    public function toArray(): array
-    {
-        $data = [];
-
-        for ($this->rewind(); $this->valid(); $this->next()) {
-            $data[] = $this->current();
-        }
-
-        return $data;
     }
 }

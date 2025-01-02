@@ -5,29 +5,16 @@ declare(strict_types=1);
 namespace drupol\phpermutations\Tests\Iterators;
 
 use drupol\phpermutations\Iterators\Shift;
-use drupol\phpermutations\Tests\AbstractTest;
+use drupol\phpermutations\Tests\AbstractTester;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
-/**
- * Class ShiftTest.
- *
- * @internal
- * @covers \drupol\phpermutations\Iterators\Shift
- */
-final class ShiftTest extends AbstractTest
+#[CoversClass(Shift::class)]
+final class ShiftTest extends AbstractTester
 {
-    /**
-     * The type.
-     */
     public const TYPE = 'shift';
 
-    /**
-     * The tests.
-     *
-     * @dataProvider dataProvider
-     *
-     * @param mixed $input
-     * @param mixed $expected
-     */
+    #[DataProvider('dataProvider')]
     public function testShift($input, $expected)
     {
         $shift = new Shift($input['dataset']);

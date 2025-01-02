@@ -9,11 +9,9 @@ use drupol\phpermutations\Iterators;
 use function count;
 
 /**
- * Class FiniteGroup.
- *
  * The finite group is an abelian finite cyclic group.
  */
-class FiniteGroup extends Iterators
+final class FiniteGroup extends Iterators
 {
     /**
      * The group.

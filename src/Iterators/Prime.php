@@ -8,7 +8,7 @@ use drupol\phpermutations\Iterators;
 
 use const PHP_INT_MAX;
 
-class Prime extends Iterators
+final class Prime extends Iterators
 {
     /**
      * The maximum limit.
